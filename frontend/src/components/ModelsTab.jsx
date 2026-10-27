@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { BrainCircuit, Trophy, CheckCircle, Sliders, ShieldCheck, Zap, HardDrive } from "lucide-react";
+import { CheckCircle2, ChevronRight, ShieldCheck, Database, HardDrive } from "lucide-react";
 import { fetchModelComparison } from "../services/api";
 
 export default function ModelsTab() {
   const [comparison, setComparison] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [selectedModel, setSelectedModel] = useState(null);
 
   useEffect(() => {
     async function load() {
       try {
         const res = await fetchModelComparison();
         setComparison(res);
+        if (res?.models?.length > 0) {
+          setSelectedModel(res.models[0]);
+        }
       } catch (e) {
-        console.error("Error loading model comparison:", e);
+        console.error("Error loading models:", e);
       } finally {
         setLoading(false);
       }
@@ -52,91 +56,84 @@ export default function ModelsTab() {
   ];
 
   return (
-    <div className="animate-fade-in" style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+    <div className="page-container animate-in">
       {/* Header */}
-      <div className="glass-panel" style={{ padding: "2rem" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "1rem" }}>
-          <div>
-            <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "8px" }}>
-              <span className="badge badge-emerald">Spark MLlib Pipelines</span>
-              <span className="badge badge-amber">80/20 Holdout Split (N=88,574)</span>
-            </div>
-            <h1 style={{ fontSize: "1.8rem", margin: 0 }}>Academic ML Model Leaderboard & Evaluation</h1>
-            <p style={{ color: "var(--text-muted)", marginTop: "6px", fontSize: "0.95rem" }}>
-              Side-by-side empirical comparison of 4 supervised regression algorithms evaluated on identical test splits.
-            </p>
-          </div>
+      <div className="page-header">
+        <div>
+          <h1 className="page-header-title">Model Laboratory</h1>
+          <p className="page-header-desc">
+            Empirical evaluation of 4 Spark MLlib regression models on an 80/20 holdout test set (N = 88,574).
+          </p>
+        </div>
 
-          <div style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-            background: "rgba(245, 158, 11, 0.12)",
-            border: "1px solid rgba(245, 158, 11, 0.3)",
-            padding: "12px 18px",
-            borderRadius: "12px",
-          }}>
-            <Trophy size={28} color="var(--amber-light)" />
-            <div>
-              <div style={{ fontSize: "0.75rem", color: "var(--text-subtle)", textTransform: "uppercase", fontWeight: 700 }}>
-                Leaderboard Champion
-              </div>
-              <div style={{ fontSize: "1.05rem", fontWeight: 800, color: "#ffffff" }}>
-                Gradient-Boosted Trees (R² = 0.8550)
-              </div>
-            </div>
-          </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <span className="status-pill status-pill-brand">
+            Target Leakage Prevented
+          </span>
+          <span className="status-pill status-pill-neutral">
+            Fixed Seed = 42
+          </span>
         </div>
       </div>
 
-      {/* Leaderboard Table */}
-      <div className="glass-panel" style={{ padding: "2rem" }}>
-        <h3 style={{ fontSize: "1.2rem", marginBottom: "1.2rem" }}>Model Performance Metrics (Holdout Evaluation)</h3>
-        <div style={{ overflowX: "auto" }}>
-          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.9rem" }}>
+      {/* Model Leaderboard Table */}
+      <div className="apple-card" style={{ padding: "20px 24px" }}>
+        <h3 style={{ fontSize: "0.9375rem", fontWeight: 600, color: "var(--color-forest)", marginBottom: "16px" }}>
+          Regression Model Evaluation Matrix
+        </h3>
+
+        <div className="apple-table-wrapper">
+          <table className="apple-table">
             <thead>
-              <tr style={{ borderBottom: "1px solid var(--border-subtle)", textAlign: "left" }}>
-                <th style={{ padding: "12px 16px", color: "var(--text-subtle)" }}>Rank / Algorithm</th>
-                <th style={{ padding: "12px 16px", color: "var(--text-subtle)" }}>R² Score (Higher is Better)</th>
-                <th style={{ padding: "12px 16px", color: "var(--text-subtle)" }}>RMSE (Lower is Better)</th>
-                <th style={{ padding: "12px 16px", color: "var(--text-subtle)" }}>MAE (Lower is Better)</th>
-                <th style={{ padding: "12px 16px", color: "var(--text-subtle)" }}>Train Duration</th>
-                <th style={{ padding: "12px 16px", color: "var(--text-subtle)" }}>Inference Speed</th>
-                <th style={{ padding: "12px 16px", color: "var(--text-subtle)" }}>Status</th>
+              <tr>
+                <th>Model Algorithm</th>
+                <th style={{ textAlign: "right" }}>R² Score</th>
+                <th style={{ textAlign: "right" }}>RMSE (T/Ha)</th>
+                <th style={{ textAlign: "right" }}>MAE (T/Ha)</th>
+                <th style={{ textAlign: "right" }}>Train Duration</th>
+                <th style={{ textAlign: "center" }}>Evaluation Status</th>
               </tr>
             </thead>
             <tbody>
               {models.map((m, idx) => {
-                const isBest = idx === 0;
+                const isChampion = m.algorithm === "gradient_boosted_trees";
+                const isSelected = selectedModel?.algorithm === m.algorithm;
                 return (
-                  <tr key={m.algorithm} style={{
-                    borderBottom: "1px solid rgba(255,255,255,0.04)",
-                    background: isBest ? "rgba(16, 185, 129, 0.05)" : "transparent",
-                  }}>
-                    <td style={{ padding: "14px 16px", fontWeight: 700, color: isBest ? "var(--emerald-light)" : "#ffffff" }}>
+                  <tr
+                    key={m.algorithm}
+                    onClick={() => setSelectedModel(m)}
+                    style={{
+                      cursor: "pointer",
+                      backgroundColor: isSelected ? "var(--bg-surface-subtle)" : "transparent",
+                    }}
+                  >
+                    <td>
                       <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                        {isBest && <Trophy size={16} color="var(--amber-light)" />}
-                        <span>{m.model_name}</span>
+                        <span style={{ fontWeight: 600, color: "var(--color-forest)" }}>
+                          {m.model_name}
+                        </span>
+                        {isChampion && (
+                          <span className="status-pill status-pill-brand" style={{ fontSize: "0.6875rem" }}>
+                            Best Performer
+                          </span>
+                        )}
                       </div>
                     </td>
-                    <td style={{ padding: "14px 16px", fontWeight: 700, color: isBest ? "var(--emerald-light)" : "var(--text-main)" }}>
+                    <td style={{ textAlign: "right", fontWeight: 600, color: isChampion ? "var(--color-forest)" : "var(--text-primary)" }} className="tabular-numbers">
                       {(m.metrics?.r2 || 0).toFixed(4)}
                     </td>
-                    <td style={{ padding: "14px 16px" }}>
+                    <td style={{ textAlign: "right", color: "var(--text-secondary)" }} className="tabular-numbers">
                       {(m.metrics?.rmse || 0).toFixed(4)}
                     </td>
-                    <td style={{ padding: "14px 16px" }}>
+                    <td style={{ textAlign: "right", color: "var(--text-secondary)" }} className="tabular-numbers">
                       {(m.metrics?.mae || 0).toFixed(4)}
                     </td>
-                    <td style={{ padding: "14px 16px", color: "var(--teal-accent)" }}>
+                    <td style={{ textAlign: "right", color: "var(--color-olive)" }} className="tabular-numbers">
                       {(m.metrics?.training_duration_seconds || 0).toFixed(2)}s
                     </td>
-                    <td style={{ padding: "14px 16px", color: "var(--text-muted)" }}>
-                      &lt; 50ms
-                    </td>
-                    <td style={{ padding: "14px 16px" }}>
-                      <span className={`badge ${isBest ? "badge-emerald" : "badge-indigo"}`} style={{ fontSize: "0.7rem" }}>
-                        {isBest ? "Best Performer" : "Evaluated"}
+                    <td style={{ textAlign: "center" }}>
+                      <span className="status-pill status-pill-success">
+                        Verified
                       </span>
                     </td>
                   </tr>
@@ -145,38 +142,68 @@ export default function ModelsTab() {
             </tbody>
           </table>
         </div>
+        <p style={{ fontSize: "0.75rem", color: "var(--text-tertiary)", marginTop: "12px" }}>
+          * Select any row to inspect underlying Spark MLlib hyperparameters and HDFS serialization paths.
+        </p>
       </div>
 
-      {/* Model Hyperparameters & HDFS Paths */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "1.5rem" }}>
-        {models.map((m) => (
-          <div key={m.algorithm} className="glass-panel" style={{ padding: "1.6rem" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1rem" }}>
-              <h4 style={{ fontSize: "1.05rem", margin: 0, color: "#ffffff" }}>{m.model_name}</h4>
-              <span className="badge badge-teal" style={{ fontSize: "0.7rem" }}>Spark MLlib</span>
+      {/* Selected Model Details Panel */}
+      {selectedModel && (
+        <div className="apple-card" style={{ padding: "20px 24px" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "16px", flexWrap: "wrap", gap: "10px" }}>
+            <div>
+              <span style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.04em", color: "var(--color-olive)", fontWeight: 600 }}>
+                Selected Model Configuration
+              </span>
+              <h3 style={{ fontSize: "1.125rem", fontWeight: 600, color: "var(--color-forest)", marginTop: "2px" }}>
+                {selectedModel.model_name}
+              </h3>
             </div>
+            <span className="status-pill status-pill-neutral">
+              MLlib PipelineModel
+            </span>
+          </div>
 
-            <div style={{ marginBottom: "1rem" }}>
-              <div style={{ fontSize: "0.75rem", color: "var(--text-subtle)", marginBottom: "4px" }}>Configured Hyperparameters</div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px" }}>
+            <div>
+              <div style={{ fontSize: "0.8125rem", fontWeight: 600, color: "var(--color-forest)", marginBottom: "8px" }}>
+                Trained Hyperparameters
+              </div>
               <pre style={{
-                background: "rgba(0,0,0,0.3)",
-                padding: "10px",
-                borderRadius: "8px",
-                fontSize: "0.78rem",
-                color: "var(--emerald-light)",
-                overflowX: "auto"
+                background: "var(--bg-surface-subtle)",
+                border: "1px solid var(--border-subtle)",
+                borderRadius: "var(--radius-md)",
+                padding: "12px 14px",
+                color: "var(--color-forest)",
+                fontSize: "0.8125rem",
+                lineHeight: 1.5,
               }}>
-                {JSON.stringify(m.hyperparameters || {}, null, 2)}
+                {JSON.stringify(selectedModel.hyperparameters || {}, null, 2)}
               </pre>
             </div>
 
-            <div style={{ fontSize: "0.78rem", color: "var(--text-subtle)", display: "flex", alignItems: "center", gap: "6px" }}>
-              <HardDrive size={13} />
-              <span>HDFS Artifact: <code>{m.hdfs_model_path}</code></span>
+            <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+              <div>
+                <div style={{ fontSize: "0.8125rem", fontWeight: 600, color: "var(--color-forest)", marginBottom: "4px" }}>
+                  HDFS Serialized Path
+                </div>
+                <code style={{ fontSize: "0.75rem", color: "var(--color-olive)", background: "var(--bg-surface-subtle)", padding: "4px 8px", borderRadius: "4px", display: "inline-block" }}>
+                  {selectedModel.hdfs_model_path || `/agriscope/models/${selectedModel.algorithm}`}
+                </code>
+              </div>
+
+              <div>
+                <div style={{ fontSize: "0.8125rem", fontWeight: 600, color: "var(--color-forest)", marginBottom: "4px" }}>
+                  Evaluation Methodology
+                </div>
+                <p style={{ fontSize: "0.8125rem", color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                  Evaluated on 88,574 holdout records using identical StandardScaler and VectorAssembler pipeline stages. Production variable mathematically excluded to guarantee zero target leakage.
+                </p>
+              </div>
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

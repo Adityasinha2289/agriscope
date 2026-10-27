@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
 import OverviewTab from "./components/OverviewTab";
 import DatasetTab from "./components/DatasetTab";
 import PipelineTab from "./components/PipelineTab";
@@ -7,6 +7,7 @@ import AnalyticsTab from "./components/AnalyticsTab";
 import ModelsTab from "./components/ModelsTab";
 import PredictionTab from "./components/PredictionTab";
 import ClusteringTab from "./components/ClusteringTab";
+import ReportsTab from "./components/ReportsTab";
 import DocsTab from "./components/DocsTab";
 import { fetchHealth, fetchOverviewAnalytics } from "./services/api";
 
@@ -30,61 +31,121 @@ export default function App() {
     }
     loadInitialData();
 
-    // Poll health every 15s
+    // Poll health every 20s
     const interval = setInterval(async () => {
       try {
         const h = await fetchHealth();
         setHealth(h);
       } catch (e) {}
-    }, 15000);
+    }, 20000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
-      {/* Navigation Bar */}
-      <Navbar activeTab={activeTab} setActiveTab={setActiveTab} health={health} />
+    <div className="app-shell">
+      {/* Apple-Style Slim Navigation Sidebar & Mobile Drawer */}
+      <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} health={health} />
 
-      {/* Main Container */}
-      <main style={{
-        maxWidth: "1440px",
-        width: "100%",
-        margin: "0 auto",
-        padding: "2rem",
-        flex: 1,
-      }}>
-        {activeTab === "overview" && (
-          <OverviewTab health={health} analytics={analytics} setActiveTab={setActiveTab} />
-        )}
-        {activeTab === "dataset" && <DatasetTab />}
-        {activeTab === "pipeline" && <PipelineTab />}
-        {activeTab === "analytics" && <AnalyticsTab />}
-        {activeTab === "models" && <ModelsTab />}
-        {activeTab === "predict" && <PredictionTab />}
-        {activeTab === "clustering" && <ClusteringTab />}
-        {activeTab === "docs" && <DocsTab />}
-      </main>
+      {/* Main Workspace Container */}
+      <div className="main-content-wrapper">
+        <main className="content-container">
+          {activeTab === "overview" && (
+            <OverviewTab health={health} analytics={analytics} setActiveTab={setActiveTab} />
+          )}
+          {activeTab === "analytics" && <AnalyticsTab />}
+          {activeTab === "dataset" && <DatasetTab />}
+          {activeTab === "predict" && <PredictionTab />}
+          {activeTab === "models" && <ModelsTab />}
+          {activeTab === "clustering" && <ClusteringTab />}
+          {activeTab === "pipeline" && <PipelineTab />}
+          {activeTab === "reports" && <ReportsTab />}
+          {activeTab === "docs" && <DocsTab />}
+        </main>
 
-      {/* Footer */}
-      <footer style={{
-        borderTop: "1px solid var(--border-subtle)",
-        background: "rgba(10, 14, 23, 0.9)",
-        padding: "1.5rem 2rem",
-        marginTop: "3rem",
-        textAlign: "center",
-        fontSize: "0.82rem",
-        color: "var(--text-subtle)",
-      }}>
-        <div style={{ maxWidth: "1440px", margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
-          <div>
-            <strong>AgriScope</strong> — B.Tech CSET-371 Big Data Analytics and Business Intelligence Project
+        {/* Quiet, Minimalist Academic Footer */}
+        <footer className="apple-footer">
+          <div className="footer-content">
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <span style={{ fontWeight: 600, color: "var(--color-forest)" }}>AgriScope</span>
+              <span>—</span>
+              <span>Agricultural Intelligence Platform</span>
+              <span className="dot-divider">•</span>
+              <span>B.Tech CSET-371 Big Data Analytics</span>
+            </div>
+            <div style={{ color: "var(--text-tertiary)" }}>
+              Apache Hadoop HDFS • Apache Spark • FastAPI • Apple HIG Principles
+            </div>
           </div>
-          <div>
-            Engineered with Apache Hadoop HDFS, Apache Spark (PySpark), FastAPI & React
-          </div>
-        </div>
-      </footer>
+        </footer>
+      </div>
+
+      <style>{`
+        .app-shell {
+          display: flex;
+          min-height: 100vh;
+          background-color: var(--bg-app);
+        }
+
+        .main-content-wrapper {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          min-width: 0;
+          overflow-y: auto;
+        }
+
+        .content-container {
+          flex: 1;
+          max-width: 1360px;
+          width: 100%;
+          margin: 0 auto;
+          padding: 36px 40px;
+        }
+
+        .apple-footer {
+          border-top: 1px solid var(--border-subtle);
+          background-color: #FFFFFF;
+          padding: 20px 40px;
+          font-size: 0.8125rem;
+          color: var(--text-secondary);
+        }
+
+        .footer-content {
+          max-width: 1360px;
+          margin: 0 auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+
+        .dot-divider {
+          color: var(--border-subtle);
+        }
+
+        @media (max-width: 900px) {
+          .app-shell {
+            flex-direction: column;
+          }
+
+          .content-container {
+            padding: 20px 16px;
+          }
+
+          .apple-footer {
+            padding: 16px;
+            font-size: 0.75rem;
+          }
+
+          .footer-content {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+          }
+        }
+      `}</style>
     </div>
   );
 }

@@ -1,78 +1,78 @@
 import React, { useState, useEffect } from "react";
-import { GitBranch, Play, CheckCircle2, Clock, AlertTriangle, Terminal, RefreshCw, FileText } from "lucide-react";
+import { Play, CheckCircle2, Terminal, RefreshCw, ChevronRight } from "lucide-react";
 import { fetchJobs, fetchJobLogs, triggerJob } from "../services/api";
 
 export default function PipelineTab() {
   const [jobs, setJobs] = useState([]);
   const [selectedJob, setSelectedJob] = useState(null);
   const [logs, setLogs] = useState("");
-  const [triggering, setTriggering] = useState(false);
-  const [triggerStatus, setTriggerStatus] = useState(null);
+  const [triggeringStage, setTriggeringStage] = useState(null);
+  const [notice, setNotice] = useState(null);
 
   const pipelineStages = [
     {
       id: "ingest",
-      title: "1. Data Ingestion & Staging",
+      step: "01",
+      name: "Source Ingestion & Parquet Staging",
       script: "spark_jobs/ingest_data.py",
-      input: "hdfs://.../raw/apy/crop-wise-area-production-yield.csv",
-      output: "hdfs://.../staging/validated/apy_parquet",
-      desc: "Validates schema integrity, calculates SHA-256 checksum, profiles data types, and converts raw CSV to Snappy-compressed Parquet.",
-      status: "completed",
+      input: "/agriscope/raw/apy/crop-wise-area-production-yield.csv",
+      output: "/agriscope/staging/validated/apy_parquet",
       duration: "22.4s",
+      desc: "Validates schema types, computes SHA-256 integrity checksum, and translates raw CSV to Snappy-compressed Parquet.",
     },
     {
       id: "clean",
-      title: "2. Data Cleaning & Audit",
+      step: "02",
+      name: "Data Cleaning & Quality Audit",
       script: "spark_jobs/clean_data.py",
-      input: "hdfs://.../staging/validated/apy_parquet",
-      output: "hdfs://.../processed/cleaned",
-      desc: "Audits duplicate records, flags invalid negative or zero production/yield records, and applies non-destructive boolean flags.",
-      status: "completed",
+      input: "/agriscope/staging/validated/apy_parquet",
+      output: "/agriscope/processed/cleaned",
       duration: "18.2s",
+      desc: "Audits duplicate records (0 found) and attaches non-destructive boolean validity flags for zero/negative production and yield records.",
     },
     {
       id: "feature_engineering",
-      title: "3. Feature Engineering",
+      step: "03",
+      name: "Feature Engineering & Baseline Ratios",
       script: "spark_jobs/build_features.py",
-      input: "hdfs://.../processed/cleaned",
-      output: "hdfs://.../processed/features",
-      desc: "Computes log_area, encodes season and crop_type indices, and generates historical state-crop and crop average yield benchmarks (target leakage strictly prevented).",
-      status: "completed",
+      input: "/agriscope/processed/cleaned",
+      output: "/agriscope/processed/features",
       duration: "19.5s",
+      desc: "Computes log_area, encodes seasonal and categorical indices, and generates historical state-crop benchmarks with strict target leakage prevention.",
     },
     {
       id: "analytics",
-      title: "4. Exploratory Analytics",
+      step: "04",
+      name: "Exploratory Analytics Aggregation",
       script: "spark_jobs/exploratory_analysis.py",
-      input: "hdfs://.../processed/cleaned",
-      output: "hdfs://.../analytics/aggregates",
-      desc: "Calculates distributed aggregations for 25-year yield trends, state rankings, crop rankings, and seasonal distributions.",
-      status: "completed",
+      input: "/agriscope/processed/cleaned",
+      output: "/agriscope/analytics/aggregates",
       duration: "21.0s",
+      desc: "Computes distributed aggregates for 25-year longitudinal trends, state productivity rankings, and seasonal distribution.",
     },
     {
       id: "train",
-      title: "5. MLlib Model Training",
+      step: "05",
+      name: "MLlib Model Training & Evaluation",
       script: "spark_jobs/train_regression.py",
-      input: "hdfs://.../processed/features",
-      output: "hdfs://.../models/*",
-      desc: "Trains 4 regression models (Linear Regression, Decision Tree, Random Forest, Gradient-Boosted Trees) with 80/20 train-test split (N=443,078).",
-      status: "completed",
+      input: "/agriscope/processed/features",
+      output: "/agriscope/models/*",
       duration: "24.8s",
+      desc: "Trains 4 regression models (Linear Regression, Decision Tree, Random Forest, GBT) on an 80/20 holdout test split (N=88,574).",
     },
     {
       id: "cluster",
-      title: "6. K-Means Clustering",
+      step: "06",
+      name: "K-Means Agricultural Clustering",
       script: "spark_jobs/train_kmeans.py",
-      input: "hdfs://.../processed/features",
-      output: "hdfs://.../models/kmeans",
-      desc: "Discovers 5 distinct agricultural clusters using yield, area, and seasonal characteristics via unsupervised MLlib K-Means.",
-      status: "completed",
+      input: "/agriscope/processed/features",
+      output: "/agriscope/models/kmeans",
       duration: "14.5s",
+      desc: "Groups 443,078 records into 5 agronomic clusters along yield, area, and season dimensions (Silhouette Score = 0.4749).",
     },
   ];
 
-  async function loadJobsList() {
+  async function loadJobs() {
     try {
       const data = await fetchJobs(20);
       setJobs(data || []);
@@ -87,165 +87,174 @@ export default function PipelineTab() {
 
   async function loadLogs(jobId) {
     try {
-      const logData = await fetchJobLogs(jobId);
-      setLogs(logData?.logs || "No logs available.");
+      const res = await fetchJobLogs(jobId);
+      setLogs(res?.logs || "No logs available.");
     } catch (e) {
       setLogs("Error loading logs.");
     }
   }
 
   useEffect(() => {
-    loadJobsList();
+    loadJobs();
   }, []);
 
-  async function handleTrigger(jobType) {
-    setTriggering(true);
-    setTriggerStatus(`Launching Spark Job: ${jobType}...`);
+  async function handleTrigger(stageId) {
+    setTriggeringStage(stageId);
+    setNotice(`Launching PySpark job for stage: ${stageId}...`);
     try {
-      const res = await triggerJob(jobType);
-      setTriggerStatus(`Job triggered successfully (ID: ${res.id})`);
+      const res = await triggerJob(stageId);
+      setNotice(`Job triggered successfully (ID: ${res.id})`);
       setTimeout(() => {
-        loadJobsList();
-        setTriggerStatus(null);
-        setTriggering(false);
+        loadJobs();
+        setNotice(null);
+        setTriggeringStage(null);
       }, 3000);
     } catch (e) {
-      setTriggerStatus(`Error triggering job: ${e}`);
-      setTriggering(false);
+      setNotice(`Error triggering job: ${e}`);
+      setTriggeringStage(null);
     }
   }
 
   return (
-    <div className="animate-fade-in" style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+    <div className="page-container animate-in">
       {/* Header */}
-      <div className="glass-panel" style={{ padding: "2rem" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
-          <div>
-            <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "8px" }}>
-              <span className="badge badge-emerald">Directed Acyclic Graph (DAG)</span>
-              <span className="badge badge-teal">PySpark MLlib Pipelines</span>
-            </div>
-            <h1 style={{ fontSize: "1.8rem", margin: 0 }}>Big Data Distributed Processing Pipeline</h1>
-          </div>
-
-          <button className="btn-secondary" onClick={loadJobsList} style={{ fontSize: "0.85rem" }}>
-            <RefreshCw size={14} />
-            <span>Refresh Jobs</span>
-          </button>
+      <div className="page-header">
+        <div>
+          <h1 className="page-header-title">Hadoop & Spark Pipeline</h1>
+          <p className="page-header-desc">
+            Distributed execution stages running across Apache Hadoop HDFS and PySpark 4.0.
+          </p>
         </div>
 
-        {triggerStatus && (
-          <div style={{
-            marginTop: "1.2rem",
-            padding: "10px 16px",
-            background: "rgba(16, 185, 129, 0.15)",
-            border: "1px solid rgba(16, 185, 129, 0.3)",
-            borderRadius: "8px",
-            color: "var(--emerald-light)",
-            fontSize: "0.88rem",
-            display: "flex",
-            alignItems: "center",
-            gap: "8px"
-          }}>
-            <RefreshCw size={14} className="animate-spin" />
-            <span>{triggerStatus}</span>
-          </div>
-        )}
+        <button 
+          className="btn-apple-secondary" 
+          onClick={loadJobs}
+          style={{ fontSize: "0.8125rem" }}
+        >
+          <RefreshCw size={13} />
+          <span>Refresh Status</span>
+        </button>
       </div>
 
-      {/* DAG Stages */}
-      <div>
-        <h2 style={{ fontSize: "1.3rem", marginBottom: "1.2rem" }}>Pipeline Stages Execution Architecture</h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(360px, 1fr))", gap: "1.5rem" }}>
-          {pipelineStages.map((stage) => (
-            <div key={stage.id} className="glass-panel" style={{ padding: "1.6rem", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-              <div>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1rem" }}>
-                  <div style={{ fontSize: "1.1rem", fontWeight: 700, color: "#ffffff" }}>
-                    {stage.title}
-                  </div>
-                  <span className="badge badge-emerald" style={{ fontSize: "0.7rem" }}>
-                    <CheckCircle2 size={12} />
-                    <span>{stage.status} ({stage.duration})</span>
-                  </span>
-                </div>
+      {notice && (
+        <div style={{
+          padding: "10px 16px",
+          backgroundColor: "var(--color-pale-green)",
+          borderRadius: "var(--radius-md)",
+          color: "var(--color-forest)",
+          fontSize: "0.8125rem",
+          fontWeight: 500,
+          border: "1px solid rgba(15, 42, 29, 0.12)",
+        }}>
+          {notice}
+        </div>
+      )}
 
-                <p style={{ fontSize: "0.85rem", color: "var(--text-muted)", marginBottom: "1.2rem", lineHeight: 1.5 }}>
-                  {stage.desc}
-                </p>
-
-                <div style={{ display: "flex", flexDirection: "column", gap: "6px", fontSize: "0.78rem", marginBottom: "1.4rem" }}>
-                  <div style={{ display: "flex", justifyContent: "space-between" }}>
-                    <span style={{ color: "var(--text-subtle)" }}>Script:</span>
-                    <code style={{ color: "var(--emerald-light)" }}>{stage.script}</code>
+      {/* Sequential Pipeline Stages */}
+      <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+        {pipelineStages.map((stage) => (
+          <div key={stage.id} className="apple-card" style={{ padding: "18px 24px" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "12px" }}>
+              <div style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
+                <span style={{ fontSize: "0.8125rem", fontWeight: 600, color: "var(--color-olive)", padding: "4px 8px", background: "var(--bg-surface-subtle)", borderRadius: "var(--radius-sm)" }}>
+                  {stage.step}
+                </span>
+                <div>
+                  <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                    <h3 style={{ fontSize: "0.9375rem", fontWeight: 600, color: "var(--color-forest)" }}>
+                      {stage.name}
+                    </h3>
+                    <span className="status-pill status-pill-success">
+                      <CheckCircle2 size={11} />
+                      <span>Completed ({stage.duration})</span>
+                    </span>
                   </div>
-                  <div style={{ display: "flex", justifyContent: "space-between" }}>
-                    <span style={{ color: "var(--text-subtle)" }}>Output HDFS:</span>
-                    <span style={{ color: "var(--teal-accent)", wordBreak: "break-all" }}>{stage.output}</span>
-                  </div>
+                  <p style={{ fontSize: "0.8125rem", color: "var(--text-secondary)", marginTop: "4px", maxWidth: "680px" }}>
+                    {stage.desc}
+                  </p>
                 </div>
               </div>
 
-              <button
-                className="btn-secondary"
-                disabled={triggering}
-                onClick={() => handleTrigger(stage.id)}
-                style={{ width: "100%", justifyContent: "center", fontSize: "0.85rem" }}
-              >
-                <Play size={14} color="var(--emerald-light)" />
-                <span>Trigger PySpark Stage</span>
-              </button>
+              <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+                <button
+                  className="btn-apple-subtle"
+                  onClick={() => {
+                    const match = jobs.find((j) => j.job_type === stage.id);
+                    if (match) {
+                      setSelectedJob(match);
+                      loadLogs(match.id);
+                    }
+                  }}
+                  style={{ fontSize: "0.8125rem" }}
+                >
+                  <Terminal size={14} />
+                  <span>Inspect Log</span>
+                </button>
+                <button
+                  className="btn-apple-secondary"
+                  disabled={triggeringStage === stage.id}
+                  onClick={() => handleTrigger(stage.id)}
+                  style={{ fontSize: "0.8125rem", padding: "6px 12px" }}
+                >
+                  <Play size={12} color="var(--color-olive)" />
+                  <span>Run Stage</span>
+                </button>
+              </div>
             </div>
-          ))}
-        </div>
+
+            {/* Path metadata */}
+            <div style={{
+              display: "flex",
+              gap: "24px",
+              marginTop: "12px",
+              paddingTop: "12px",
+              borderTop: "1px solid var(--border-subtle)",
+              fontSize: "0.75rem",
+              color: "var(--text-tertiary)",
+              flexWrap: "wrap",
+            }}>
+              <div>
+                <span>Source: </span>
+                <code style={{ color: "var(--text-secondary)" }}>{stage.input}</code>
+              </div>
+              <div>
+                <span>Output: </span>
+                <code style={{ color: "var(--color-olive)" }}>{stage.output}</code>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
 
-      {/* Real-time Spark Log Viewer */}
-      <div className="glass-panel" style={{ padding: "1.8rem" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1rem", flexWrap: "wrap", gap: "1rem" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <Terminal size={20} color="var(--teal-accent)" />
-            <h3 style={{ fontSize: "1.2rem", margin: 0 }}>PySpark Job Execution Log Stream</h3>
+      {/* Execution Log Stream */}
+      <div className="apple-card" style={{ padding: "20px 24px" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "12px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <Terminal size={16} color="var(--color-olive)" />
+            <h3 style={{ fontSize: "0.9375rem", fontWeight: 600, color: "var(--color-forest)" }}>
+              Spark Submit Execution Log
+            </h3>
           </div>
-
-          <div style={{ display: "flex", gap: "8px" }}>
-            {jobs.slice(0, 4).map((j) => (
-              <button
-                key={j.id}
-                onClick={() => {
-                  setSelectedJob(j);
-                  loadLogs(j.id);
-                }}
-                style={{
-                  background: selectedJob?.id === j.id ? "rgba(16, 185, 129, 0.2)" : "rgba(255, 255, 255, 0.04)",
-                  border: selectedJob?.id === j.id ? "1px solid var(--emerald-primary)" : "1px solid var(--border-subtle)",
-                  color: selectedJob?.id === j.id ? "#ffffff" : "var(--text-muted)",
-                  padding: "5px 10px",
-                  borderRadius: "6px",
-                  fontSize: "0.75rem",
-                  cursor: "pointer",
-                }}
-              >
-                {j.job_type}
-              </button>
-            ))}
-          </div>
+          {selectedJob && (
+            <span style={{ fontSize: "0.75rem", color: "var(--text-tertiary)" }}>
+              Job ID: <code>{selectedJob.id}</code> ({selectedJob.job_type})
+            </span>
+          )}
         </div>
 
         <div style={{
-          background: "#070b12",
-          border: "1px solid rgba(255,255,255,0.06)",
-          borderRadius: "10px",
-          padding: "1.2rem",
-          maxHeight: "340px",
-          overflowY: "auto",
+          background: "var(--color-forest)",
+          borderRadius: "var(--radius-md)",
+          padding: "16px",
+          color: "var(--color-pale-green)",
           fontFamily: "var(--font-mono)",
-          fontSize: "0.8rem",
+          fontSize: "0.75rem",
           lineHeight: 1.6,
-          color: "#94a3b8",
+          maxHeight: "260px",
+          overflowY: "auto",
           whiteSpace: "pre-wrap",
         }}>
-          {logs || "Select a job above to view its spark-submit terminal execution log..."}
+          {logs || "Select 'Inspect Log' on any pipeline stage to view spark-submit execution stream..."}
         </div>
       </div>
     </div>

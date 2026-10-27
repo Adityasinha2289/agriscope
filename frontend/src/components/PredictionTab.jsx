@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Sliders, Sparkles, TrendingUp, Layers, HelpCircle, Check, ArrowRight, BarChart } from "lucide-react";
-import confetti from "canvas-confetti";
+import { ArrowRight, SlidersHorizontal, Sparkles, CheckCircle2 } from "lucide-react";
 import { predictYield, fetchFormOptions } from "../services/api";
 
 export default function PredictionTab() {
-  const [options, setOptions] = useState({ states: [], crops: [], seasons: [], algorithms: [] });
+  const [options, setOptions] = useState({ states: [], crops: [], seasons: [] });
   const [form, setForm] = useState({
     state_name: "Punjab",
     crop_name: "Wheat",
@@ -19,14 +18,13 @@ export default function PredictionTab() {
   useEffect(() => {
     async function load() {
       try {
-        const res = await fetchFormOptions();
-        setOptions(res || {});
+        const opts = await fetchFormOptions();
+        setOptions(opts || {});
       } catch (e) {
         console.error("Error loading options:", e);
       }
     }
     load();
-    // Run initial prediction
     handlePredict();
   }, []);
 
@@ -36,15 +34,6 @@ export default function PredictionTab() {
     try {
       const res = await predictYield(payload);
       setPrediction(res);
-      // Trigger subtle confetti
-      try {
-        confetti({
-          particleCount: 35,
-          spread: 60,
-          origin: { y: 0.7 },
-          colors: ["#10B981", "#06B6D4", "#F59E0B"],
-        });
-      } catch (err) {}
     } catch (e) {
       console.error("Prediction error:", e);
     } finally {
@@ -53,95 +42,77 @@ export default function PredictionTab() {
   }
 
   const presets = [
-    { name: "Punjab Wheat (Rabi)", state: "Punjab", crop: "Wheat", season: "Rabi", area: 150 },
-    { name: "Tamil Nadu Rice (Kharif)", state: "Tamil Nadu", crop: "Rice", season: "Kharif", area: 80 },
-    { name: "UP Sugarcane (Commercial)", state: "Uttar Pradesh", crop: "Sugarcane", season: "Whole Year", area: 50 },
-    { name: "Maharashtra Cotton (Rainfed)", state: "Maharashtra", crop: "Cotton(lint)", season: "Kharif", area: 120 },
-    { name: "Kerala Banana (Plantation)", state: "Kerala", crop: "Banana", season: "Whole Year", area: 40 },
+    { label: "Punjab Wheat (Rabi)", state: "Punjab", crop: "Wheat", season: "Rabi", area: 120 },
+    { label: "Tamil Nadu Rice (Kharif)", state: "Tamil Nadu", crop: "Rice", season: "Kharif", area: 80 },
+    { label: "UP Sugarcane (Annual)", state: "Uttar Pradesh", crop: "Sugarcane", season: "Whole Year", area: 50 },
+    { label: "Maharashtra Cotton", state: "Maharashtra", crop: "Cotton(lint)", season: "Kharif", area: 100 },
   ];
 
   function applyPreset(preset) {
-    const newForm = {
+    const next = {
       ...form,
       state_name: preset.state,
       crop_name: preset.crop,
       season: preset.season,
       area: preset.area,
     };
-    setForm(newForm);
-    handlePredict(newForm);
+    setForm(next);
+    handlePredict(next);
   }
 
   return (
-    <div className="animate-fade-in" style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+    <div className="page-container animate-in">
       {/* Header */}
-      <div className="glass-panel" style={{ padding: "2rem" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "8px" }}>
-          <span className="badge badge-emerald">Real-Time Inference</span>
-          <span className="badge badge-amber">PySpark MLlib Pipeline</span>
+      <div className="page-header">
+        <div>
+          <h1 className="page-header-title">Yield Prediction</h1>
+          <p className="page-header-desc">
+            Estimate expected agricultural yield and harvest volume based on historical land characteristics.
+          </p>
         </div>
-        <h1 style={{ fontSize: "1.8rem", margin: 0 }}>Interactive Crop Yield Prediction Sandbox</h1>
-        <p style={{ color: "var(--text-muted)", marginTop: "6px", fontSize: "0.95rem" }}>
-          Simulate agricultural scenarios with trained machine learning models. Evaluate yields, production estimates, and 95% confidence intervals.
-        </p>
+
+        {/* Quick Scenario Presets */}
+        <div style={{ display: "flex", gap: "6px", alignItems: "center", flexWrap: "wrap" }}>
+          <span style={{ fontSize: "0.75rem", color: "var(--text-tertiary)", marginRight: "4px" }}>Presets:</span>
+          {presets.map((p, idx) => (
+            <button
+              key={idx}
+              className="btn-apple-subtle"
+              onClick={() => applyPreset(p)}
+              style={{
+                fontSize: "0.75rem",
+                padding: "4px 8px",
+                border: "1px solid var(--border-subtle)",
+                borderRadius: "var(--radius-sm)",
+              }}
+            >
+              {p.label}
+            </button>
+          ))}
+        </div>
       </div>
 
-      {/* Preset Quick Selectors */}
-      <div style={{ display: "flex", alignItems: "center", gap: "10px", flexWrap: "wrap" }}>
-        <span style={{ fontSize: "0.82rem", color: "var(--text-subtle)", fontWeight: 600 }}>Quick Scenarios:</span>
-        {presets.map((p, idx) => (
-          <button
-            key={idx}
-            onClick={() => applyPreset(p)}
-            style={{
-              background: "rgba(255, 255, 255, 0.04)",
-              border: "1px solid var(--border-subtle)",
-              borderRadius: "20px",
-              padding: "6px 14px",
-              fontSize: "0.78rem",
-              color: "var(--text-main)",
-              cursor: "pointer",
-              transition: "all var(--transition-fast)",
-            }}
-          >
-            {p.name}
-          </button>
-        ))}
-      </div>
-
-      {/* Main Grid: Form + Hero Result */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(360px, 1fr))", gap: "2rem" }}>
-        {/* Input Parameters Form */}
-        <div className="glass-panel" style={{ padding: "2rem" }}>
-          <h3 style={{ fontSize: "1.2rem", marginBottom: "1.4rem", display: "flex", alignItems: "center", gap: "8px" }}>
-            <Sliders size={18} color="var(--emerald-light)" />
-            <span>Scenario Parameters</span>
+      {/* Main 2-Column Grid */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(360px, 1fr))", gap: "24px" }}>
+        {/* Form Panel */}
+        <div className="apple-card" style={{ padding: "24px" }}>
+          <h3 style={{ fontSize: "0.9375rem", fontWeight: 600, color: "var(--color-forest)", marginBottom: "16px" }}>
+            Scenario Parameters
           </h3>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "1.2rem" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
             {/* State */}
             <div>
-              <label style={{ display: "block", fontSize: "0.82rem", color: "var(--text-subtle)", marginBottom: "6px" }}>
-                Select State / Territory
-              </label>
+              <label className="apple-label">State or Territory</label>
               <select
                 value={form.state_name}
                 onChange={(e) => setForm({ ...form, state_name: e.target.value })}
-                style={{
-                  width: "100%",
-                  background: "rgba(0, 0, 0, 0.4)",
-                  border: "1px solid var(--border-subtle)",
-                  borderRadius: "8px",
-                  padding: "10px 14px",
-                  color: "#ffffff",
-                  fontSize: "0.9rem",
-                  outline: "none",
-                }}
+                className="apple-select"
               >
                 {options.states.length > 0 ? (
                   options.states.map((s) => <option key={s} value={s}>{s}</option>)
                 ) : (
-                  ["Punjab", "Haryana", "Uttar Pradesh", "Tamil Nadu", "Maharashtra", "Kerala", "Gujarat"].map((s) => (
+                  ["Punjab", "Haryana", "Uttar Pradesh", "Tamil Nadu", "Maharashtra", "Kerala"].map((s) => (
                     <option key={s} value={s}>{s}</option>
                   ))
                 )}
@@ -150,52 +121,30 @@ export default function PredictionTab() {
 
             {/* Crop */}
             <div>
-              <label style={{ display: "block", fontSize: "0.82rem", color: "var(--text-subtle)", marginBottom: "6px" }}>
-                Select Agricultural Crop
-              </label>
+              <label className="apple-label">Crop Commodity</label>
               <select
                 value={form.crop_name}
                 onChange={(e) => setForm({ ...form, crop_name: e.target.value })}
-                style={{
-                  width: "100%",
-                  background: "rgba(0, 0, 0, 0.4)",
-                  border: "1px solid var(--border-subtle)",
-                  borderRadius: "8px",
-                  padding: "10px 14px",
-                  color: "#ffffff",
-                  fontSize: "0.9rem",
-                  outline: "none",
-                }}
+                className="apple-select"
               >
                 {options.crops.length > 0 ? (
                   options.crops.map((c) => <option key={c} value={c}>{c}</option>)
                 ) : (
-                  ["Wheat", "Rice", "Sugarcane", "Maize", "Cotton(lint)", "Potato", "Onion", "Banana"].map((c) => (
+                  ["Wheat", "Rice", "Sugarcane", "Maize", "Cotton(lint)", "Potato", "Onion"].map((c) => (
                     <option key={c} value={c}>{c}</option>
                   ))
                 )}
               </select>
             </div>
 
-            {/* Season & Year */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+            {/* Season and Year Row */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
               <div>
-                <label style={{ display: "block", fontSize: "0.82rem", color: "var(--text-subtle)", marginBottom: "6px" }}>
-                  Season
-                </label>
+                <label className="apple-label">Cropping Season</label>
                 <select
                   value={form.season}
                   onChange={(e) => setForm({ ...form, season: e.target.value })}
-                  style={{
-                    width: "100%",
-                    background: "rgba(0, 0, 0, 0.4)",
-                    border: "1px solid var(--border-subtle)",
-                    borderRadius: "8px",
-                    padding: "10px 14px",
-                    color: "#ffffff",
-                    fontSize: "0.9rem",
-                    outline: "none",
-                  }}
+                  className="apple-select"
                 >
                   {options.seasons.length > 0 ? (
                     options.seasons.map((s) => <option key={s} value={s}>{s}</option>)
@@ -208,160 +157,137 @@ export default function PredictionTab() {
               </div>
 
               <div>
-                <label style={{ display: "block", fontSize: "0.82rem", color: "var(--text-subtle)", marginBottom: "6px" }}>
-                  Target Year
-                </label>
+                <label className="apple-label">Target Year</label>
                 <input
                   type="number"
                   min="1990"
                   max="2030"
                   value={form.year}
                   onChange={(e) => setForm({ ...form, year: parseInt(e.target.value) || 2024 })}
-                  style={{
-                    width: "100%",
-                    background: "rgba(0, 0, 0, 0.4)",
-                    border: "1px solid var(--border-subtle)",
-                    borderRadius: "8px",
-                    padding: "10px 14px",
-                    color: "#ffffff",
-                    fontSize: "0.9rem",
-                    outline: "none",
-                  }}
+                  className="apple-input"
                 />
               </div>
             </div>
 
             {/* Cultivated Area */}
             <div>
-              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "6px" }}>
-                <label style={{ fontSize: "0.82rem", color: "var(--text-subtle)" }}>Cultivated Land Area (Hectares)</label>
-                <span style={{ fontSize: "0.82rem", fontWeight: 700, color: "var(--emerald-light)" }}>{form.area} Ha</span>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "6px" }}>
+                <label className="apple-label" style={{ margin: 0 }}>Cultivated Area</label>
+                <span style={{ fontSize: "0.8125rem", fontWeight: 600, color: "var(--color-olive)" }} className="tabular-numbers">
+                  {form.area} Hectares
+                </span>
               </div>
               <input
                 type="range"
                 min="1"
-                max="5000"
+                max="2500"
                 step="5"
                 value={form.area}
                 onChange={(e) => setForm({ ...form, area: parseFloat(e.target.value) })}
-                style={{ width: "100%", accentColor: "var(--emerald-primary)", cursor: "pointer" }}
+                style={{ width: "100%", accentColor: "var(--color-olive)", cursor: "pointer" }}
               />
-              <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.7rem", color: "var(--text-subtle)", marginTop: "4px" }}>
-                <span>1 Ha (Smallholder)</span>
-                <span>500 Ha (Commercial)</span>
-                <span>5,000 Ha (District Scale)</span>
-              </div>
             </div>
 
-            {/* Model Algorithm */}
+            {/* Algorithm Choice */}
             <div>
-              <label style={{ display: "block", fontSize: "0.82rem", color: "var(--text-subtle)", marginBottom: "6px" }}>
-                Machine Learning Algorithm
-              </label>
+              <label className="apple-label">Model Algorithm</label>
               <select
                 value={form.algorithm}
                 onChange={(e) => setForm({ ...form, algorithm: e.target.value })}
-                style={{
-                  width: "100%",
-                  background: "rgba(0, 0, 0, 0.4)",
-                  border: "1px solid var(--border-subtle)",
-                  borderRadius: "8px",
-                  padding: "10px 14px",
-                  color: "#ffffff",
-                  fontSize: "0.9rem",
-                  outline: "none",
-                }}
+                className="apple-select"
               >
-                <option value="gradient_boosted_trees">Gradient-Boosted Trees (Champion R²=0.855)</option>
-                <option value="random_forest">Random Forest Regressor (R²=0.853)</option>
-                <option value="decision_tree">Decision Tree Regressor (R²=0.851)</option>
-                <option value="linear_regression">Linear Regression (R²=0.772)</option>
+                <option value="gradient_boosted_trees">Gradient-Boosted Trees (Champion, R² = 0.8550)</option>
+                <option value="random_forest">Random Forest Regressor (R² = 0.8532)</option>
+                <option value="decision_tree">Decision Tree Regressor (R² = 0.8508)</option>
+                <option value="linear_regression">Linear Regression (Baseline, R² = 0.7720)</option>
               </select>
             </div>
 
-            {/* Submit Button */}
+            {/* Primary Action Button */}
             <button
-              className="btn-primary"
+              className="btn-apple-primary"
               disabled={loading}
               onClick={() => handlePredict()}
-              style={{ width: "100%", justifyContent: "center", marginTop: "1rem", padding: "12px" }}
+              style={{ width: "100%", padding: "10px", marginTop: "8px" }}
             >
-              <Sparkles size={18} />
-              <span>{loading ? "Computing Prediction..." : "Run Yield Intelligence Model"}</span>
+              <span>{loading ? "Computing Prediction..." : "Predict Yield"}</span>
             </button>
           </div>
         </div>
 
-        {/* Prediction Hero Output */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-          {/* Main Hero Metric Card */}
-          <div className="glass-panel" style={{
-            padding: "2.2rem",
-            background: "linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(6, 182, 212, 0.08) 100%)",
-            border: "1px solid rgba(16, 185, 129, 0.35)",
-            position: "relative",
-          }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1rem" }}>
-              <span className="badge badge-emerald">Model Prediction Output</span>
-              <span style={{ fontSize: "0.78rem", color: "var(--text-subtle)" }}>Inference: &lt; 35ms</span>
+        {/* Results Panel */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+          {/* Main Yield Card */}
+          <div className="apple-card" style={{ padding: "24px", display: "flex", flexDirection: "column", gap: "16px" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span className="status-pill status-pill-brand">
+                Inference Result
+              </span>
+              <span style={{ fontSize: "0.75rem", color: "var(--text-tertiary)" }}>
+                Latency: &lt; 35ms
+              </span>
             </div>
 
-            <div style={{ marginBottom: "1.5rem" }}>
-              <div style={{ fontSize: "0.85rem", color: "var(--text-subtle)", marginBottom: "4px" }}>
-                Estimated Crop Yield
+            <div>
+              <div style={{ fontSize: "0.75rem", color: "var(--text-tertiary)", marginBottom: "4px" }}>
+                Predicted Crop Productivity
               </div>
-              <div style={{ display: "flex", alignItems: "baseline", gap: "10px" }}>
-                <span style={{ fontSize: "3.4rem", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.03em" }}>
+              <div style={{ display: "flex", alignItems: "baseline", gap: "8px" }}>
+                <span style={{ fontSize: "2.25rem", fontWeight: 600, color: "var(--color-forest)", letterSpacing: "-0.03em" }} className="tabular-numbers">
                   {prediction ? prediction.predicted_yield.toFixed(3) : "—"}
                 </span>
-                <span style={{ fontSize: "1.1rem", color: "var(--emerald-light)", fontWeight: 600 }}>
+                <span style={{ fontSize: "0.9375rem", color: "var(--text-secondary)", fontWeight: 500 }}>
                   Tonnes / Hectare
                 </span>
               </div>
             </div>
 
-            {/* Total Production Estimation */}
             <div style={{
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
-              gap: "1rem",
-              padding: "1rem",
-              background: "rgba(0, 0, 0, 0.35)",
-              borderRadius: "12px",
-              border: "1px solid var(--border-subtle)",
+              gap: "12px",
+              padding: "12px 14px",
+              backgroundColor: "var(--bg-surface-subtle)",
+              borderRadius: "var(--radius-md)",
             }}>
               <div>
-                <div style={{ fontSize: "0.75rem", color: "var(--text-subtle)", marginBottom: "4px" }}>Total Estimated Production</div>
-                <div style={{ fontSize: "1.35rem", fontWeight: 700, color: "#ffffff" }}>
-                  {prediction ? prediction.estimated_production.toLocaleString() : "—"} <span style={{ fontSize: "0.85rem", fontWeight: 400 }}>Tonnes</span>
+                <div style={{ fontSize: "0.6875rem", color: "var(--text-tertiary)" }}>Total Harvest Volume</div>
+                <div style={{ fontSize: "1.125rem", fontWeight: 600, color: "var(--color-forest)", marginTop: "2px" }} className="tabular-numbers">
+                  {prediction ? prediction.estimated_production.toLocaleString() : "—"}{" "}
+                  <span style={{ fontSize: "0.75rem", fontWeight: 400 }}>Tonnes</span>
                 </div>
               </div>
+
               <div>
-                <div style={{ fontSize: "0.75rem", color: "var(--text-subtle)", marginBottom: "4px" }}>95% Confidence Interval</div>
-                <div style={{ fontSize: "1.1rem", fontWeight: 700, color: "var(--teal-accent)" }}>
+                <div style={{ fontSize: "0.6875rem", color: "var(--text-tertiary)" }}>95% Confidence Interval</div>
+                <div style={{ fontSize: "0.9375rem", fontWeight: 600, color: "var(--color-olive)", marginTop: "2px" }} className="tabular-numbers">
                   {prediction?.confidence_interval ? (
                     `${prediction.confidence_interval.lower_bound_95} – ${prediction.confidence_interval.upper_bound_95}`
-                  ) : "—"} <span style={{ fontSize: "0.75rem", fontWeight: 400 }}>T/Ha</span>
+                  ) : "—"}{" "}
+                  <span style={{ fontSize: "0.75rem", fontWeight: 400 }}>T/Ha</span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Feature Contribution Waterfall */}
-          <div className="glass-panel" style={{ padding: "1.8rem" }}>
-            <h4 style={{ fontSize: "1.05rem", marginBottom: "1rem", color: "#ffffff" }}>Feature Contribution Breakdown</h4>
+          {/* Feature Contribution Breakdown */}
+          <div className="apple-card" style={{ padding: "20px 24px" }}>
+            <h4 style={{ fontSize: "0.875rem", fontWeight: 600, color: "var(--color-forest)", marginBottom: "12px" }}>
+              Feature Attribution Breakdown
+            </h4>
+
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
               {prediction?.feature_contributions ? (
-                Object.entries(prediction.feature_contributions).map(([key, val]) => (
-                  <div key={key} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: "0.85rem" }}>
-                    <span style={{ color: "var(--text-muted)" }}>{key}</span>
-                    <span style={{ fontWeight: 600, color: val >= 0 ? "var(--emerald-light)" : "#f43f5e" }}>
-                      {val >= 0 ? `+${val.toFixed(3)}` : val.toFixed(3)} T/Ha
+                Object.entries(prediction.feature_contributions).map(([k, v]) => (
+                  <div key={k} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: "0.8125rem" }}>
+                    <span style={{ color: "var(--text-secondary)" }}>{k}</span>
+                    <span style={{ fontWeight: 600, color: v >= 0 ? "var(--color-olive)" : "#a3453b" }} className="tabular-numbers">
+                      {v >= 0 ? `+${v.toFixed(3)}` : v.toFixed(3)} T/Ha
                     </span>
                   </div>
                 ))
               ) : (
-                <div style={{ color: "var(--text-subtle)", fontSize: "0.85rem" }}>Loading feature contributions...</div>
+                <div style={{ fontSize: "0.8125rem", color: "var(--text-tertiary)" }}>Computing feature attribution...</div>
               )}
             </div>
           </div>
