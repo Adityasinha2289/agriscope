@@ -85,3 +85,32 @@ def test_prediction_endpoint(client):
     assert data["estimated_production"] > 0
     assert "confidence_interval" in data
     assert "feature_contributions" in data
+    assert "farmer_conversion" in data
+    assert data["farmer_conversion"]["yield_quintals_per_acre"] > 0
+    assert data["farmer_conversion"]["area_acres"] > 0
+
+
+def test_districts_endpoint(client):
+    # Test all districts
+    res = client.get("/api/v1/analytics/districts")
+    assert res.status_code == 200
+    all_districts = res.json()
+    assert len(all_districts) > 50
+
+    # Test state filtered districts
+    res_pb = client.get("/api/v1/analytics/districts?state=Punjab")
+    assert res_pb.status_code == 200
+    pb_districts = res_pb.json()
+    assert len(pb_districts) > 0
+    assert all(d["state_name"].lower() == "punjab" for d in pb_districts)
+
+
+def test_farmer_summary_endpoint(client):
+    res = client.get("/api/v1/analytics/farmer-summary?crop=Wheat&state=Punjab")
+    assert res.status_code == 200
+    data = res.json()
+    assert data["crop_name"].lower() == "wheat"
+    assert data["national_avg_yield_quintals_per_acre"] > 0
+    assert len(data["top_districts_in_state"]) > 0
+    assert "plain_language_insight" in data
+

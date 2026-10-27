@@ -71,18 +71,30 @@ def compute_prediction_value(req: PredictionRequest, model: TrainedModel) -> tup
     Computes predicted yield based on trained model algorithms,
     incorporating empirical MLlib model coefficients and benchmarks.
     """
-    # Baseline from historical crop benchmark
-    crop_info = CROP_BENCHMARKS.get(req.crop_name, {"avg_yield": 3.0, "crop_type": "Others", "std_yield": 1.0})
+    # Robust case-insensitive crop lookup
+    req_crop_clean = req.crop_name.strip().lower()
+    crop_info = next(
+        (info for name, info in CROP_BENCHMARKS.items() if name.lower() == req_crop_clean),
+        None
+    )
+    if not crop_info:
+        crop_info = {"avg_yield": 3.0, "crop_type": "Others", "std_yield": 1.0}
+
     base_yield = crop_info["avg_yield"]
     std_yield = crop_info["std_yield"]
 
-    # State efficiency multiplier
-    state_mult = STATE_EFFICIENCY.get(req.state_name, 1.0)
+    # State efficiency multiplier (case-insensitive)
+    req_state_clean = req.state_name.strip().lower()
+    state_mult = next(
+        (mult for s_name, mult in STATE_EFFICIENCY.items() if s_name.lower() == req_state_clean),
+        1.0
+    )
 
-    # Season multiplier
+    # Season multiplier (case-insensitive substring)
     season_mult = 1.0
+    req_season_clean = req.season.strip().lower()
     for s_name, mult in SEASON_MULTIPLIERS.items():
-        if s_name.lower() in req.season.lower():
+        if s_name.lower() in req_season_clean:
             season_mult = mult
             break
 
@@ -104,9 +116,9 @@ def compute_prediction_value(req: PredictionRequest, model: TrainedModel) -> tup
         pred_yield = base_yield * state_mult * season_mult * (1.05 if req.area > 500 else 0.98)
     elif algo == "random_forest":
         pred_yield = (base_yield * 0.5 + (base_yield * state_mult * season_mult) * 0.5) * tech_factor
-    else:  # gradient_boosted_trees (best performer R²=0.855)
+    else:  # gradient_boosted_trees (champion R²=0.8550)
         raw_pred = base_yield * state_mult * season_mult * tech_factor * (scale_factor ** 0.8)
-        # Small non-linear boost for optimal conditions
+        # Non-linear boost for optimal conditions
         if state_mult > 1.1 and season_mult >= 1.0:
             raw_pred *= 1.03
         pred_yield = raw_pred
@@ -136,6 +148,7 @@ def predict_crop_yield(req: PredictionRequest, db: Session = Depends(get_db)):
     """
     Run real-time crop yield prediction using trained MLlib models.
     Returns predicted yield (Tonnes/Ha), total production (Tonnes), and 95% confidence interval.
+    Includes farmer unit conversions (Quintals/Acre) and advisory notes.
     """
     algo = req.algorithm or "gradient_boosted_trees"
     model = (
@@ -149,6 +162,28 @@ def predict_crop_yield(req: PredictionRequest, db: Session = Depends(get_db)):
     estimated_production = round(predicted_yield * req.area, 2)
 
     pred_id = f"pred-{str(uuid.uuid4())[:8]}"
+
+    # Farmer units conversion:
+    # 1 Hectare ≈ 2.47105 Acres
+    # 1 Tonne = 10 Quintals
+    # 1 Tonne / Hectare ≈ 4.04686 Quintals / Acre
+    area_acres = round(req.area * 2.47105, 2)
+    yield_qacre = round(predicted_yield * 4.04686, 2)
+    prod_quintals = round(estimated_production * 10.0, 2)
+
+    farmer_conversion = {
+        "area_acres": area_acres,
+        "yield_quintals_per_acre": yield_qacre,
+        "production_quintals": prod_quintals,
+        "plain_language_summary": (
+            f"Estimated expected productivity is approximately {yield_qacre} quintals per acre "
+            f"({predicted_yield} tonnes/hectare) for {req.crop_name} in {req.state_name}."
+        ),
+        "advisory_note": (
+            "This estimate is an empirical decision-support projection based on historical multi-year records. "
+            "Actual farm yields depend on local soil health, in-season rainfall, irrigation, and field management."
+        ),
+    }
 
     # Log prediction into database
     logged_pred = Prediction(
@@ -174,7 +209,8 @@ def predict_crop_yield(req: PredictionRequest, db: Session = Depends(get_db)):
         confidence_interval=conf_interval,
         feature_contributions=contributions,
         historical_benchmark=CROP_BENCHMARKS.get(req.crop_name, {}),
-        created_at=datetime.datetime.utcnow(),
+        farmer_conversion=farmer_conversion,
+        created_at=datetime.datetime.now(datetime.timezone.utc),
     )
 
 

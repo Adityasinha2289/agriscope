@@ -38,11 +38,20 @@ def get_job_logs(job_id: str, db: Session = Depends(get_db)):
     if not job:
         raise HTTPException(status_code=404, detail="Job not found")
 
-    if not job.log_path or not os.path.exists(job.log_path):
-        return {"job_id": job_id, "logs": "No log file found or job logs in standard output."}
+    if not job.log_path:
+        return {"job_id": job_id, "logs": "No log file specified for this job."}
+
+    settings = get_settings()
+    resolved_path = os.path.abspath(job.log_path)
+    # Ensure log path is within logs_dir to prevent path traversal
+    if not resolved_path.startswith(str(settings.logs_dir.resolve())):
+        raise HTTPException(status_code=403, detail="Access denied: invalid log path")
+
+    if not os.path.exists(resolved_path):
+        return {"job_id": job_id, "logs": "Log file not found or awaiting job initialization."}
 
     try:
-        with open(job.log_path, "r") as f:
+        with open(resolved_path, "r") as f:
             lines = f.readlines()
             # Return last 300 lines
             return {"job_id": job_id, "logs": "".join(lines[-300:])}
@@ -112,7 +121,7 @@ def trigger_job(
         status="running",
         dataset_id=req.dataset_id or "apy-primary",
         config={"args": args, "script": script_path},
-        started_at=datetime.datetime.utcnow(),
+        started_at=datetime.datetime.now(datetime.timezone.utc),
     )
     db.add(new_job)
     db.commit()

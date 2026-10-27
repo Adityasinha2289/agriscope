@@ -10,7 +10,7 @@ import {
   Filler,
 } from "chart.js";
 import { Line, Bar } from "react-chartjs-2";
-import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { ArrowUpRight, ArrowRight, Sprout, GraduationCap } from "lucide-react";
 
 ChartJS.register(
   CategoryScale,
@@ -22,7 +22,7 @@ ChartJS.register(
   Filler
 );
 
-export default function OverviewTab({ analytics, setActiveTab }) {
+export default function OverviewTab({ analytics, setActiveTab, onSwitchToFarmerMode, onOpenPresentation }) {
   const kpis = analytics?.kpis || {};
   const trends = analytics?.yield_trends || [];
   const states = analytics?.top_states || [];
@@ -58,14 +58,14 @@ export default function OverviewTab({ analytics, setActiveTab }) {
       datasets: [
         {
           data: trends.map((t) => t.avg_yield || 0),
-          borderColor: "#375534",
-          backgroundColor: "rgba(227, 238, 212, 0.4)",
+          borderColor: "#375534", // Olive
+          backgroundColor: "rgba(55, 85, 52, 0.06)",
           borderWidth: 2,
-          fill: true,
-          tension: 0.25,
           pointRadius: 0,
           pointHoverRadius: 4,
           pointHoverBackgroundColor: "#0F2A1D",
+          fill: true,
+          tension: 0.3,
         },
       ],
     };
@@ -78,72 +78,76 @@ export default function OverviewTab({ analytics, setActiveTab }) {
       legend: { display: false },
       tooltip: {
         backgroundColor: "#0F2A1D",
-        titleColor: "#FFFFFF",
-        bodyColor: "#E3EED4",
+        titleFont: { size: 12, weight: "bold", family: "-apple-system, sans-serif" },
+        bodyFont: { size: 12, family: "-apple-system, sans-serif" },
         padding: 10,
         cornerRadius: 8,
         displayColors: false,
         callbacks: {
-          label: (context) => `Avg Yield: ${context.parsed.y.toFixed(2)} T/Ha`,
+          label: (context) => `Yield: ${context.parsed.y.toFixed(2)} Tonnes / Ha`,
         },
       },
     },
     scales: {
       x: {
         grid: { display: false },
-        ticks: { color: "#7D8F81", font: { size: 11 } },
+        ticks: {
+          color: "#536557",
+          font: { size: 10 },
+          maxRotation: 45,
+          autoSkip: true,
+          maxTicksLimit: 12,
+        },
         border: { display: false },
       },
       y: {
-        grid: { color: "#EEF2EB" },
-        ticks: { color: "#7D8F81", font: { size: 11 } },
+        grid: { color: "#E1E7DC", drawBorder: false },
+        ticks: { color: "#536557", font: { size: 10 } },
         border: { display: false },
       },
     },
   };
 
-  // Secondary Chart: Leading 7 States
-  const topStates = useMemo(() => states.slice(0, 7), [states]);
-  const statesChartData = useMemo(() => {
+  // Top States Chart Data (Clean Sage Bar)
+  const topStatesData = useMemo(() => {
+    const top7 = states.slice(0, 7);
     return {
-      labels: topStates.map((s) => s.state_name || s.State || ""),
+      labels: top7.map((s) => s.state_name || s.State || ""),
       datasets: [
         {
-          data: topStates.map((s) => s.avg_yield || 0),
-          backgroundColor: "#6B9071",
+          data: top7.map((s) => s.avg_yield || 0),
+          backgroundColor: "#6B9071", // Sage
           borderRadius: 4,
           barThickness: 16,
         },
       ],
     };
-  }, [topStates]);
+  }, [states]);
 
-  const statesChartOptions = {
+  const topStatesOptions = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
       legend: { display: false },
       tooltip: {
         backgroundColor: "#0F2A1D",
-        titleColor: "#FFFFFF",
-        bodyColor: "#E3EED4",
         padding: 10,
         cornerRadius: 8,
         displayColors: false,
         callbacks: {
-          label: (context) => `Productivity: ${context.parsed.y.toFixed(1)} T/Ha`,
+          label: (context) => `Avg Yield: ${context.parsed.y.toFixed(1)} T/Ha`,
         },
       },
     },
     scales: {
       x: {
         grid: { display: false },
-        ticks: { color: "#7D8F81", font: { size: 11 } },
+        ticks: { color: "#536557", font: { size: 10 }, maxRotation: 20 },
         border: { display: false },
       },
       y: {
-        grid: { color: "#EEF2EB" },
-        ticks: { color: "#7D8F81", font: { size: 11 } },
+        grid: { color: "#E1E7DC", drawBorder: false },
+        ticks: { color: "#536557", font: { size: 10 } },
         border: { display: false },
       },
     },
@@ -151,7 +155,7 @@ export default function OverviewTab({ analytics, setActiveTab }) {
 
   return (
     <div className="page-container animate-in">
-      {/* Top Section */}
+      {/* Top Header & Viva Voce Actions */}
       <div className="page-header">
         <div>
           <h1 className="page-header-title">Agricultural Overview</h1>
@@ -160,7 +164,18 @@ export default function OverviewTab({ analytics, setActiveTab }) {
           </p>
         </div>
 
-        <div style={{ display: "flex", gap: "8px" }}>
+        <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
+          {onOpenPresentation && (
+            <button 
+              className="btn-apple-secondary"
+              onClick={onOpenPresentation}
+              style={{ gap: "6px" }}
+            >
+              <GraduationCap size={15} color="var(--color-olive)" />
+              <span>Presentation Mode</span>
+            </button>
+          )}
+
           <button 
             className="btn-apple-secondary"
             onClick={() => setActiveTab("predict")}
@@ -174,6 +189,52 @@ export default function OverviewTab({ analytics, setActiveTab }) {
           >
             <span>Model Leaderboard</span>
           </button>
+        </div>
+      </div>
+
+      {/* Dual Experience Mode Selection Card */}
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "1.3fr 1fr",
+        gap: "16px",
+        borderRadius: "var(--radius-lg)",
+        backgroundColor: "#FFFFFF",
+        border: "1px solid var(--border-subtle)",
+        overflow: "hidden",
+        boxShadow: "var(--shadow-card)",
+      }}>
+        <div style={{ padding: "24px 28px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}>
+            <span className="status-pill status-pill-brand">Active Experience: Analyst Mode</span>
+            <span style={{ fontSize: "0.75rem", color: "var(--text-tertiary)" }}>B.Tech CSET-371</span>
+          </div>
+          <h2 style={{ fontSize: "1.25rem", fontWeight: 700, color: "var(--color-forest)", margin: "0 0 6px", letterSpacing: "-0.01em" }}>
+            Dual-Audience Agricultural Intelligence
+          </h2>
+          <p style={{ fontSize: "0.875rem", color: "var(--text-secondary)", lineHeight: 1.5, margin: "0 0 16px" }}>
+            Switch between the comprehensive research platform (Spark pipelines, HDFS schemas, and ML holdout matrices) and the simplified <strong>Farmer Mode</strong> for ordinary cultivators.
+          </p>
+          <div>
+            <button
+              onClick={onSwitchToFarmerMode}
+              className="btn-apple-primary"
+              style={{ padding: "8px 16px", fontSize: "0.8125rem", gap: "6px" }}
+            >
+              <Sprout size={16} />
+              <span>Switch to Farmer Mode</span>
+              <ArrowRight size={14} />
+            </button>
+          </div>
+        </div>
+
+        <div style={{
+          backgroundImage: "url('/images/healthy_crop_harvest.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center 40%",
+          minHeight: "140px",
+          position: "relative",
+        }}>
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, #FFFFFF 0%, transparent 60%)" }} />
         </div>
       </div>
 
@@ -224,8 +285,8 @@ export default function OverviewTab({ analytics, setActiveTab }) {
             </div>
             <button 
               className="btn-apple-subtle" 
+              style={{ padding: "2px 6px", fontSize: "0.75rem" }}
               onClick={() => setActiveTab("analytics")}
-              style={{ fontSize: "0.75rem", padding: "4px 8px" }}
             >
               <span>View All 34</span>
               <ArrowUpRight size={12} />
@@ -233,42 +294,40 @@ export default function OverviewTab({ analytics, setActiveTab }) {
           </div>
 
           <div style={{ height: "230px", width: "100%" }}>
-            <Bar data={statesChartData} options={statesChartOptions} />
+            <Bar data={topStatesData} options={topStatesOptions} />
           </div>
         </div>
       </div>
 
-      {/* Concise Agricultural Insight Panel */}
-      <div className="apple-card" style={{ padding: "20px 24px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "24px" }}>
-          <div>
-            <div style={{ fontSize: "0.75rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.04em", color: "var(--color-olive)", marginBottom: "6px" }}>
-              Key Agronomic Finding
-            </div>
-            <div style={{ fontSize: "0.9375rem", fontWeight: 600, color: "var(--color-forest)", marginBottom: "4px" }}>
-              High-Yield Clustering in Southern & Northern Irrigated Basins
-            </div>
-            <p style={{ fontSize: "0.8125rem", color: "var(--text-secondary)", lineHeight: 1.5 }}>
-              Longitudinal analysis reveals that southern and northwestern states achieve significantly higher per-hectare productivity due to structured irrigation canal networks and mechanized planting, while rainfed central tracts experience seasonal variability.
-            </p>
+      {/* Compact Secondary Section */}
+      <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: "16px" }}>
+        {/* Agricultural Insight */}
+        <div className="apple-card" style={{ padding: "20px 24px" }}>
+          <div style={{ fontSize: "0.6875rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--text-tertiary)", marginBottom: "8px" }}>
+            Key Agronomic Finding
           </div>
+          <h4 style={{ fontSize: "0.9375rem", fontWeight: 600, color: "var(--color-forest)", margin: "0 0 6px" }}>
+            High-Yield Clustering in Southern & Northern Irrigated Basins
+          </h4>
+          <p style={{ fontSize: "0.8125rem", color: "var(--text-secondary)", lineHeight: 1.5, margin: 0 }}>
+            Longitudinal analysis reveals that southern and northwestern states achieve significantly higher per-hectare productivity due to structured irrigation canal networks and mechanized planting, while rainfed central tracts experience seasonal variability.
+          </p>
+        </div>
 
-          <div style={{ borderLeft: "1px solid var(--border-subtle)", paddingLeft: "24px" }}>
-            <div style={{ fontSize: "0.75rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.04em", color: "var(--color-olive)", marginBottom: "6px" }}>
-              Model Laboratory Status
-            </div>
-            <div style={{ display: "flex", alignItems: "baseline", gap: "8px", marginBottom: "4px" }}>
-              <span style={{ fontSize: "1.25rem", fontWeight: 600, color: "var(--color-forest)" }}>
-                Gradient-Boosted Trees
-              </span>
-              <span className="status-pill status-pill-success">
-                R² = 0.8550
-              </span>
-            </div>
-            <p style={{ fontSize: "0.8125rem", color: "var(--text-secondary)", lineHeight: 1.5 }}>
-              4 MLlib regression models evaluated on 88,574 holdout records. GBT minimizes residual variance with an RMSE of 5.34 T/Ha with strict target leakage isolation.
-            </p>
+        {/* Model Status Card */}
+        <div className="apple-card" style={{ padding: "20px 24px" }}>
+          <div style={{ fontSize: "0.6875rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--text-tertiary)", marginBottom: "8px" }}>
+            Model Laboratory Status
           </div>
+          <div style={{ display: "flex", alignItems: "baseline", gap: "8px", margin: "0 0 6px" }}>
+            <h4 style={{ fontSize: "0.9375rem", fontWeight: 600, color: "var(--color-forest)", margin: 0 }}>
+              Gradient-Boosted Trees
+            </h4>
+            <span className="status-pill status-pill-brand">R² = 0.8550</span>
+          </div>
+          <p style={{ fontSize: "0.8125rem", color: "var(--text-secondary)", lineHeight: 1.5, margin: 0 }}>
+            4 MLlib regression models evaluated on 88,574 holdout records. GBT minimizes residual variance with an RMSE of 5.34 T/Ha with strict target leakage isolation.
+          </p>
         </div>
       </div>
     </div>

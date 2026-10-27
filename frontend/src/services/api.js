@@ -79,3 +79,20 @@ export async function fetchClusteringResults() {
   const res = await fetch(`${API_BASE}/clusters/`);
   return res.json();
 }
+
+export async function fetchDistricts(state = null) {
+  const url = state
+    ? `${API_BASE}/analytics/districts?state=${encodeURIComponent(state)}`
+    : `${API_BASE}/analytics/districts`;
+  const res = await fetch(url);
+  return res.json();
+}
+
+export async function fetchFarmerSummary(crop, state = null) {
+  const url = state
+    ? `${API_BASE}/analytics/farmer-summary?crop=${encodeURIComponent(crop)}&state=${encodeURIComponent(state)}`
+    : `${API_BASE}/analytics/farmer-summary?crop=${encodeURIComponent(crop)}`;
+  const res = await fetch(url);
+  return res.json();
+}
+

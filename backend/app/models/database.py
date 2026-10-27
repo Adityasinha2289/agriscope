@@ -18,6 +18,10 @@ def generate_uuid() -> str:
     return str(uuid.uuid4())[:8]
 
 
+def utc_now() -> datetime.datetime:
+    return datetime.datetime.now(datetime.timezone.utc)
+
+
 class Dataset(Base):
     """Registered dataset metadata."""
     __tablename__ = "datasets"
@@ -39,8 +43,8 @@ class Dataset(Base):
     validation_status = Column(String, default="pending")  # pending, valid, invalid, error
     retrieval_date = Column(String, nullable=True)
     licence = Column(String, nullable=True)
-    created_at = Column(DateTime, default=datetime.datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
+    created_at = Column(DateTime, default=utc_now)
+    updated_at = Column(DateTime, default=utc_now, onupdate=utc_now)
 
 
 class Job(Base):
@@ -60,7 +64,7 @@ class Job(Base):
     started_at = Column(DateTime, nullable=True)
     completed_at = Column(DateTime, nullable=True)
     duration_seconds = Column(Float, nullable=True)
-    created_at = Column(DateTime, default=datetime.datetime.utcnow)
+    created_at = Column(DateTime, default=utc_now)
 
 
 class TrainedModel(Base):
@@ -85,7 +89,7 @@ class TrainedModel(Base):
     hdfs_model_path = Column(String, nullable=True)
     hdfs_predictions_path = Column(String, nullable=True)
     is_active = Column(Boolean, default=True)
-    created_at = Column(DateTime, default=datetime.datetime.utcnow)
+    created_at = Column(DateTime, default=utc_now)
 
 
 class Prediction(Base):
@@ -101,7 +105,7 @@ class Prediction(Base):
     batch_file_path = Column(String, nullable=True)
     result_file_path = Column(String, nullable=True)
     warnings = Column(JSON, nullable=True)
-    created_at = Column(DateTime, default=datetime.datetime.utcnow)
+    created_at = Column(DateTime, default=utc_now)
 
 
 class ClusterResult(Base):
@@ -117,7 +121,7 @@ class ClusterResult(Base):
     cluster_summaries = Column(JSON, nullable=True)
     silhouette_score = Column(Float, nullable=True)
     hdfs_assignments_path = Column(String, nullable=True)
-    created_at = Column(DateTime, default=datetime.datetime.utcnow)
+    created_at = Column(DateTime, default=utc_now)
 
 
 # Database engine setup

@@ -9,12 +9,25 @@ import PredictionTab from "./components/PredictionTab";
 import ClusteringTab from "./components/ClusteringTab";
 import ReportsTab from "./components/ReportsTab";
 import DocsTab from "./components/DocsTab";
+import FarmerMode from "./components/FarmerMode";
+import PresentationModal from "./components/PresentationModal";
 import { fetchHealth, fetchOverviewAnalytics } from "./services/api";
 
 export default function App() {
+  // App Experience Mode: 'analyst' (default) or 'farmer'
+  const [appMode, setAppMode] = useState(() => {
+    return localStorage.getItem("agriscope_mode") || "analyst";
+  });
+
   const [activeTab, setActiveTab] = useState("overview");
   const [health, setHealth] = useState(null);
   const [analytics, setAnalytics] = useState(null);
+  const [isPresentationOpen, setIsPresentationOpen] = useState(false);
+
+  function handleSetAppMode(mode) {
+    setAppMode(mode);
+    localStorage.setItem("agriscope_mode", mode);
+  }
 
   useEffect(() => {
     async function loadInitialData() {
@@ -31,27 +44,59 @@ export default function App() {
     }
     loadInitialData();
 
-    // Poll health every 20s
+    // Poll health every 25s
     const interval = setInterval(async () => {
       try {
         const h = await fetchHealth();
         setHealth(h);
       } catch (e) {}
-    }, 20000);
+    }, 25000);
 
     return () => clearInterval(interval);
   }, []);
 
+  // Global shortcut 'p' to open presentation
+  useEffect(() => {
+    function handleKeyDown(e) {
+      if ((e.key === "p" || e.key === "P") && appMode === "analyst" && !isPresentationOpen) {
+        // Only if not typing in input
+        if (!["INPUT", "SELECT", "TEXTAREA"].includes(e.target.tagName)) {
+          setIsPresentationOpen(true);
+        }
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [appMode, isPresentationOpen]);
+
+  // If in Farmer Mode, render dedicated Farmer-First interface
+  if (appMode === "farmer") {
+    return <FarmerMode onSwitchToAnalyst={() => handleSetAppMode("analyst")} />;
+  }
+
+  // Otherwise, render full academic Analyst Dashboard
   return (
     <div className="app-shell">
       {/* Apple-Style Slim Navigation Sidebar & Mobile Drawer */}
-      <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} health={health} />
+      <Sidebar
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        health={health}
+        onSwitchToFarmerMode={() => handleSetAppMode("farmer")}
+        onOpenPresentation={() => setIsPresentationOpen(true)}
+      />
 
       {/* Main Workspace Container */}
       <div className="main-content-wrapper">
         <main className="content-container">
           {activeTab === "overview" && (
-            <OverviewTab health={health} analytics={analytics} setActiveTab={setActiveTab} />
+            <OverviewTab
+              health={health}
+              analytics={analytics}
+              setActiveTab={setActiveTab}
+              onSwitchToFarmerMode={() => handleSetAppMode("farmer")}
+              onOpenPresentation={() => setIsPresentationOpen(true)}
+            />
           )}
           {activeTab === "analytics" && <AnalyticsTab />}
           {activeTab === "dataset" && <DatasetTab />}
@@ -79,6 +124,13 @@ export default function App() {
           </div>
         </footer>
       </div>
+
+      {/* Presentation Mode Walkthrough Modal */}
+      <PresentationModal
+        isOpen={isPresentationOpen}
+        onClose={() => setIsPresentationOpen(false)}
+        onSwitchToFarmerMode={() => handleSetAppMode("farmer")}
+      />
 
       <style>{`
         .app-shell {

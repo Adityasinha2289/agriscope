@@ -11,10 +11,18 @@ import {
   BookOpen,
   Menu,
   X,
-  Server
+  Server,
+  Sprout,
+  GraduationCap
 } from "lucide-react";
 
-export default function Sidebar({ activeTab, setActiveTab, health }) {
+export default function Sidebar({
+  activeTab,
+  setActiveTab,
+  health,
+  onSwitchToFarmerMode,
+  onOpenPresentation,
+}) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const navItems = [
@@ -56,14 +64,25 @@ export default function Sidebar({ activeTab, setActiveTab, health }) {
           </span>
         </div>
 
-        <button 
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="btn-apple-subtle"
-          aria-label="Toggle navigation"
-          style={{ padding: "8px" }}
-        >
-          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <button
+            onClick={onSwitchToFarmerMode}
+            className="btn-apple-secondary"
+            style={{ padding: "6px 10px", fontSize: "0.75rem", gap: "4px" }}
+          >
+            <Sprout size={14} color="var(--color-olive)" />
+            <span>Farmer Mode</span>
+          </button>
+
+          <button 
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="btn-apple-subtle"
+            aria-label="Toggle navigation"
+            style={{ padding: "8px" }}
+          >
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </header>
 
       {/* Backdrop for mobile */}
@@ -83,7 +102,7 @@ export default function Sidebar({ activeTab, setActiveTab, health }) {
       {/* Main Sidebar (Desktop fixed/sticky, Mobile drawer) */}
       <aside className={`apple-sidebar ${mobileOpen ? "open" : ""}`}>
         {/* Brand */}
-        <div style={{ padding: "24px 20px 20px", display: "flex", alignItems: "center", gap: "10px" }}>
+        <div style={{ padding: "20px 20px 16px", display: "flex", alignItems: "center", gap: "10px" }}>
           <div className="brand-icon">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 2a10 10 0 0 1 10 10c0 5.5-4.5 10-10 10S2 17.5 2 12A10 10 0 0 1 12 2z"/>
@@ -101,8 +120,44 @@ export default function Sidebar({ activeTab, setActiveTab, health }) {
           </div>
         </div>
 
+        {/* Mode Switcher Shortcut Card */}
+        <div style={{ padding: "0 12px 10px" }}>
+          <button
+            onClick={onSwitchToFarmerMode}
+            style={{
+              width: "100%",
+              padding: "10px 12px",
+              borderRadius: "var(--radius-md)",
+              border: "1px solid var(--color-olive)",
+              backgroundColor: "var(--color-pale-green)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              cursor: "pointer",
+              transition: "transform var(--transition-fast)",
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-1px)"}
+            onMouseLeave={(e) => e.currentTarget.style.transform = "translateY(0)"}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <Sprout size={16} color="var(--color-forest)" />
+              <div style={{ textAlign: "left" }}>
+                <div style={{ fontSize: "0.8125rem", fontWeight: 600, color: "var(--color-forest)" }}>
+                  Farmer Mode
+                </div>
+                <div style={{ fontSize: "0.6875rem", color: "var(--color-olive)" }}>
+                  Simple Agricultural UX
+                </div>
+              </div>
+            </div>
+            <span style={{ fontSize: "0.625rem", fontWeight: 700, backgroundColor: "#FFFFFF", color: "var(--color-forest)", padding: "2px 6px", borderRadius: "10px" }}>
+              GO
+            </span>
+          </button>
+        </div>
+
         {/* Primary Navigation */}
-        <nav style={{ padding: "8px 12px", display: "flex", flexDirection: "column", gap: "2px", flex: 1 }}>
+        <nav style={{ padding: "0 12px", display: "flex", flexDirection: "column", gap: "2px", flex: 1, overflowY: "auto" }}>
           <div style={{ fontSize: "0.6875rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--text-tertiary)", padding: "8px 10px 4px" }}>
             Platform
           </div>
@@ -142,9 +197,36 @@ export default function Sidebar({ activeTab, setActiveTab, health }) {
             );
           })}
 
-          <div style={{ fontSize: "0.6875rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--text-tertiary)", padding: "16px 10px 4px" }}>
-            Resources
+          <div style={{ fontSize: "0.6875rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--text-tertiary)", padding: "14px 10px 4px" }}>
+            Academic Viva
           </div>
+
+          <button
+            onClick={() => {
+              if (onOpenPresentation) onOpenPresentation();
+              setMobileOpen(false);
+            }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+              width: "100%",
+              padding: "8px 12px",
+              borderRadius: "var(--radius-md)",
+              border: "1px dashed var(--color-olive)",
+              fontSize: "0.875rem",
+              fontWeight: 600,
+              color: "var(--color-forest)",
+              backgroundColor: "rgba(55, 85, 52, 0.05)",
+              cursor: "pointer",
+              textAlign: "left",
+              marginBottom: "4px"
+            }}
+          >
+            <GraduationCap size={17} color="var(--color-olive)" />
+            <span>Presentation Mode</span>
+          </button>
+
           {secondaryItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeTab === item.id;
@@ -183,7 +265,7 @@ export default function Sidebar({ activeTab, setActiveTab, health }) {
         </nav>
 
         {/* Sidebar Footer / System Status */}
-        <div style={{ padding: "16px", borderTop: "1px solid var(--border-subtle)", backgroundColor: "var(--bg-surface-subtle)" }}>
+        <div style={{ padding: "14px 16px", borderTop: "1px solid var(--border-subtle)", backgroundColor: "var(--bg-surface-subtle)" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
             <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
               <span className={`dot-indicator ${isHdfsConnected ? "dot-indicator-success" : "dot-indicator-warning"}`} />

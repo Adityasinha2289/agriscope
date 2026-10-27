@@ -89,6 +89,12 @@ The AgriScope REST API is built with **FastAPI** and **Uvicorn**, providing sub-
     "Seasonality Effect": 0.25,
     "Technology Year Trend": 0.599,
     "Land Scale Effect": -0.045
+  },
+  "farmer_conversion": {
+    "yield_quintals_per_acre": 22.61,
+    "total_production_quintals": 6702.0,
+    "area_acres": 296.52,
+    "plain_language_summary": "Expected harvest: approximately 22.6 Quintals per Acre (~6,702 Total Quintals across 296.5 Acres)."
   }
 }
 ```
@@ -106,16 +112,19 @@ The AgriScope REST API is built with **FastAPI** and **Uvicorn**, providing sub-
 - `GET /api/v1/analytics/trends` — 25-year time series (1997-2022).
 - `GET /api/v1/analytics/states` — State-level productivity rankings.
 - `GET /api/v1/analytics/crops` — Crop-level productivity rankings.
-- `GET /api/v1/analytics/metadata/options` — Form options for states, crops, and seasons.
+- `GET /api/v1/analytics/metadata/options` — Form options for states, crops, seasons, and state-to-districts mapping.
+- `GET /api/v1/analytics/districts?state={state}` — List all districts for a selected state or all 737 districts.
+- `GET /api/v1/analytics/farmer-summary?crop={crop}&state={state}` — Returns plain-language historical benchmarks, state averages, and national averages formatted in Quintals/Acre for the farmer interface.
 
 ---
 
 ### 2.7 Clustering
-- `GET /api/v1/clusters/` — K-Means clustering results, Silhouette score, cluster sizes, and agronomic profiles.
+- `GET /api/v1/clusters/` — K-Means clustering results, Silhouette score (0.4749), cluster sizes, and agronomic profiles across $k=4$ clusters.
 
 ---
 
-### 2.8 Pipeline Job Execution
+### 2.8 Pipeline Job Execution & Security
 - `GET /api/v1/jobs/` — List recent Spark job executions.
-- `GET /api/v1/jobs/{id}/logs` — Retrieve terminal execution log stream.
+- `GET /api/v1/jobs/{id}/logs` — Retrieve terminal execution log stream (enforces strict directory containment within `logs/` to prevent path traversal).
 - `POST /api/v1/jobs/trigger` — Trigger a PySpark job asynchronously (`ingest`, `clean`, `feature_engineering`, `analytics`, `train`, `cluster`).
+

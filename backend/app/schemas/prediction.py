@@ -29,6 +29,7 @@ class PredictionResponse(BaseModel):
     confidence_interval: Optional[dict[str, float]] = None
     feature_contributions: Optional[dict[str, float]] = None
     historical_benchmark: Optional[dict[str, Any]] = None
+    farmer_conversion: Optional[dict[str, Any]] = None
     created_at: Optional[datetime] = None
 
 

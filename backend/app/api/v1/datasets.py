@@ -34,7 +34,7 @@ def get_dataset(dataset_id: str, db: Session = Depends(get_db)):
 def preview_dataset(
     dataset_id: str,
     limit: int = Query(default=20, ge=1, le=100),
-    view_type: str = Query(default="cleaned", regex="^(raw|cleaned)$"),
+    view_type: str = Query(default="cleaned", pattern="^(raw|cleaned)$"),
     db: Session = Depends(get_db),
 ):
     """
@@ -47,18 +47,23 @@ def preview_dataset(
 
     settings = get_settings()
 
-    if view_type == "raw" and dataset.local_path and os.path.exists(dataset.local_path):
-        try:
-            df = pd.read_csv(dataset.local_path, nrows=limit)
-            return {
-                "dataset_id": dataset_id,
-                "view_type": "raw",
-                "total_rows_sampled": len(df),
-                "columns": list(df.columns),
-                "data": df.fillna("").to_dict(orient="records"),
-            }
-        except Exception as e:
-            raise HTTPException(status_code=500, detail=f"Error reading raw dataset: {e}")
+    if view_type == "raw" and dataset.local_path:
+        resolved_path = os.path.abspath(dataset.local_path)
+        # Prevent path traversal outside project root
+        if not resolved_path.startswith(str(settings.base_dir.resolve())):
+            raise HTTPException(status_code=403, detail="Access denied: invalid file path")
+        if os.path.exists(resolved_path):
+            try:
+                df = pd.read_csv(resolved_path, nrows=limit)
+                return {
+                    "dataset_id": dataset_id,
+                    "view_type": "raw",
+                    "total_rows_sampled": len(df),
+                    "columns": list(df.columns),
+                    "data": df.fillna("").to_dict(orient="records"),
+                }
+            except Exception as e:
+                raise HTTPException(status_code=500, detail=f"Error reading raw dataset: {e}")
 
     # Fallback to local cleaned parquet sample if exists or read raw
     local_csv = str(settings.data_dir / dataset.filename)
