@@ -18,6 +18,7 @@ router = APIRouter()
 hdfs_service = HDFSService()
 
 
+@router.get("")
 @router.get("/")
 def get_system_health(db: Session = Depends(get_db)):
     """Comprehensive system status checking HDFS, Spark, DB, and Disk."""

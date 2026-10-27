@@ -103,7 +103,7 @@ export default function App() {
               onOpenPresentation={() => setIsPresentationOpen(true)}
             />
           )}
-          {activeTab === "analytics" && <AnalyticsTab />}
+          {activeTab === "analytics" && <AnalyticsTab analytics={analytics} />}
           {activeTab === "dataset" && <DatasetTab />}
           {activeTab === "predict" && <PredictionTab />}
           {activeTab === "models" && <ModelsTab />}

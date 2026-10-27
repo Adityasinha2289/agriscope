@@ -1,24 +1,26 @@
 /*! 
  * NEXGram — Premium Agricultural Intelligence Platform & Design System
- * Developed & Architected by Aditya Sinha | B.Tech CSET-371 Big Data Analytics
- * Brand Palette:
- * Forest:     #0F2A1D
- * Olive:      #375534
- * Sage:       #6B9071
- * Soft Sage:  #AEC3B0
- * Pale Green: #E3EED4
+ * Architecture & Implementation: Developed by Aditya Sinha
+ * B.Tech CSET-371 Big Data Analytics & Business Intelligence
+ *
+ * Quiet Apple-inspired agricultural design language:
+ * Forest:     #0F2A1D (Dominant anchor, text, primary emphasis)
+ * Olive:      #375534 (Brand interactive primary, focal highlights)
+ * Sage:       #6B9071 (Secondary visual metrics, neutral accents)
+ * Soft Sage:  #AEC3B0 (Tertiary dividers, muted indicators)
+ * Pale Green: #E3EED4 (Soft badge fills, subtle selection states)
  */
 
 :root {
-  /* AgriScope Primary Brand Palette */
+  /* Brand Palette */
   --color-forest: #0f2a1d;
   --color-olive: #375534;
   --color-sage: #6b9071;
   --color-soft-sage: #aec3b0;
   --color-pale-green: #e3eed4;
 
-  /* Restrained Neutral Surfaces & Backgrounds */
-  --bg-app: #f8f9f5;
+  /* Neutral Surfaces & Canvas */
+  --bg-app: #f7f8f4;
   --bg-surface: #ffffff;
   --bg-surface-subtle: #f2f5ee;
   --bg-surface-hover: #eaf0e6;
@@ -31,7 +33,7 @@
   --text-on-dark: #ffffff;
 
   /* Subtle Borders & Dividers */
-  --border-subtle: #e1e7dc;
+  --border-subtle: #e0e6dc;
   --border-hover: #c4d1bf;
   --border-focus: #375534;
 
@@ -44,10 +46,10 @@
   --status-neutral-text: #485c4e;
 
   /* Typography Stack */
-  --font-system: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-system: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
 
-  /* Spacing Scale */
+  /* Spacing Scale (4, 8, 12, 16, 20, 24, 32, 40, 48, 64) */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -57,8 +59,10 @@
   --space-8: 32px;
   --space-10: 40px;
   --space-12: 48px;
+  --space-16: 64px;
 
-  /* Radius */
+  /* Corner Radii */
+  --radius-xs: 4px;
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
@@ -68,7 +72,7 @@
   /* Apple-Style Restrained Shadows */
   --shadow-sm: 0 1px 2px rgba(15, 42, 29, 0.04);
   --shadow-card: 0 1px 3px rgba(15, 42, 29, 0.05), 0 1px 2px rgba(15, 42, 29, 0.02);
-  --shadow-card-hover: 0 4px 12px rgba(15, 42, 29, 0.06), 0 1px 3px rgba(15, 42, 29, 0.03);
+  --shadow-card-hover: 0 4px 14px rgba(15, 42, 29, 0.07), 0 1px 3px rgba(15, 42, 29, 0.03);
   --shadow-dropdown: 0 8px 24px rgba(15, 42, 29, 0.08), 0 2px 6px rgba(15, 42, 29, 0.03);
 
   /* Transitions */
@@ -94,12 +98,12 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Headings */
+/* Typography Hierarchy */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-system);
   color: var(--text-primary);
   font-weight: 600;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.018em;
 }
 
 h1 {
@@ -121,7 +125,7 @@ h3 {
 p {
   color: var(--text-secondary);
   font-size: 0.9375rem; /* 15px */
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 code, pre {
@@ -144,7 +148,7 @@ code, pre {
 }
 
 .page-container {
-  max-width: 1200px;
+  max-width: 1240px;
   width: 100%;
   margin: 0 auto;
   padding: var(--space-8) var(--space-8) var(--space-12);
@@ -201,25 +205,29 @@ code, pre {
   color: #ffffff;
   border: 1px solid transparent;
   border-radius: var(--radius-md);
-  padding: 8px 16px;
+  padding: 10px 18px;
+  min-height: 44px;
   font-family: var(--font-system);
   font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .btn-apple-primary:hover {
   background-color: var(--color-forest);
+  box-shadow: var(--shadow-card);
 }
 
 .btn-apple-primary:active {
-  transform: scale(0.98);
+  transform: scale(0.985);
 }
 
 .btn-apple-primary:disabled {
-  opacity: 0.5;
+  opacity: 0.55;
   cursor: not-allowed;
+  transform: none;
 }
 
 .btn-apple-secondary {
@@ -231,13 +239,14 @@ code, pre {
   color: var(--text-primary);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 8px 14px;
+  padding: 10px 16px;
+  min-height: 44px;
   font-family: var(--font-system);
   font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
   box-shadow: var(--shadow-sm);
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
 }
 
 .btn-apple-secondary:hover {
@@ -246,7 +255,7 @@ code, pre {
 }
 
 .btn-apple-secondary:active {
-  transform: scale(0.98);
+  transform: scale(0.985);
 }
 
 .btn-apple-subtle {
@@ -258,7 +267,7 @@ code, pre {
   color: var(--text-secondary);
   border: none;
   border-radius: var(--radius-sm);
-  padding: 6px 10px;
+  padding: 6px 12px;
   font-family: var(--font-system);
   font-size: 0.8125rem;
   font-weight: 500;
@@ -276,11 +285,11 @@ code, pre {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 3px 8px;
+  padding: 3px 9px;
   border-radius: var(--radius-full);
   font-size: 0.75rem;
   font-weight: 500;
-  line-height: 1.3;
+  line-height: 1.35;
 }
 
 .status-pill-success {
@@ -323,31 +332,138 @@ code, pre {
   background-color: #c07d1a;
 }
 
-/* Form Controls */
-.apple-input, .apple-select {
+/* Form Controls — Full Support for .apple-input, .apple-select, .form-control, .form-select */
+.apple-input,
+.apple-select,
+.form-control,
+.form-select,
+input.form-control,
+select.form-control {
   width: 100%;
+  height: 46px;
+  min-height: 46px;
   background-color: #ffffff;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 9px 12px;
+  padding: 0 14px;
   color: var(--text-primary);
   font-family: var(--font-system);
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
+  line-height: 1.4;
   outline: none;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
 }
 
-.apple-input:focus, .apple-select:focus {
+/* Select Dropdown Styling with Custom Subtle Arrow */
+.apple-select,
+.form-select,
+select.form-control,
+select.apple-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 38px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23375534' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 14px;
+  cursor: pointer;
+}
+
+.apple-input:hover,
+.apple-select:hover,
+.form-control:hover,
+.form-select:hover {
+  border-color: var(--border-hover);
+}
+
+.apple-input:focus,
+.apple-select:focus,
+.form-control:focus,
+.form-select:focus {
   border-color: var(--color-olive);
-  box-shadow: 0 0 0 3px rgba(55, 85, 52, 0.12);
+  box-shadow: 0 0 0 3px rgba(55, 85, 52, 0.14);
 }
 
-.apple-label {
+.apple-input:disabled,
+.apple-select:disabled,
+.form-control:disabled,
+.form-select:disabled {
+  background-color: var(--bg-surface-subtle);
+  color: var(--text-tertiary);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Form Labels */
+.apple-label,
+.form-label {
   display: block;
   font-size: 0.8125rem;
   font-weight: 500;
   color: var(--text-secondary);
   margin-bottom: 6px;
+  letter-spacing: -0.005em;
+}
+
+/* Form Layout Helpers */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+
+.form-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.form-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+/* Segmented Control (Unit Switcher & Filters) */
+.segmented-control {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--bg-surface-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 3px;
+  gap: 2px;
+}
+
+.segmented-control-btn {
+  border: none;
+  background: transparent;
+  padding: 5px 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.segmented-control-btn:hover {
+  color: var(--text-primary);
+}
+
+.segmented-control-btn.active {
+  background-color: #ffffff;
+  color: var(--color-forest);
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(15, 42, 29, 0.08);
 }
 
 /* Clean Tables */
@@ -409,14 +525,16 @@ code, pre {
 }
 
 .kpi-card-label {
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-tertiary);
 }
 
 .kpi-card-value {
   font-size: 1.875rem; /* 30px */
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-forest);
   letter-spacing: -0.025em;
   line-height: 1.15;
@@ -424,7 +542,8 @@ code, pre {
 
 .kpi-card-subtext {
   font-size: 0.75rem;
-  color: var(--text-tertiary);
+  color: var(--text-secondary);
+  line-height: 1.4;
 }
 
 /* Scrollbars */
@@ -463,8 +582,32 @@ code, pre {
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+  .form-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .form-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
   .page-container {
     padding: var(--space-5) var(--space-4) var(--space-8);
+  }
+  .form-grid-4,
+  .form-grid-3,
+  .form-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Reduced Motion Support for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

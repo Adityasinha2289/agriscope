@@ -3,7 +3,7 @@
  * Architecture & Implementation: Developed by Aditya Sinha
  * B.Tech CSET-371 Big Data Analytics & Business Intelligence
  */
-import React, { useState, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -16,6 +16,7 @@ import {
 } from "chart.js";
 import { Line, Bar, Doughnut } from "react-chartjs-2";
 import { Search, Filter, ChevronDown, ChevronUp } from "lucide-react";
+import { fetchOverviewAnalytics } from "../services/api";
 
 ChartJS.register(
   CategoryScale,
@@ -27,16 +28,27 @@ ChartJS.register(
   Tooltip
 );
 
-export default function AnalyticsTab({ analytics }) {
+export default function AnalyticsTab({ analytics: initialAnalytics }) {
+  const [data, setData] = useState(initialAnalytics || null);
   const [selectedSeason, setSelectedSeason] = useState("All");
   const [metricView, setMetricView] = useState("yield");
   const [cropSearch, setCropSearch] = useState("");
   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
 
-  const trends = analytics?.yield_trends || [];
-  const crops = analytics?.top_crops || [];
-  const seasons = analytics?.season_distribution || [];
-  const cropTypes = analytics?.crop_types || [];
+  useEffect(() => {
+    if (initialAnalytics) {
+      setData(initialAnalytics);
+    } else {
+      fetchOverviewAnalytics()
+        .then((res) => setData(res))
+        .catch((e) => console.error("Failed to load analytics:", e));
+    }
+  }, [initialAnalytics]);
+
+  const trends = data?.yield_trends || [];
+  const crops = data?.top_crops || [];
+  const seasons = data?.season_distribution || [];
+  const cropTypes = data?.crop_types || [];
 
   // Filtered crops for table
   const filteredCrops = useMemo(() => {
