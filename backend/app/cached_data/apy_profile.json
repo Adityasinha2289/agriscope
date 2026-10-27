@@ -1,0 +1,135 @@
+{
+  "total_rows": 455359,
+  "total_columns": 16,
+  "missing_counts": {
+    "id": 0,
+    "year": 0,
+    "state_name": 0,
+    "state_code": 0,
+    "district_name": 0,
+    "district_code": 0,
+    "crop_name": 0,
+    "crop_code": 21,
+    "crop_type": 0,
+    "season": 0,
+    "area": 0,
+    "area_unit": 0,
+    "production": 5009,
+    "production_unit": 0,
+    "yield": 0,
+    "yield_unit": 0
+  },
+  "distinct_counts": {
+    "year": 26,
+    "state_name": 34,
+    "district_name": 737,
+    "crop_name": 115,
+    "crop_type": 10,
+    "season": 7
+  },
+  "numeric_summary": {
+    "area": {
+      "count": 455359,
+      "min": 0.004,
+      "max": 8580100.0,
+      "mean": 13130.019485904528,
+      "stddev": 48466.55175752201
+    },
+    "production": {
+      "count": 450350,
+      "min": 0.0,
+      "max": 1597800000.0,
+      "mean": 838031.983950545,
+      "stddev": 20286115.94001309
+    },
+    "yield": {
+      "count": 455359,
+      "min": 0.0,
+      "max": 43958.333,
+      "mean": 68.84521003867198,
+      "stddev": 861.714749714063
+    }
+  },
+  "duplicate_count": 0,
+  "year_range": {
+    "min": "1997-1998",
+    "max": "2022-2023"
+  },
+  "columns": [
+    "id",
+    "year",
+    "state_name",
+    "state_code",
+    "district_name",
+    "district_code",
+    "crop_name",
+    "crop_code",
+    "crop_type",
+    "season",
+    "area",
+    "area_unit",
+    "production",
+    "production_unit",
+    "yield",
+    "yield_unit"
+  ],
+  "dtypes": {
+    "id": "IntegerType()",
+    "year": "StringType()",
+    "state_name": "StringType()",
+    "state_code": "IntegerType()",
+    "district_name": "StringType()",
+    "district_code": "IntegerType()",
+    "crop_name": "StringType()",
+    "crop_code": "DoubleType()",
+    "crop_type": "StringType()",
+    "season": "StringType()",
+    "area": "DoubleType()",
+    "area_unit": "StringType()",
+    "production": "DoubleType()",
+    "production_unit": "StringType()",
+    "yield": "DoubleType()",
+    "yield_unit": "StringType()"
+  },
+  "schema_validation": {
+    "valid": true,
+    "missing_columns": [],
+    "extra_columns": [],
+    "actual_columns": [
+      "id",
+      "year",
+      "state_name",
+      "state_code",
+      "district_name",
+      "district_code",
+      "crop_name",
+      "crop_code",
+      "crop_type",
+      "season",
+      "area",
+      "area_unit",
+      "production",
+      "production_unit",
+      "yield",
+      "yield_unit"
+    ],
+    "expected_columns": [
+      "id",
+      "year",
+      "state_name",
+      "state_code",
+      "district_name",
+      "district_code",
+      "crop_name",
+      "crop_code",
+      "crop_type",
+      "season",
+      "area",
+      "area_unit",
+      "production",
+      "production_unit",
+      "yield",
+      "yield_unit"
+    ]
+  }
+}

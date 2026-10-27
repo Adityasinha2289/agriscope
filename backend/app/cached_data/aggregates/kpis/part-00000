@@ -1,0 +1,12 @@
+{
+  "total_records": 446321,
+  "distinct_crops": 98,
+  "distinct_districts": 737,
+  "distinct_states": 34,
+  "year_coverage": "1997-2022",
+  "total_production_tonnes": 377407703833.568,
+  "total_area_hectares": 5972106182.287998,
+  "simple_avg_yield_tonnes_per_hectare": 70.2393,
+  "weighted_avg_yield_tonnes_per_hectare": 63.1951,
+  "avg_yield_note": "simple_avg_yield is unweighted arithmetic mean across all records. weighted_avg_yield weights by cultivated area."
+}

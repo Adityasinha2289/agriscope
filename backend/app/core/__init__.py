@@ -1,0 +1,1 @@
+# AgriScope Core Package

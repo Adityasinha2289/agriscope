@@ -1,0 +1,142 @@
+{
+  "Linear Regression": {
+    "status": "success",
+    "metrics": {
+      "mae": 1.27792561014162,
+      "rmse": 6.697376206937148,
+      "r2": 0.7719597332982017,
+      "training_duration_seconds": 3.14,
+      "prediction_duration_seconds": 0.03,
+      "training_samples": 354504,
+      "test_samples": 88574
+    },
+    "model_path": "/agriscope/models/linear_regression",
+    "predictions_path": "/agriscope/results/predictions/linear_regression",
+    "algorithm": "linear_regression",
+    "hyperparameters": {
+      "maxIter": 50,
+      "regParam": 0.1,
+      "elasticNetParam": 0.5
+    },
+    "feature_columns": [
+      "start_year",
+      "state_code",
+      "district_code",
+      "crop_code",
+      "area",
+      "log_area",
+      "season_index",
+      "crop_type_index",
+      "state_crop_avg_yield",
+      "crop_avg_yield"
+    ],
+    "target_column": "yield",
+    "random_seed": 42,
+    "split": "80/20 random"
+  },
+  "Decision Tree": {
+    "status": "success",
+    "metrics": {
+      "mae": 1.15049296330024,
+      "rmse": 5.416865993123208,
+      "r2": 0.8508242142885437,
+      "training_duration_seconds": 1.73,
+      "prediction_duration_seconds": 0.03,
+      "training_samples": 354504,
+      "test_samples": 88574
+    },
+    "model_path": "/agriscope/models/decision_tree",
+    "predictions_path": "/agriscope/results/predictions/decision_tree",
+    "algorithm": "decision_tree",
+    "hyperparameters": {
+      "maxDepth": 8,
+      "seed": 42
+    },
+    "feature_columns": [
+      "start_year",
+      "state_code",
+      "district_code",
+      "crop_code",
+      "area",
+      "log_area",
+      "season_index",
+      "crop_type_index",
+      "state_crop_avg_yield",
+      "crop_avg_yield"
+    ],
+    "target_column": "yield",
+    "random_seed": 42,
+    "split": "80/20 random"
+  },
+  "Random Forest": {
+    "status": "success",
+    "metrics": {
+      "mae": 1.1768827133079751,
+      "rmse": 5.374323932031864,
+      "r2": 0.8531581560421806,
+      "training_duration_seconds": 3.46,
+      "prediction_duration_seconds": 0.07,
+      "training_samples": 354504,
+      "test_samples": 88574
+    },
+    "model_path": "/agriscope/models/random_forest",
+    "predictions_path": "/agriscope/results/predictions/random_forest",
+    "algorithm": "random_forest",
+    "hyperparameters": {
+      "numTrees": 25,
+      "maxDepth": 8,
+      "seed": 42
+    },
+    "feature_columns": [
+      "start_year",
+      "state_code",
+      "district_code",
+      "crop_code",
+      "area",
+      "log_area",
+      "season_index",
+      "crop_type_index",
+      "state_crop_avg_yield",
+      "crop_avg_yield"
+    ],
+    "target_column": "yield",
+    "random_seed": 42,
+    "split": "80/20 random"
+  },
+  "Gradient-Boosted Trees": {
+    "status": "success",
+    "metrics": {
+      "mae": 1.1331868291407374,
+      "rmse": 5.341270907079713,
+      "r2": 0.8549588074556143,
+      "training_duration_seconds": 11.96,
+      "prediction_duration_seconds": 0.05,
+      "training_samples": 354504,
+      "test_samples": 88574
+    },
+    "model_path": "/agriscope/models/gradient_boosted_trees",
+    "predictions_path": "/agriscope/results/predictions/gradient_boosted_trees",
+    "algorithm": "gradient_boosted_trees",
+    "hyperparameters": {
+      "maxIter": 20,
+      "maxDepth": 6,
+      "seed": 42,
+      "stepSize": 0.1
+    },
+    "feature_columns": [
+      "start_year",
+      "state_code",
+      "district_code",
+      "crop_code",
+      "area",
+      "log_area",
+      "season_index",
+      "crop_type_index",
+      "state_crop_avg_yield",
+      "crop_avg_yield"
+    ],
+    "target_column": "yield",
+    "random_seed": 42,
+    "split": "80/20 random"
+  }
+}

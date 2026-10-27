@@ -1,0 +1,251 @@
+id,year,state_name,state_code,district_name,district_code,crop_name,crop_code,crop_type,season,area,area_unit,production,production_unit,yield,yield_unit
+0,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Arhar/Tur,202.0,Pulses,Kharif,21400.0,Hectare,2600.0,Tonnes,0.121,Tonnes/Hectare
+1,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Bajra,103.0,Cereals,Kharif,1400.0,Hectare,500.0,Tonnes,0.357,Tonnes/Hectare
+2,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Castor Seed,1002.0,Oilseeds,Kharif,1000.0,Hectare,100.0,Tonnes,0.1,Tonnes/Hectare
+3,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Cotton(Lint),1101.0,Fiber Crops,Kharif,7300.0,Hectare,9400.0,Tonnes,1.288,Tonnes/Hectare
+4,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Dry Chillies,502.0,Spices,Kharif,3700.0,Hectare,7100.0,Tonnes,1.919,Tonnes/Hectare
+5,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Dry Chillies,502.0,Spices,Rabi,100.0,Hectare,100.0,Tonnes,1.0,Tonnes/Hectare
+6,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Dry Chillies,502.0,Spices,Total,3800.0,Hectare,7200.0,Tonnes,1.895,Tonnes/Hectare
+7,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Gram,201.0,Pulses,Rabi,28000.0,Hectare,14800.0,Tonnes,0.529,Tonnes/Hectare
+8,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Groundnut,1001.0,Oilseeds,Kharif,650800.0,Hectare,228400.0,Tonnes,0.351,Tonnes/Hectare
+9,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Groundnut,1001.0,Oilseeds,Rabi,20200.0,Hectare,21700.0,Tonnes,1.074,Tonnes/Hectare
+10,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Groundnut,1001.0,Oilseeds,Total,671000.0,Hectare,250100.0,Tonnes,0.373,Tonnes/Hectare
+11,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Horse-Gram,206.0,Pulses,Kharif,3300.0,Hectare,1000.0,Tonnes,0.303,Tonnes/Hectare
+12,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Horse-Gram,206.0,Pulses,Rabi,600.0,Hectare,200.0,Tonnes,0.333,Tonnes/Hectare
+13,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Horse-Gram,206.0,Pulses,Total,3900.0,Hectare,1200.0,Tonnes,0.308,Tonnes/Hectare
+14,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Jowar,102.0,Cereals,Kharif,10100.0,Hectare,10200.0,Tonnes,1.01,Tonnes/Hectare
+15,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Jowar,102.0,Cereals,Rabi,18800.0,Hectare,9400.0,Tonnes,0.5,Tonnes/Hectare
+16,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Jowar,102.0,Cereals,Total,28900.0,Hectare,19600.0,Tonnes,0.678,Tonnes/Hectare
+17,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Korra,188.0,Cereals,Kharif,2200.0,Hectare,700.0,Tonnes,0.318,Tonnes/Hectare
+18,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Korra,188.0,Cereals,Rabi,100.0,Hectare,100.0,Tonnes,1.0,Tonnes/Hectare
+19,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Korra,188.0,Cereals,Total,2300.0,Hectare,800.0,Tonnes,0.348,Tonnes/Hectare
+20,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Maize,104.0,Cereals,Kharif,2800.0,Hectare,4900.0,Tonnes,1.75,Tonnes/Hectare
+21,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Maize,104.0,Cereals,Rabi,600.0,Hectare,2400.0,Tonnes,4.0,Tonnes/Hectare
+22,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Maize,104.0,Cereals,Total,3400.0,Hectare,7300.0,Tonnes,2.147,Tonnes/Hectare
+23,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Moong(Green Gram),204.0,Pulses,Kharif,1300.0,Hectare,500.0,Tonnes,0.385,Tonnes/Hectare
+24,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Other Kharif Pulses,288.0,Pulses,Kharif,800.0,Hectare,100.0,Tonnes,0.125,Tonnes/Hectare
+25,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Ragi,105.0,Cereals,Kharif,6700.0,Hectare,11800.0,Tonnes,1.761,Tonnes/Hectare
+26,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Ragi,105.0,Cereals,Rabi,600.0,Hectare,1000.0,Tonnes,1.667,Tonnes/Hectare
+27,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Ragi,105.0,Cereals,Total,7300.0,Hectare,12800.0,Tonnes,1.753,Tonnes/Hectare
+28,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Rice,101.0,Cereals,Kharif,35600.0,Hectare,75400.0,Tonnes,2.118,Tonnes/Hectare
+29,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Rice,101.0,Cereals,Rabi,18000.0,Hectare,37300.0,Tonnes,2.072,Tonnes/Hectare
+30,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Rice,101.0,Cereals,Total,53600.0,Hectare,112700.0,Tonnes,2.103,Tonnes/Hectare
+31,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Sugarcane,401.0,Sugar,Kharif,700.0,Hectare,72900.0,Tonnes,104.143,Tonnes/Hectare
+32,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Sunflower,1007.0,Oilseeds,Kharif,35900.0,Hectare,11100.0,Tonnes,0.309,Tonnes/Hectare
+33,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Sunflower,1007.0,Oilseeds,Rabi,30100.0,Hectare,11100.0,Tonnes,0.369,Tonnes/Hectare
+34,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Sunflower,1007.0,Oilseeds,Total,66000.0,Hectare,22200.0,Tonnes,0.336,Tonnes/Hectare
+35,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Tobacco,1302.0,Drugs And Narcotics,Kharif,200.0,Hectare,200.0,Tonnes,1.0,Tonnes/Hectare
+36,1997-1998,Andhra Pradesh,28,Ananthapuramu,502,Wheat,106.0,Cereals,Rabi,300.0,Hectare,200.0,Tonnes,0.667,Tonnes/Hectare
+37,1997-1998,Andhra Pradesh,28,Chittoor,503,Arhar/Tur,202.0,Pulses,Kharif,6100.0,Hectare,900.0,Tonnes,0.148,Tonnes/Hectare
+38,1997-1998,Andhra Pradesh,28,Chittoor,503,Bajra,103.0,Cereals,Kharif,1700.0,Hectare,1900.0,Tonnes,1.118,Tonnes/Hectare
+39,1997-1998,Andhra Pradesh,28,Chittoor,503,Dry Chillies,502.0,Spices,Kharif,600.0,Hectare,800.0,Tonnes,1.333,Tonnes/Hectare
+40,1997-1998,Andhra Pradesh,28,Chittoor,503,Dry Chillies,502.0,Spices,Rabi,3000.0,Hectare,2100.0,Tonnes,0.7,Tonnes/Hectare
+41,1997-1998,Andhra Pradesh,28,Chittoor,503,Dry Chillies,502.0,Spices,Total,3600.0,Hectare,2900.0,Tonnes,0.806,Tonnes/Hectare
+42,1997-1998,Andhra Pradesh,28,Chittoor,503,Groundnut,1001.0,Oilseeds,Kharif,234900.0,Hectare,144200.0,Tonnes,0.614,Tonnes/Hectare
+43,1997-1998,Andhra Pradesh,28,Chittoor,503,Groundnut,1001.0,Oilseeds,Rabi,28300.0,Hectare,69800.0,Tonnes,2.466,Tonnes/Hectare
+44,1997-1998,Andhra Pradesh,28,Chittoor,503,Groundnut,1001.0,Oilseeds,Total,263200.0,Hectare,214000.0,Tonnes,0.813,Tonnes/Hectare
+45,1997-1998,Andhra Pradesh,28,Chittoor,503,Horse-Gram,206.0,Pulses,Kharif,3100.0,Hectare,2000.0,Tonnes,0.645,Tonnes/Hectare
+46,1997-1998,Andhra Pradesh,28,Chittoor,503,Horse-Gram,206.0,Pulses,Rabi,1200.0,Hectare,400.0,Tonnes,0.333,Tonnes/Hectare
+47,1997-1998,Andhra Pradesh,28,Chittoor,503,Horse-Gram,206.0,Pulses,Total,4300.0,Hectare,2400.0,Tonnes,0.558,Tonnes/Hectare
+48,1997-1998,Andhra Pradesh,28,Chittoor,503,Jowar,102.0,Cereals,Kharif,2400.0,Hectare,1500.0,Tonnes,0.625,Tonnes/Hectare
+49,1997-1998,Andhra Pradesh,28,Chittoor,503,Maize,104.0,Cereals,Kharif,100.0,Hectare,300.0,Tonnes,3.0,Tonnes/Hectare
+50,1997-1998,Andhra Pradesh,28,Chittoor,503,Moong(Green Gram),204.0,Pulses,Kharif,200.0,Hectare,100.0,Tonnes,0.5,Tonnes/Hectare
+51,1997-1998,Andhra Pradesh,28,Chittoor,503,Other Kharif Pulses,288.0,Pulses,Kharif,2200.0,Hectare,300.0,Tonnes,0.136,Tonnes/Hectare
+52,1997-1998,Andhra Pradesh,28,Chittoor,503,Ragi,105.0,Cereals,Kharif,10800.0,Hectare,9900.0,Tonnes,0.917,Tonnes/Hectare
+53,1997-1998,Andhra Pradesh,28,Chittoor,503,Ragi,105.0,Cereals,Rabi,1600.0,Hectare,2300.0,Tonnes,1.438,Tonnes/Hectare
+54,1997-1998,Andhra Pradesh,28,Chittoor,503,Ragi,105.0,Cereals,Total,12400.0,Hectare,12200.0,Tonnes,0.984,Tonnes/Hectare
+55,1997-1998,Andhra Pradesh,28,Chittoor,503,Rice,101.0,Cereals,Kharif,42300.0,Hectare,84400.0,Tonnes,1.995,Tonnes/Hectare
+56,1997-1998,Andhra Pradesh,28,Chittoor,503,Rice,101.0,Cereals,Rabi,57400.0,Hectare,137400.0,Tonnes,2.394,Tonnes/Hectare
+57,1997-1998,Andhra Pradesh,28,Chittoor,503,Rice,101.0,Cereals,Total,99700.0,Hectare,221800.0,Tonnes,2.225,Tonnes/Hectare
+58,1997-1998,Andhra Pradesh,28,Chittoor,503,Samai,188.0,Cereals,Kharif,1300.0,Hectare,200.0,Tonnes,0.154,Tonnes/Hectare
+59,1997-1998,Andhra Pradesh,28,Chittoor,503,Sesamum,1003.0,Oilseeds,Kharif,400.0,Hectare,100.0,Tonnes,0.25,Tonnes/Hectare
+60,1997-1998,Andhra Pradesh,28,Chittoor,503,Sugarcane,401.0,Sugar,Kharif,29600.0,Hectare,2775100.0,Tonnes,93.753,Tonnes/Hectare
+61,1997-1998,Andhra Pradesh,28,Chittoor,503,Sunflower,1007.0,Oilseeds,Kharif,1300.0,Hectare,600.0,Tonnes,0.462,Tonnes/Hectare
+62,1997-1998,Andhra Pradesh,28,Chittoor,503,Sunflower,1007.0,Oilseeds,Rabi,900.0,Hectare,400.0,Tonnes,0.444,Tonnes/Hectare
+63,1997-1998,Andhra Pradesh,28,Chittoor,503,Sunflower,1007.0,Oilseeds,Total,2200.0,Hectare,1000.0,Tonnes,0.455,Tonnes/Hectare
+64,1997-1998,Andhra Pradesh,28,East Godavari,505,Arhar/Tur,202.0,Pulses,Kharif,1600.0,Hectare,300.0,Tonnes,0.188,Tonnes/Hectare
+65,1997-1998,Andhra Pradesh,28,East Godavari,505,Bajra,103.0,Cereals,Kharif,2500.0,Hectare,1400.0,Tonnes,0.56,Tonnes/Hectare
+66,1997-1998,Andhra Pradesh,28,East Godavari,505,Cotton(Lint),1101.0,Fiber Crops,Kharif,9800.0,Hectare,23400.0,Tonnes,2.388,Tonnes/Hectare
+67,1997-1998,Andhra Pradesh,28,East Godavari,505,Dry Chillies,502.0,Spices,Kharif,700.0,Hectare,2200.0,Tonnes,3.143,Tonnes/Hectare
+68,1997-1998,Andhra Pradesh,28,East Godavari,505,Dry Chillies,502.0,Spices,Rabi,700.0,Hectare,1200.0,Tonnes,1.714,Tonnes/Hectare
+69,1997-1998,Andhra Pradesh,28,East Godavari,505,Dry Chillies,502.0,Spices,Total,1400.0,Hectare,3400.0,Tonnes,2.429,Tonnes/Hectare
+70,1997-1998,Andhra Pradesh,28,East Godavari,505,Groundnut,1001.0,Oilseeds,Kharif,400.0,Hectare,400.0,Tonnes,1.0,Tonnes/Hectare
+71,1997-1998,Andhra Pradesh,28,East Godavari,505,Groundnut,1001.0,Oilseeds,Rabi,1700.0,Hectare,3000.0,Tonnes,1.765,Tonnes/Hectare
+72,1997-1998,Andhra Pradesh,28,East Godavari,505,Groundnut,1001.0,Oilseeds,Total,2100.0,Hectare,3400.0,Tonnes,1.619,Tonnes/Hectare
+73,1997-1998,Andhra Pradesh,28,East Godavari,505,Horse-Gram,206.0,Pulses,Rabi,1300.0,Hectare,800.0,Tonnes,0.615,Tonnes/Hectare
+74,1997-1998,Andhra Pradesh,28,East Godavari,505,Jowar,102.0,Cereals,Kharif,1100.0,Hectare,600.0,Tonnes,0.545,Tonnes/Hectare
+75,1997-1998,Andhra Pradesh,28,East Godavari,505,Jowar,102.0,Cereals,Rabi,200.0,Hectare,200.0,Tonnes,1.0,Tonnes/Hectare
+76,1997-1998,Andhra Pradesh,28,East Godavari,505,Jowar,102.0,Cereals,Total,1300.0,Hectare,800.0,Tonnes,0.615,Tonnes/Hectare
+77,1997-1998,Andhra Pradesh,28,East Godavari,505,Korra,188.0,Cereals,Kharif,1200.0,Hectare,1100.0,Tonnes,0.917,Tonnes/Hectare
+78,1997-1998,Andhra Pradesh,28,East Godavari,505,Maize,104.0,Cereals,Kharif,1600.0,Hectare,2900.0,Tonnes,1.812,Tonnes/Hectare
+79,1997-1998,Andhra Pradesh,28,East Godavari,505,Maize,104.0,Cereals,Rabi,3600.0,Hectare,13700.0,Tonnes,3.806,Tonnes/Hectare
+80,1997-1998,Andhra Pradesh,28,East Godavari,505,Maize,104.0,Cereals,Total,5200.0,Hectare,16600.0,Tonnes,3.192,Tonnes/Hectare
+81,1997-1998,Andhra Pradesh,28,East Godavari,505,Moong(Green Gram),204.0,Pulses,Rabi,59500.0,Hectare,26500.0,Tonnes,0.445,Tonnes/Hectare
+82,1997-1998,Andhra Pradesh,28,East Godavari,505,Ragi,105.0,Cereals,Kharif,200.0,Hectare,100.0,Tonnes,0.5,Tonnes/Hectare
+83,1997-1998,Andhra Pradesh,28,East Godavari,505,Ragi,105.0,Cereals,Rabi,100.0,Hectare,100.0,Tonnes,1.0,Tonnes/Hectare
+84,1997-1998,Andhra Pradesh,28,East Godavari,505,Ragi,105.0,Cereals,Total,300.0,Hectare,200.0,Tonnes,0.667,Tonnes/Hectare
+85,1997-1998,Andhra Pradesh,28,East Godavari,505,Rice,101.0,Cereals,Kharif,214100.0,Hectare,429300.0,Tonnes,2.005,Tonnes/Hectare
+86,1997-1998,Andhra Pradesh,28,East Godavari,505,Rice,101.0,Cereals,Rabi,154400.0,Hectare,491500.0,Tonnes,3.183,Tonnes/Hectare
+87,1997-1998,Andhra Pradesh,28,East Godavari,505,Rice,101.0,Cereals,Total,368500.0,Hectare,920800.0,Tonnes,2.499,Tonnes/Hectare
+88,1997-1998,Andhra Pradesh,28,East Godavari,505,Samai,188.0,Cereals,Kharif,2000.0,Hectare,800.0,Tonnes,0.4,Tonnes/Hectare
+89,1997-1998,Andhra Pradesh,28,East Godavari,505,Sesamum,1003.0,Oilseeds,Kharif,1800.0,Hectare,400.0,Tonnes,0.222,Tonnes/Hectare
+90,1997-1998,Andhra Pradesh,28,East Godavari,505,Sesamum,1003.0,Oilseeds,Rabi,1900.0,Hectare,200.0,Tonnes,0.105,Tonnes/Hectare
+91,1997-1998,Andhra Pradesh,28,East Godavari,505,Sesamum,1003.0,Oilseeds,Total,3700.0,Hectare,600.0,Tonnes,0.162,Tonnes/Hectare
+92,1997-1998,Andhra Pradesh,28,East Godavari,505,Sugarcane,401.0,Sugar,Kharif,15100.0,Hectare,1197300.0,Tonnes,79.291,Tonnes/Hectare
+93,1997-1998,Andhra Pradesh,28,East Godavari,505,Sunflower,1007.0,Oilseeds,Kharif,300.0,Hectare,200.0,Tonnes,0.667,Tonnes/Hectare
+94,1997-1998,Andhra Pradesh,28,East Godavari,505,Tobacco,1302.0,Drugs And Narcotics,Kharif,13100.0,Hectare,17100.0,Tonnes,1.305,Tonnes/Hectare
+95,1997-1998,Andhra Pradesh,28,East Godavari,505,Urad,203.0,Pulses,Rabi,59900.0,Hectare,19300.0,Tonnes,0.322,Tonnes/Hectare
+96,1997-1998,Andhra Pradesh,28,Guntur,506,Arhar/Tur,202.0,Pulses,Kharif,28400.0,Hectare,14900.0,Tonnes,0.525,Tonnes/Hectare
+97,1997-1998,Andhra Pradesh,28,Guntur,506,Arhar/Tur,202.0,Pulses,Rabi,1800.0,Hectare,1000.0,Tonnes,0.556,Tonnes/Hectare
+98,1997-1998,Andhra Pradesh,28,Guntur,506,Arhar/Tur,202.0,Pulses,Total,30200.0,Hectare,15900.0,Tonnes,0.526,Tonnes/Hectare
+99,1997-1998,Andhra Pradesh,28,Guntur,506,Bajra,103.0,Cereals,Kharif,100.0,Hectare,100.0,Tonnes,1.0,Tonnes/Hectare
+100,1997-1998,Andhra Pradesh,28,Guntur,506,Castor Seed,1002.0,Oilseeds,Kharif,1600.0,Hectare,300.0,Tonnes,0.188,Tonnes/Hectare
+101,1997-1998,Andhra Pradesh,28,Guntur,506,Cotton(Lint),1101.0,Fiber Crops,Kharif,162300.0,Hectare,432500.0,Tonnes,2.665,Tonnes/Hectare
+102,1997-1998,Andhra Pradesh,28,Guntur,506,Dry Chillies,502.0,Spices,Kharif,27100.0,Hectare,97300.0,Tonnes,3.59,Tonnes/Hectare
+103,1997-1998,Andhra Pradesh,28,Guntur,506,Dry Chillies,502.0,Spices,Rabi,700.0,Hectare,1300.0,Tonnes,1.857,Tonnes/Hectare
+104,1997-1998,Andhra Pradesh,28,Guntur,506,Dry Chillies,502.0,Spices,Total,27800.0,Hectare,98600.0,Tonnes,3.547,Tonnes/Hectare
+105,1997-1998,Andhra Pradesh,28,Guntur,506,Gram,201.0,Pulses,Rabi,3000.0,Hectare,1500.0,Tonnes,0.5,Tonnes/Hectare
+106,1997-1998,Andhra Pradesh,28,Guntur,506,Groundnut,1001.0,Oilseeds,Kharif,300.0,Hectare,300.0,Tonnes,1.0,Tonnes/Hectare
+107,1997-1998,Andhra Pradesh,28,Guntur,506,Groundnut,1001.0,Oilseeds,Rabi,4500.0,Hectare,6500.0,Tonnes,1.444,Tonnes/Hectare
+108,1997-1998,Andhra Pradesh,28,Guntur,506,Groundnut,1001.0,Oilseeds,Total,4800.0,Hectare,6800.0,Tonnes,1.417,Tonnes/Hectare
+109,1997-1998,Andhra Pradesh,28,Guntur,506,Jowar,102.0,Cereals,Kharif,200.0,Hectare,100.0,Tonnes,0.5,Tonnes/Hectare
+110,1997-1998,Andhra Pradesh,28,Guntur,506,Jowar,102.0,Cereals,Rabi,2400.0,Hectare,3500.0,Tonnes,1.458,Tonnes/Hectare
+111,1997-1998,Andhra Pradesh,28,Guntur,506,Jowar,102.0,Cereals,Total,2600.0,Hectare,3600.0,Tonnes,1.385,Tonnes/Hectare
+112,1997-1998,Andhra Pradesh,28,Guntur,506,Maize,104.0,Cereals,Kharif,1700.0,Hectare,3100.0,Tonnes,1.824,Tonnes/Hectare
+113,1997-1998,Andhra Pradesh,28,Guntur,506,Maize,104.0,Cereals,Rabi,5000.0,Hectare,19000.0,Tonnes,3.8,Tonnes/Hectare
+114,1997-1998,Andhra Pradesh,28,Guntur,506,Maize,104.0,Cereals,Total,6700.0,Hectare,22100.0,Tonnes,3.299,Tonnes/Hectare
+115,1997-1998,Andhra Pradesh,28,Guntur,506,Moong(Green Gram),204.0,Pulses,Kharif,7400.0,Hectare,2800.0,Tonnes,0.378,Tonnes/Hectare
+116,1997-1998,Andhra Pradesh,28,Guntur,506,Moong(Green Gram),204.0,Pulses,Rabi,7700.0,Hectare,3100.0,Tonnes,0.403,Tonnes/Hectare
+117,1997-1998,Andhra Pradesh,28,Guntur,506,Moong(Green Gram),204.0,Pulses,Total,15100.0,Hectare,5900.0,Tonnes,0.391,Tonnes/Hectare
+118,1997-1998,Andhra Pradesh,28,Guntur,506,Rice,101.0,Cereals,Kharif,295000.0,Hectare,845300.0,Tonnes,2.865,Tonnes/Hectare
+119,1997-1998,Andhra Pradesh,28,Guntur,506,Rice,101.0,Cereals,Rabi,14500.0,Hectare,51800.0,Tonnes,3.572,Tonnes/Hectare
+120,1997-1998,Andhra Pradesh,28,Guntur,506,Rice,101.0,Cereals,Total,309500.0,Hectare,897100.0,Tonnes,2.899,Tonnes/Hectare
+121,1997-1998,Andhra Pradesh,28,Guntur,506,Sesamum,1003.0,Oilseeds,Kharif,400.0,Hectare,100.0,Tonnes,0.25,Tonnes/Hectare
+122,1997-1998,Andhra Pradesh,28,Guntur,506,Sesamum,1003.0,Oilseeds,Rabi,4700.0,Hectare,900.0,Tonnes,0.191,Tonnes/Hectare
+123,1997-1998,Andhra Pradesh,28,Guntur,506,Sesamum,1003.0,Oilseeds,Total,5100.0,Hectare,1000.0,Tonnes,0.196,Tonnes/Hectare
+124,1997-1998,Andhra Pradesh,28,Guntur,506,Small Millets,108.0,Cereals,Kharif,4000.0,Hectare,200.0,Tonnes,0.05,Tonnes/Hectare
+125,1997-1998,Andhra Pradesh,28,Guntur,506,Sugarcane,401.0,Sugar,Kharif,1600.0,Hectare,109600.0,Tonnes,68.5,Tonnes/Hectare
+126,1997-1998,Andhra Pradesh,28,Guntur,506,Sunflower,1007.0,Oilseeds,Kharif,300.0,Hectare,200.0,Tonnes,0.667,Tonnes/Hectare
+127,1997-1998,Andhra Pradesh,28,Guntur,506,Tobacco,1302.0,Drugs And Narcotics,Kharif,11400.0,Hectare,13200.0,Tonnes,1.158,Tonnes/Hectare
+128,1997-1998,Andhra Pradesh,28,Guntur,506,Urad,203.0,Pulses,Kharif,7100.0,Hectare,1200.0,Tonnes,0.169,Tonnes/Hectare
+129,1997-1998,Andhra Pradesh,28,Guntur,506,Urad,203.0,Pulses,Rabi,153000.0,Hectare,75400.0,Tonnes,0.493,Tonnes/Hectare
+130,1997-1998,Andhra Pradesh,28,Guntur,506,Urad,203.0,Pulses,Total,160100.0,Hectare,76600.0,Tonnes,0.478,Tonnes/Hectare
+131,1997-1998,Andhra Pradesh,28,Guntur,506,Varagu,188.0,Cereals,Rabi,400.0,Hectare,300.0,Tonnes,0.75,Tonnes/Hectare
+132,1997-1998,Andhra Pradesh,28,Krishna,510,Arhar/Tur,202.0,Pulses,Kharif,10700.0,Hectare,3400.0,Tonnes,0.318,Tonnes/Hectare
+133,1997-1998,Andhra Pradesh,28,Krishna,510,Cotton(Lint),1101.0,Fiber Crops,Kharif,26400.0,Hectare,63300.0,Tonnes,2.398,Tonnes/Hectare
+134,1997-1998,Andhra Pradesh,28,Krishna,510,Dry Chillies,502.0,Spices,Kharif,5100.0,Hectare,14500.0,Tonnes,2.843,Tonnes/Hectare
+135,1997-1998,Andhra Pradesh,28,Krishna,510,Dry Chillies,502.0,Spices,Rabi,1800.0,Hectare,3000.0,Tonnes,1.667,Tonnes/Hectare
+136,1997-1998,Andhra Pradesh,28,Krishna,510,Dry Chillies,502.0,Spices,Total,6900.0,Hectare,17500.0,Tonnes,2.536,Tonnes/Hectare
+137,1997-1998,Andhra Pradesh,28,Krishna,510,Groundnut,1001.0,Oilseeds,Kharif,4300.0,Hectare,4800.0,Tonnes,1.116,Tonnes/Hectare
+138,1997-1998,Andhra Pradesh,28,Krishna,510,Groundnut,1001.0,Oilseeds,Rabi,11200.0,Hectare,19900.0,Tonnes,1.777,Tonnes/Hectare
+139,1997-1998,Andhra Pradesh,28,Krishna,510,Groundnut,1001.0,Oilseeds,Total,15500.0,Hectare,24700.0,Tonnes,1.594,Tonnes/Hectare
+140,1997-1998,Andhra Pradesh,28,Krishna,510,Horse-Gram,206.0,Pulses,Rabi,800.0,Hectare,400.0,Tonnes,0.5,Tonnes/Hectare
+141,1997-1998,Andhra Pradesh,28,Krishna,510,Jowar,102.0,Cereals,Kharif,500.0,Hectare,300.0,Tonnes,0.6,Tonnes/Hectare
+142,1997-1998,Andhra Pradesh,28,Krishna,510,Jowar,102.0,Cereals,Rabi,2200.0,Hectare,2000.0,Tonnes,0.909,Tonnes/Hectare
+143,1997-1998,Andhra Pradesh,28,Krishna,510,Jowar,102.0,Cereals,Total,2700.0,Hectare,2300.0,Tonnes,0.852,Tonnes/Hectare
+144,1997-1998,Andhra Pradesh,28,Krishna,510,Maize,104.0,Cereals,Kharif,5900.0,Hectare,10500.0,Tonnes,1.78,Tonnes/Hectare
+145,1997-1998,Andhra Pradesh,28,Krishna,510,Maize,104.0,Cereals,Rabi,2200.0,Hectare,8200.0,Tonnes,3.727,Tonnes/Hectare
+146,1997-1998,Andhra Pradesh,28,Krishna,510,Maize,104.0,Cereals,Total,8100.0,Hectare,18700.0,Tonnes,2.309,Tonnes/Hectare
+147,1997-1998,Andhra Pradesh,28,Krishna,510,Mesta,1103.0,Fiber Crops,Kharif,100.0,Hectare,800.0,Tonnes,8.0,Tonnes/Hectare
+148,1997-1998,Andhra Pradesh,28,Krishna,510,Moong(Green Gram),204.0,Pulses,Kharif,26700.0,Hectare,10200.0,Tonnes,0.382,Tonnes/Hectare
+149,1997-1998,Andhra Pradesh,28,Krishna,510,Moong(Green Gram),204.0,Pulses,Rabi,2500.0,Hectare,1600.0,Tonnes,0.64,Tonnes/Hectare
+150,1997-1998,Andhra Pradesh,28,Krishna,510,Moong(Green Gram),204.0,Pulses,Total,29200.0,Hectare,11800.0,Tonnes,0.404,Tonnes/Hectare
+151,1997-1998,Andhra Pradesh,28,Krishna,510,Rice,101.0,Cereals,Kharif,257900.0,Hectare,699400.0,Tonnes,2.712,Tonnes/Hectare
+152,1997-1998,Andhra Pradesh,28,Krishna,510,Rice,101.0,Cereals,Rabi,116300.0,Hectare,393500.0,Tonnes,3.383,Tonnes/Hectare
+153,1997-1998,Andhra Pradesh,28,Krishna,510,Rice,101.0,Cereals,Total,374200.0,Hectare,1092900.0,Tonnes,2.921,Tonnes/Hectare
+154,1997-1998,Andhra Pradesh,28,Krishna,510,Sesamum,1003.0,Oilseeds,Kharif,300.0,Hectare,100.0,Tonnes,0.333,Tonnes/Hectare
+155,1997-1998,Andhra Pradesh,28,Krishna,510,Sesamum,1003.0,Oilseeds,Rabi,2400.0,Hectare,300.0,Tonnes,0.125,Tonnes/Hectare
+156,1997-1998,Andhra Pradesh,28,Krishna,510,Sesamum,1003.0,Oilseeds,Total,2700.0,Hectare,400.0,Tonnes,0.148,Tonnes/Hectare
+157,1997-1998,Andhra Pradesh,28,Krishna,510,Sugarcane,401.0,Sugar,Kharif,15400.0,Hectare,1634000.0,Tonnes,106.104,Tonnes/Hectare
+158,1997-1998,Andhra Pradesh,28,Krishna,510,Sunflower,1007.0,Oilseeds,Kharif,2200.0,Hectare,1100.0,Tonnes,0.5,Tonnes/Hectare
+159,1997-1998,Andhra Pradesh,28,Krishna,510,Tobacco,1302.0,Drugs And Narcotics,Kharif,7700.0,Hectare,6900.0,Tonnes,0.896,Tonnes/Hectare
+160,1997-1998,Andhra Pradesh,28,Krishna,510,Urad,203.0,Pulses,Kharif,5200.0,Hectare,900.0,Tonnes,0.173,Tonnes/Hectare
+161,1997-1998,Andhra Pradesh,28,Krishna,510,Urad,203.0,Pulses,Rabi,90600.0,Hectare,55900.0,Tonnes,0.617,Tonnes/Hectare
+162,1997-1998,Andhra Pradesh,28,Krishna,510,Urad,203.0,Pulses,Total,95800.0,Hectare,56800.0,Tonnes,0.593,Tonnes/Hectare
+163,1997-1998,Andhra Pradesh,28,Kurnool,511,Arhar/Tur,202.0,Pulses,Kharif,20900.0,Hectare,6400.0,Tonnes,0.306,Tonnes/Hectare
+164,1997-1998,Andhra Pradesh,28,Kurnool,511,Arhar/Tur,202.0,Pulses,Rabi,100.0,Hectare,100.0,Tonnes,1.0,Tonnes/Hectare
+165,1997-1998,Andhra Pradesh,28,Kurnool,511,Arhar/Tur,202.0,Pulses,Total,21000.0,Hectare,6500.0,Tonnes,0.31,Tonnes/Hectare
+166,1997-1998,Andhra Pradesh,28,Kurnool,511,Bajra,103.0,Cereals,Kharif,11600.0,Hectare,9300.0,Tonnes,0.802,Tonnes/Hectare
+167,1997-1998,Andhra Pradesh,28,Kurnool,511,Cotton(Lint),1101.0,Fiber Crops,Kharif,90400.0,Hectare,116900.0,Tonnes,1.293,Tonnes/Hectare
+168,1997-1998,Andhra Pradesh,28,Kurnool,511,Dry Chillies,502.0,Spices,Kharif,8000.0,Hectare,8500.0,Tonnes,1.062,Tonnes/Hectare
+169,1997-1998,Andhra Pradesh,28,Kurnool,511,Dry Chillies,502.0,Spices,Rabi,300.0,Hectare,300.0,Tonnes,1.0,Tonnes/Hectare
+170,1997-1998,Andhra Pradesh,28,Kurnool,511,Dry Chillies,502.0,Spices,Total,8300.0,Hectare,8800.0,Tonnes,1.06,Tonnes/Hectare
+171,1997-1998,Andhra Pradesh,28,Kurnool,511,Gram,201.0,Pulses,Rabi,48300.0,Hectare,22800.0,Tonnes,0.472,Tonnes/Hectare
+172,1997-1998,Andhra Pradesh,28,Kurnool,511,Groundnut,1001.0,Oilseeds,Kharif,201200.0,Hectare,105200.0,Tonnes,0.523,Tonnes/Hectare
+173,1997-1998,Andhra Pradesh,28,Kurnool,511,Groundnut,1001.0,Oilseeds,Rabi,31900.0,Hectare,48100.0,Tonnes,1.508,Tonnes/Hectare
+174,1997-1998,Andhra Pradesh,28,Kurnool,511,Groundnut,1001.0,Oilseeds,Total,233100.0,Hectare,153300.0,Tonnes,0.658,Tonnes/Hectare
+175,1997-1998,Andhra Pradesh,28,Kurnool,511,Horse-Gram,206.0,Pulses,Rabi,2000.0,Hectare,600.0,Tonnes,0.3,Tonnes/Hectare
+176,1997-1998,Andhra Pradesh,28,Kurnool,511,Jowar,102.0,Cereals,Kharif,9600.0,Hectare,10400.0,Tonnes,1.083,Tonnes/Hectare
+177,1997-1998,Andhra Pradesh,28,Kurnool,511,Jowar,102.0,Cereals,Rabi,113800.0,Hectare,107200.0,Tonnes,0.942,Tonnes/Hectare
+178,1997-1998,Andhra Pradesh,28,Kurnool,511,Jowar,102.0,Cereals,Total,123400.0,Hectare,117600.0,Tonnes,0.953,Tonnes/Hectare
+179,1997-1998,Andhra Pradesh,28,Kurnool,511,Korra,188.0,Cereals,Kharif,21700.0,Hectare,13700.0,Tonnes,0.631,Tonnes/Hectare
+180,1997-1998,Andhra Pradesh,28,Kurnool,511,Maize,104.0,Cereals,Kharif,1000.0,Hectare,1700.0,Tonnes,1.7,Tonnes/Hectare
+181,1997-1998,Andhra Pradesh,28,Kurnool,511,Maize,104.0,Cereals,Rabi,100.0,Hectare,200.0,Tonnes,2.0,Tonnes/Hectare
+182,1997-1998,Andhra Pradesh,28,Kurnool,511,Maize,104.0,Cereals,Total,1100.0,Hectare,1900.0,Tonnes,1.727,Tonnes/Hectare
+183,1997-1998,Andhra Pradesh,28,Kurnool,511,Moong(Green Gram),204.0,Pulses,Kharif,3000.0,Hectare,1200.0,Tonnes,0.4,Tonnes/Hectare
+203,1997-1998,Andhra Pradesh,28,Prakasam,517,Dry Chillies,502.0,Spices,Kharif,7100.0,Hectare,7100.0,Tonnes,1.0,Tonnes/Hectare
+184,1997-1998,Andhra Pradesh,28,Kurnool,511,Moong(Green Gram),204.0,Pulses,Rabi,500.0,Hectare,200.0,Tonnes,0.4,Tonnes/Hectare
+185,1997-1998,Andhra Pradesh,28,Kurnool,511,Moong(Green Gram),204.0,Pulses,Total,3500.0,Hectare,1400.0,Tonnes,0.4,Tonnes/Hectare
+186,1997-1998,Andhra Pradesh,28,Kurnool,511,Ragi,105.0,Cereals,Kharif,100.0,Hectare,100.0,Tonnes,1.0,Tonnes/Hectare
+187,1997-1998,Andhra Pradesh,28,Kurnool,511,Rice,101.0,Cereals,Kharif,66300.0,Hectare,176900.0,Tonnes,2.668,Tonnes/Hectare
+188,1997-1998,Andhra Pradesh,28,Kurnool,511,Rice,101.0,Cereals,Rabi,9000.0,Hectare,23900.0,Tonnes,2.656,Tonnes/Hectare
+189,1997-1998,Andhra Pradesh,28,Kurnool,511,Rice,101.0,Cereals,Total,75300.0,Hectare,200800.0,Tonnes,2.667,Tonnes/Hectare
+190,1997-1998,Andhra Pradesh,28,Kurnool,511,Sugarcane,401.0,Sugar,Kharif,100.0,Hectare,9900.0,Tonnes,99.0,Tonnes/Hectare
+191,1997-1998,Andhra Pradesh,28,Kurnool,511,Sunflower,1007.0,Oilseeds,Kharif,81700.0,Hectare,46200.0,Tonnes,0.565,Tonnes/Hectare
+192,1997-1998,Andhra Pradesh,28,Kurnool,511,Sunflower,1007.0,Oilseeds,Rabi,61100.0,Hectare,34300.0,Tonnes,0.561,Tonnes/Hectare
+193,1997-1998,Andhra Pradesh,28,Kurnool,511,Sunflower,1007.0,Oilseeds,Total,142800.0,Hectare,80500.0,Tonnes,0.564,Tonnes/Hectare
+194,1997-1998,Andhra Pradesh,28,Kurnool,511,Tobacco,1302.0,Drugs And Narcotics,Kharif,23000.0,Hectare,22700.0,Tonnes,0.987,Tonnes/Hectare
+195,1997-1998,Andhra Pradesh,28,Kurnool,511,Urad,203.0,Pulses,Kharif,600.0,Hectare,100.0,Tonnes,0.167,Tonnes/Hectare
+196,1997-1998,Andhra Pradesh,28,Kurnool,511,Urad,203.0,Pulses,Rabi,1900.0,Hectare,900.0,Tonnes,0.474,Tonnes/Hectare
+197,1997-1998,Andhra Pradesh,28,Kurnool,511,Urad,203.0,Pulses,Total,2500.0,Hectare,1000.0,Tonnes,0.4,Tonnes/Hectare
+198,1997-1998,Andhra Pradesh,28,Kurnool,511,Wheat,106.0,Cereals,Rabi,600.0,Hectare,300.0,Tonnes,0.5,Tonnes/Hectare
+199,1997-1998,Andhra Pradesh,28,Prakasam,517,Arhar/Tur,202.0,Pulses,Kharif,34700.0,Hectare,2200.0,Tonnes,0.063,Tonnes/Hectare
+200,1997-1998,Andhra Pradesh,28,Prakasam,517,Bajra,103.0,Cereals,Kharif,12200.0,Hectare,11600.0,Tonnes,0.951,Tonnes/Hectare
+201,1997-1998,Andhra Pradesh,28,Prakasam,517,Castor Seed,1002.0,Oilseeds,Kharif,7200.0,Hectare,900.0,Tonnes,0.125,Tonnes/Hectare
+202,1997-1998,Andhra Pradesh,28,Prakasam,517,Cotton(Lint),1101.0,Fiber Crops,Kharif,39900.0,Hectare,47500.0,Tonnes,1.19,Tonnes/Hectare
+204,1997-1998,Andhra Pradesh,28,Prakasam,517,Dry Chillies,502.0,Spices,Rabi,4500.0,Hectare,6900.0,Tonnes,1.533,Tonnes/Hectare
+205,1997-1998,Andhra Pradesh,28,Prakasam,517,Dry Chillies,502.0,Spices,Total,11600.0,Hectare,14000.0,Tonnes,1.207,Tonnes/Hectare
+206,1997-1998,Andhra Pradesh,28,Prakasam,517,Gram,201.0,Pulses,Rabi,15100.0,Hectare,7400.0,Tonnes,0.49,Tonnes/Hectare
+207,1997-1998,Andhra Pradesh,28,Prakasam,517,Groundnut,1001.0,Oilseeds,Kharif,7000.0,Hectare,4300.0,Tonnes,0.614,Tonnes/Hectare
+208,1997-1998,Andhra Pradesh,28,Prakasam,517,Groundnut,1001.0,Oilseeds,Rabi,11900.0,Hectare,14200.0,Tonnes,1.193,Tonnes/Hectare
+209,1997-1998,Andhra Pradesh,28,Prakasam,517,Groundnut,1001.0,Oilseeds,Total,18900.0,Hectare,18500.0,Tonnes,0.979,Tonnes/Hectare
+210,1997-1998,Andhra Pradesh,28,Prakasam,517,Horse-Gram,206.0,Pulses,Rabi,2500.0,Hectare,900.0,Tonnes,0.36,Tonnes/Hectare
+211,1997-1998,Andhra Pradesh,28,Prakasam,517,Jowar,102.0,Cereals,Kharif,3700.0,Hectare,2100.0,Tonnes,0.568,Tonnes/Hectare
+212,1997-1998,Andhra Pradesh,28,Prakasam,517,Jowar,102.0,Cereals,Rabi,4200.0,Hectare,8100.0,Tonnes,1.929,Tonnes/Hectare
+213,1997-1998,Andhra Pradesh,28,Prakasam,517,Jowar,102.0,Cereals,Total,7900.0,Hectare,10200.0,Tonnes,1.291,Tonnes/Hectare
+214,1997-1998,Andhra Pradesh,28,Prakasam,517,Korra,188.0,Cereals,Kharif,1400.0,Hectare,1400.0,Tonnes,1.0,Tonnes/Hectare
+215,1997-1998,Andhra Pradesh,28,Prakasam,517,Maize,104.0,Cereals,Kharif,1800.0,Hectare,8100.0,Tonnes,4.5,Tonnes/Hectare
+216,1997-1998,Andhra Pradesh,28,Prakasam,517,Maize,104.0,Cereals,Rabi,4700.0,Hectare,17600.0,Tonnes,3.745,Tonnes/Hectare
+217,1997-1998,Andhra Pradesh,28,Prakasam,517,Maize,104.0,Cereals,Total,6500.0,Hectare,25700.0,Tonnes,3.954,Tonnes/Hectare
+218,1997-1998,Andhra Pradesh,28,Prakasam,517,Moong(Green Gram),204.0,Pulses,Kharif,6000.0,Hectare,2300.0,Tonnes,0.383,Tonnes/Hectare
+219,1997-1998,Andhra Pradesh,28,Prakasam,517,Moong(Green Gram),204.0,Pulses,Rabi,4700.0,Hectare,2000.0,Tonnes,0.426,Tonnes/Hectare
+220,1997-1998,Andhra Pradesh,28,Prakasam,517,Moong(Green Gram),204.0,Pulses,Total,10700.0,Hectare,4300.0,Tonnes,0.402,Tonnes/Hectare
+221,1997-1998,Andhra Pradesh,28,Prakasam,517,Ragi,105.0,Cereals,Rabi,4600.0,Hectare,5800.0,Tonnes,1.261,Tonnes/Hectare
+222,1997-1998,Andhra Pradesh,28,Prakasam,517,Rice,101.0,Cereals,Kharif,62000.0,Hectare,124300.0,Tonnes,2.005,Tonnes/Hectare
+223,1997-1998,Andhra Pradesh,28,Prakasam,517,Rice,101.0,Cereals,Rabi,74200.0,Hectare,222100.0,Tonnes,2.993,Tonnes/Hectare
+224,1997-1998,Andhra Pradesh,28,Prakasam,517,Rice,101.0,Cereals,Total,136200.0,Hectare,346400.0,Tonnes,2.543,Tonnes/Hectare
+225,1997-1998,Andhra Pradesh,28,Prakasam,517,Sesamum,1003.0,Oilseeds,Kharif,3700.0,Hectare,700.0,Tonnes,0.189,Tonnes/Hectare
+226,1997-1998,Andhra Pradesh,28,Prakasam,517,Sesamum,1003.0,Oilseeds,Rabi,2500.0,Hectare,100.0,Tonnes,0.04,Tonnes/Hectare
+227,1997-1998,Andhra Pradesh,28,Prakasam,517,Sesamum,1003.0,Oilseeds,Total,6200.0,Hectare,800.0,Tonnes,0.129,Tonnes/Hectare
+228,1997-1998,Andhra Pradesh,28,Prakasam,517,Sugarcane,401.0,Sugar,Kharif,400.0,Hectare,27200.0,Tonnes,68.0,Tonnes/Hectare
+229,1997-1998,Andhra Pradesh,28,Prakasam,517,Sunflower,1007.0,Oilseeds,Kharif,14100.0,Hectare,7000.0,Tonnes,0.496,Tonnes/Hectare
+230,1997-1998,Andhra Pradesh,28,Prakasam,517,Sunflower,1007.0,Oilseeds,Rabi,600.0,Hectare,200.0,Tonnes,0.333,Tonnes/Hectare
+231,1997-1998,Andhra Pradesh,28,Prakasam,517,Sunflower,1007.0,Oilseeds,Total,14700.0,Hectare,7200.0,Tonnes,0.49,Tonnes/Hectare
+232,1997-1998,Andhra Pradesh,28,Prakasam,517,Tobacco,1302.0,Drugs And Narcotics,Kharif,79100.0,Hectare,63600.0,Tonnes,0.804,Tonnes/Hectare
+233,1997-1998,Andhra Pradesh,28,Prakasam,517,Urad,203.0,Pulses,Kharif,800.0,Hectare,100.0,Tonnes,0.125,Tonnes/Hectare
+234,1997-1998,Andhra Pradesh,28,Prakasam,517,Urad,203.0,Pulses,Rabi,22200.0,Hectare,7500.0,Tonnes,0.338,Tonnes/Hectare
+235,1997-1998,Andhra Pradesh,28,Prakasam,517,Urad,203.0,Pulses,Total,23000.0,Hectare,7600.0,Tonnes,0.33,Tonnes/Hectare
+236,1997-1998,Andhra Pradesh,28,Prakasam,517,Varagu,188.0,Cereals,Rabi,2100.0,Hectare,1300.0,Tonnes,0.619,Tonnes/Hectare
+237,1997-1998,Andhra Pradesh,28,Sri Potti Sriramulu Nellore,515,Arhar/Tur,202.0,Pulses,Kharif,200.0,Hectare,100.0,Tonnes,0.5,Tonnes/Hectare
+238,1997-1998,Andhra Pradesh,28,Sri Potti Sriramulu Nellore,515,Arhar/Tur,202.0,Pulses,Rabi,500.0,Hectare,100.0,Tonnes,0.2,Tonnes/Hectare
+239,1997-1998,Andhra Pradesh,28,Sri Potti Sriramulu Nellore,515,Arhar/Tur,202.0,Pulses,Total,700.0,Hectare,200.0,Tonnes,0.286,Tonnes/Hectare
+240,1997-1998,Andhra Pradesh,28,Sri Potti Sriramulu Nellore,515,Bajra,103.0,Cereals,Kharif,2100.0,Hectare,4700.0,Tonnes,2.238,Tonnes/Hectare
+241,1997-1998,Andhra Pradesh,28,Sri Potti Sriramulu Nellore,515,Cotton(Lint),1101.0,Fiber Crops,Kharif,8700.0,Hectare,20900.0,Tonnes,2.402,Tonnes/Hectare
+242,1997-1998,Andhra Pradesh,28,Sri Potti Sriramulu Nellore,515,Dry Chillies,502.0,Spices,Kharif,100.0,Hectare,400.0,Tonnes,4.0,Tonnes/Hectare
+243,1997-1998,Andhra Pradesh,28,Sri Potti Sriramulu Nellore,515,Dry Chillies,502.0,Spices,Rabi,3000.0,Hectare,5500.0,Tonnes,1.833,Tonnes/Hectare
+244,1997-1998,Andhra Pradesh,28,Sri Potti Sriramulu Nellore,515,Dry Chillies,502.0,Spices,Total,3100.0,Hectare,5900.0,Tonnes,1.903,Tonnes/Hectare
+245,1997-1998,Andhra Pradesh,28,Sri Potti Sriramulu Nellore,515,Groundnut,1001.0,Oilseeds,Kharif,6100.0,Hectare,9100.0,Tonnes,1.492,Tonnes/Hectare
+246,1997-1998,Andhra Pradesh,28,Sri Potti Sriramulu Nellore,515,Groundnut,1001.0,Oilseeds,Rabi,14700.0,Hectare,41100.0,Tonnes,2.796,Tonnes/Hectare
+247,1997-1998,Andhra Pradesh,28,Sri Potti Sriramulu Nellore,515,Groundnut,1001.0,Oilseeds,Total,20800.0,Hectare,50200.0,Tonnes,2.413,Tonnes/Hectare
+248,1997-1998,Andhra Pradesh,28,Sri Potti Sriramulu Nellore,515,Horse-Gram,206.0,Pulses,Rabi,600.0,Hectare,300.0,Tonnes,0.5,Tonnes/Hectare
+249,1997-1998,Andhra Pradesh,28,Sri Potti Sriramulu Nellore,515,Jowar,102.0,Cereals,Rabi,300.0,Hectare,200.0,Tonnes,0.667,Tonnes/Hectare

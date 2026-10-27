@@ -1,0 +1,27 @@
+# AgriScope Backend Dependencies
+# Core API
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+pydantic==2.10.4
+pydantic-settings==2.7.1
+python-multipart==0.0.20
+
+# Database
+sqlalchemy==2.0.36
+aiosqlite==0.20.0
+
+# Spark / Hadoop
+pyspark==3.5.4
+
+# Data processing
+pandas==2.2.3
+numpy==1.26.4
+
+# Utilities
+python-dotenv==1.0.1
+httpx==0.28.1
+
+# Testing
+pytest==8.3.4
+pytest-asyncio==0.24.0
+httpx==0.28.1

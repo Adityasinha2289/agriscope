@@ -1,0 +1,306 @@
+{
+  "status": "success",
+  "n_clusters": 5,
+  "silhouette_score": 0.47493620144872306,
+  "cluster_sizes": {
+    "0": 70704,
+    "1": 265257,
+    "2": 9695,
+    "3": 31165,
+    "4": 66257
+  },
+  "cluster_summaries": [
+    {
+      "cluster_id": 0,
+      "size": 70704,
+      "label": "High Yield, Medium Area",
+      "feature_stats": {
+        "area": {
+          "mean": 4635.444115806738,
+          "stddev": 13249.64056295589,
+          "min": 0.02,
+          "max": 109155.0,
+          "median": 308.0
+        },
+        "log_area": {
+          "mean": 5.803948758719819,
+          "stddev": 2.5566358153223807,
+          "min": 0.019802627296179712,
+          "max": 11.600533330691745,
+          "median": 5.733341276897746
+        },
+        "yield": {
+          "mean": 7.1338181149581255,
+          "stddev": 8.834059826530813,
+          "min": 0.001,
+          "max": 43.2,
+          "median": 2.885
+        },
+        "season_index": {
+          "mean": 3.8205334917402127,
+          "stddev": 1.1184197586571716,
+          "min": 1.0,
+          "max": 6.0,
+          "median": 4.0
+        },
+        "crop_type_index": {
+          "mean": 0.6707258429508939,
+          "stddev": 0.8237040988699914,
+          "min": 0.0,
+          "max": 3.0,
+          "median": 0.0
+        }
+      },
+      "top_crops": [
+        "Rice",
+        "Onion",
+        "Potato",
+        "Maize",
+        "Sweet Potato"
+      ],
+      "top_states": [
+        "Odisha",
+        "Uttar Pradesh",
+        "Bihar",
+        "Assam",
+        "Karnataka"
+      ]
+    },
+    {
+      "cluster_id": 1,
+      "size": 265257,
+      "label": "Low Yield, Medium Area",
+      "feature_stats": {
+        "area": {
+          "mean": 4693.88697255492,
+          "stddev": 8939.398886124882,
+          "min": 0.1,
+          "max": 57453.0,
+          "median": 786.0
+        },
+        "log_area": {
+          "mean": 6.48228829447457,
+          "stddev": 2.4212942233843884,
+          "min": 0.09531017980432487,
+          "max": 10.958739906614673,
+          "median": 6.668228248417403
+        },
+        "yield": {
+          "mean": 1.5877320033024604,
+          "stddev": 2.7270911626286036,
+          "min": 0.001,
+          "max": 40.997,
+          "median": 0.866
+        },
+        "season_index": {
+          "mean": 1.2046015750762469,
+          "stddev": 0.6961939214434948,
+          "min": 0.0,
+          "max": 3.0,
+          "median": 1.0
+        },
+        "crop_type_index": {
+          "mean": 1.9202094572433526,
+          "stddev": 0.9299520004197531,
+          "min": 0.0,
+          "max": 5.0,
+          "median": 2.0
+        }
+      },
+      "top_crops": [
+        "Maize",
+        "Moong(green Gram)",
+        "Urad",
+        "Groundnut",
+        "Sesamum"
+      ],
+      "top_states": [
+        "Uttar Pradesh",
+        "Karnataka",
+        "Madhya Pradesh",
+        "Maharashtra",
+        "Bihar"
+      ]
+    },
+    {
+      "cluster_id": 2,
+      "size": 9695,
+      "label": "High Yield, Large Area",
+      "feature_stats": {
+        "area": {
+          "mean": 11740.5414397112,
+          "stddev": 28632.66626404515,
+          "min": 0.008,
+          "max": 348677.0,
+          "median": 1604.0
+        },
+        "log_area": {
+          "mean": 7.054145010918539,
+          "stddev": 2.6477086172654976,
+          "min": 0.007968169649176874,
+          "max": 12.761904139190742,
+          "median": 7.380879035564116
+        },
+        "yield": {
+          "mean": 73.5903696750902,
+          "stddev": 47.16285861330956,
+          "min": 37.5,
+          "max": 980.981,
+          "median": 66.839
+        },
+        "season_index": {
+          "mean": 3.5359463641052087,
+          "stddev": 1.3079253543008786,
+          "min": 0.0,
+          "max": 6.0,
+          "median": 4.0
+        },
+        "crop_type_index": {
+          "mean": 0.3842186694172254,
+          "stddev": 1.4444456003136306,
+          "min": 0.0,
+          "max": 6.0,
+          "median": 0.0
+        }
+      },
+      "top_crops": [
+        "Sugarcane",
+        "Banana",
+        "Tapioca",
+        "Papaya",
+        "Onion"
+      ],
+      "top_states": [
+        "Uttar Pradesh",
+        "Tamil Nadu",
+        "Maharashtra",
+        "Karnataka",
+        "Odisha"
+      ]
+    },
+    {
+      "cluster_id": 3,
+      "size": 31165,
+      "label": "Medium Yield, Large Area",
+      "feature_stats": {
+        "area": {
+          "mean": 133519.8006437991,
+          "stddev": 131256.7383384921,
+          "min": 43527.0,
+          "max": 8580100.0,
+          "median": 101674.0
+        },
+        "log_area": {
+          "mean": 11.608991873024763,
+          "stddev": 0.573647720880193,
+          "min": 10.681159688165762,
+          "max": 15.964956242956632,
+          "median": 11.529536730775426
+        },
+        "yield": {
+          "mean": 2.206120936948499,
+          "stddev": 2.6905056128907607,
+          "min": 0.001,
+          "max": 66.42,
+          "median": 1.883
+        },
+        "season_index": {
+          "mean": 1.2941119845981068,
+          "stddev": 1.1994116978368587,
+          "min": 0.0,
+          "max": 6.0,
+          "median": 1.0
+        },
+        "crop_type_index": {
+          "mean": 1.499502647200385,
+          "stddev": 0.9341913405491483,
+          "min": 0.0,
+          "max": 5.0,
+          "median": 1.0
+        }
+      },
+      "top_crops": [
+        "Rice",
+        "Wheat",
+        "Maize",
+        "Jowar",
+        "Gram"
+      ],
+      "top_states": [
+        "Uttar Pradesh",
+        "Maharashtra",
+        "Madhya Pradesh",
+        "Rajasthan",
+        "Karnataka"
+      ]
+    },
+    {
+      "cluster_id": 4,
+      "size": 66257,
+      "label": "Medium Yield, Medium Area",
+      "feature_stats": {
+        "area": {
+          "mean": 1220.148783373832,
+          "stddev": 4756.8499141651755,
+          "min": 0.01,
+          "max": 111776.0,
+          "median": 100.0
+        },
+        "log_area": {
+          "mean": 4.656660777888111,
+          "stddev": 2.2955761066968634,
+          "min": 0.009950330853168083,
+          "max": 11.624261094030896,
+          "median": 4.61512051684126
+        },
+        "yield": {
+          "mean": 4.385498664292078,
+          "stddev": 8.249707163774747,
+          "min": 0.001,
+          "max": 61.5,
+          "median": 1.278
+        },
+        "season_index": {
+          "mean": 3.08756810601144,
+          "stddev": 1.2357612715254769,
+          "min": 0.0,
+          "max": 6.0,
+          "median": 4.0
+        },
+        "crop_type_index": {
+          "mean": 4.71350951597567,
+          "stddev": 0.8845094023707732,
+          "min": 3.0,
+          "max": 8.0,
+          "median": 5.0
+        }
+      },
+      "top_crops": [
+        "Dry Chillies",
+        "Turmeric",
+        "Coriander",
+        "Garlic",
+        "Ginger"
+      ],
+      "top_states": [
+        "Karnataka",
+        "Uttar Pradesh",
+        "Madhya Pradesh",
+        "Tamil Nadu",
+        "Assam"
+      ]
+    }
+  ],
+  "features_used": [
+    "area",
+    "log_area",
+    "yield",
+    "season_index",
+    "crop_type_index"
+  ],
+  "total_records": 443078,
+  "training_duration_seconds": 5.78,
+  "model_path": "/agriscope/models/kmeans",
+  "results_path": "/agriscope/results/clusters",
+  "random_seed": 42
+}
