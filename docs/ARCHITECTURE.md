@@ -1,7 +1,10 @@
-# AgriScope Architecture Specification
+# NEXGram Architecture Specification
+
+> **Lead Architect & Developer:** **Aditya Sinha**  
+> **Course:** B.Tech CSET-371 Big Data Analytics and Business Intelligence
 
 ## 1. Executive Summary
-**AgriScope** is an enterprise-quality Big Data analytics and machine learning platform engineered to forecast crop yields and deliver actionable agricultural intelligence across India. 
+**NEXGram** is an enterprise-quality Big Data analytics and machine learning platform engineered to forecast crop yields and deliver actionable agricultural intelligence across India. 
 
 Designed for **B.Tech CSET-371 Big Data Analytics and Business Intelligence**, the platform processes **455,359 historical agricultural records** spanning 1997–2022 across 34 states and 737 districts.
 
@@ -12,8 +15,8 @@ Designed for **B.Tech CSET-371 Big Data Analytics and Business Intelligence**, t
 ```
 +-----------------------------------------------------------------------------------+
 |                           PRESENTATION LAYER (Web UI)                            |
-|             React 18 + Vite SPA | Cyber-Agriculture Glassmorphism Theme          |
-|             Interactive Charts (Chart.js) | Confetti & Real-Time Feedback        |
+|             React 18 + Vite SPA | Apple-Inspired Minimalist Design System        |
+|             Dual-Audience: Academic Analyst Platform & Bilingual Farmer Mode     |
 +-----------------------------------------------------------------------------------+
                                        |
                                        | HTTP / REST (Sub-50ms)

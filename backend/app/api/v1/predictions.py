@@ -1,6 +1,10 @@
 """
-AgriScope - Prediction Endpoints
-Real-time yield prediction, batch prediction, and history
+==============================================================================
+NEXGram — Real-Time Yield Inference & Farmer Conversion Endpoints
+Architecture & Implementation: Developed by Aditya Sinha
+B.Tech CSET-371 Big Data Analytics & Business Intelligence
+Real-time yield prediction, batch inference, confidence bounds, and farmer conversions
+==============================================================================
 """
 import math
 import uuid

@@ -1,11 +1,15 @@
-# AgriScope REST API Specification
+# NEXGram REST API Specification
+
+> **Lead Architect & Developer:** **Aditya Sinha**  
+> **Course:** B.Tech CSET-371 Big Data Analytics & Business Intelligence
 
 ## 1. Overview
-The AgriScope REST API is built with **FastAPI** and **Uvicorn**, providing sub-50ms query latency, automated OpenAPI/Swagger documentation, and background Spark job orchestration.
+The NEXGram REST API is built with **FastAPI** and **Uvicorn**, providing sub-50ms query latency, automated OpenAPI/Swagger documentation, invisible author watermark headers, and background PySpark job orchestration.
 
 - **Base URL**: `http://localhost:8000/api/v1`
 - **Interactive Swagger Docs**: `http://localhost:8000/docs`
 - **ReDoc Documentation**: `http://localhost:8000/redoc`
+- **Custom Watermark Headers**: `X-Developer: Aditya Sinha`, `X-Engine: NEXGram-BigData-Intelligence`
 
 ---
 

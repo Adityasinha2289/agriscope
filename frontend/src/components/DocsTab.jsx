@@ -1,3 +1,8 @@
+/**
+ * NEXGram — System Architecture & Academic Viva Documentation
+ * Architecture & Implementation: Developed by Aditya Sinha
+ * B.Tech CSET-371 Big Data Analytics & Business Intelligence
+ */
 import React, { useState } from "react";
 import {
   BookOpen,
@@ -22,8 +27,8 @@ export default function DocsTab() {
       a: "Hadoop HDFS provides fault-tolerant, horizontally scalable distributed storage across commodity clusters with block-level replication (default 128MB blocks). In agricultural intelligence, longitudinal state and district time-series datasets scale into tens of millions of sensor, satellite, and district records. HDFS allows high-throughput streaming reads for distributed compute engines like Apache Spark, enabling data locality where compute tasks execute on the physical worker nodes where data blocks reside, eliminating expensive cross-network data transfer."
     },
     {
-      q: "What is target leakage in crop yield prediction, and how does AgriScope prevent it?",
-      a: "In agricultural statistics, Yield is mathematically defined as Production divided by Area (Yield = Production / Area). If Production is included as an input feature to predict Yield, machine learning models trivially learn the algebraic division formula, reaching an artificial R² of 0.99 without capturing any genuine agronomic relationships. In real-world pre-harvest forecasting, Production is completely unknown. AgriScope strictly enforces leakage prevention by dropping Production from feature sets and training only on exogenous variables: Cultivated Area, Agricultural Season, Crop Taxonomy, Geographical District, and Historical Technology Trend."
+      q: "What is target leakage in crop yield prediction, and how does NEXGram prevent it?",
+      a: "In agricultural statistics, Yield is mathematically defined as Production divided by Area (Yield = Production / Area). If Production is included as an input feature to predict Yield, machine learning models trivially learn the algebraic division formula, reaching an artificial R² of 0.99 without capturing any genuine agronomic relationships. In real-world pre-harvest forecasting, Production is completely unknown. NEXGram strictly enforces leakage prevention by dropping Production from feature sets and training only on exogenous variables: Cultivated Area, Agricultural Season, Crop Taxonomy, Geographical District, and Historical Technology Trend."
     },
     {
       q: "Explain why Gradient-Boosted Trees (GBT) outperformed Linear Regression and Decision Trees.",
@@ -35,7 +40,7 @@ export default function DocsTab() {
     },
     {
       q: "What is the purpose of K-Means clustering in this academic agricultural platform?",
-      a: "K-Means provides unsupervised crop and district profiling without requiring manual labels. By segmenting 443,078 records along yield intensity, acreage scale, and seasonal distribution (achieving a Silhouette Score of 0.4749 at k=5), AgriScope discovers natural agro-economic typologies: intensive smallholder cash crops, rainfed low-yield pulses, commercial high-yield sugar plantations, and extensive cereal basins. This enables targeted district-level policy interventions."
+      a: "K-Means provides unsupervised crop and district profiling without requiring manual labels. By segmenting 443,078 records along yield intensity, acreage scale, and seasonal distribution (achieving a Silhouette Score of 0.4749 at k=5), NEXGram discovers natural agro-economic typologies: intensive smallholder cash crops, rainfed low-yield pulses, commercial high-yield sugar plantations, and extensive cereal basins. This enables targeted district-level policy interventions."
     }
   ];
 
@@ -117,7 +122,7 @@ export default function DocsTab() {
               Agricultural crop yield forecasting in India is challenged by immense geographical diversity, heterogeneous regional reporting standards, and extreme non-linearities across seasons and land sizes. Monolithic databases fail to handle longitudinal analytical queries spanning 25+ years across 737 districts with sub-second response times.
             </p>
             <p style={{ color: "var(--text-secondary)", fontSize: "0.9375rem", lineHeight: 1.6, marginBottom: "24px" }}>
-              <strong>AgriScope</strong> establishes an enterprise-grade distributed Big Data platform combining <strong>Apache Hadoop HDFS</strong> for scalable distributed raw staging, <strong>Apache Spark (PySpark 4.0.0)</strong> for in-memory distributed transformations, and <strong>Spark MLlib</strong> for distributed model training across 4 regression pipelines and 1 unsupervised clustering pipeline.
+              <strong>NEXGram</strong> establishes an enterprise-grade distributed Big Data platform combining <strong>Apache Hadoop HDFS</strong> for scalable distributed raw staging, <strong>Apache Spark (PySpark 4.0.0)</strong> for in-memory distributed transformations, and <strong>Spark MLlib</strong> for distributed model training across 4 regression pipelines and 1 unsupervised clustering pipeline.
             </p>
 
             <h3 style={{ fontSize: "1rem", fontWeight: 600, color: "var(--color-forest)", marginBottom: "16px" }}>
@@ -177,7 +182,7 @@ export default function DocsTab() {
               2. HDFS Layout & Distributed Schema Design
             </h2>
             <p style={{ color: "var(--text-secondary)", fontSize: "0.9375rem", lineHeight: 1.6, marginBottom: "20px" }}>
-              The AgriScope HDFS namespace strictly adheres to the enterprise medallion storage architecture:
+              The NEXGram HDFS namespace strictly adheres to the enterprise medallion storage architecture:
             </p>
 
             <div style={{

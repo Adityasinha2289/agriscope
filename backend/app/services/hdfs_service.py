@@ -1,6 +1,10 @@
 """
-AgriScope - HDFS Service
-Manages all interactions with Hadoop HDFS
+==============================================================================
+NEXGram — Hadoop HDFS Distributed File System Service
+Architecture & Implementation: Developed by Aditya Sinha
+B.Tech CSET-371 Big Data Analytics & Business Intelligence
+Manages all distributed storage interactions with Hadoop HDFS
+==============================================================================
 """
 import subprocess
 import os

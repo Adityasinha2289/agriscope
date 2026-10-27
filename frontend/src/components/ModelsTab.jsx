@@ -1,3 +1,8 @@
+/**
+ * NEXGram — Machine Learning Laboratory & Model Comparison
+ * Architecture & Implementation: Developed by Aditya Sinha
+ * B.Tech CSET-371 Big Data Analytics & Business Intelligence
+ */
 import React, { useState, useEffect } from "react";
 import { CheckCircle2, ChevronRight, ShieldCheck, Database, HardDrive } from "lucide-react";
 import { fetchModelComparison } from "../services/api";

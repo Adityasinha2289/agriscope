@@ -1,9 +1,13 @@
 #!/bin/bash
-# AgriScope - Stop All Services
+# ==============================================================================
+# NEXGram — Stop All Platform Services
+# Architecture & Implementation: Developed by Aditya Sinha
+# B.Tech CSET-371 Big Data Analytics & Business Intelligence
+# ==============================================================================
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$PROJECT_ROOT"
 
-echo "Stopping AgriScope Services..."
+echo "Stopping NEXGram Services..."
 
 if [ -f logs/backend.pid ]; then
     PID=$(cat logs/backend.pid)

@@ -1,6 +1,9 @@
 """
-AgriScope - Backend Application Configuration
-Centralized settings management using pydantic-settings
+==============================================================================
+NEXGram — Backend Application Configuration & Environment Settings
+Architecture & Implementation: Developed by Aditya Sinha
+B.Tech CSET-371 Big Data Analytics & Business Intelligence
+==============================================================================
 """
 import os
 from pathlib import Path
@@ -12,14 +15,17 @@ from functools import lru_cache
 class Settings(BaseSettings):
     """Application configuration loaded from environment variables."""
 
-    # Application
-    app_name: str = "AgriScope"
+    # Application & Developer Attribution
+    app_name: str = "NEXGram"
+    author: str = "Aditya Sinha"
+    developer_attribution: str = "Developed & Architected by Aditya Sinha | B.Tech CSET-371 Big Data Analytics"
+    academic_course: str = "B.Tech CSET-371 Big Data Analytics and Business Intelligence"
     app_env: str = "development"
     app_debug: bool = True
     app_port: int = 8000
     frontend_port: int = 5173
 
-    # Hadoop / HDFS
+    # Hadoop / HDFS (preserves existing HDFS paths while supporting NEXGram)
     hadoop_home: str = Field(default="/opt/homebrew/opt/hadoop/libexec")
     hdfs_uri: str = Field(default="hdfs://localhost:9000")
     hdfs_base_path: str = Field(default="/agriscope")

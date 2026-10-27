@@ -1,8 +1,13 @@
 #!/bin/bash
-# AgriScope - Start All Services (HDFS check, FastAPI backend, Vite frontend)
+# ==============================================================================
+# NEXGram — Start All Services (HDFS check, FastAPI backend, Vite frontend)
+# Architecture & Implementation: Developed by Aditya Sinha
+# B.Tech CSET-371 Big Data Analytics & Business Intelligence
+# ==============================================================================
 
 echo "=========================================================="
-echo "          Starting AgriScope Platform Services            "
+echo "           Starting NEXGram Platform Services             "
+echo "        Developed & Architected by Aditya Sinha           "
 echo "=========================================================="
 
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"

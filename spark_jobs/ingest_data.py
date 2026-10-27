@@ -1,7 +1,11 @@
 """
-AgriScope - Spark Data Ingestion Job
-Reads the APY CSV dataset, validates schema, and writes to HDFS.
+==============================================================================
+NEXGram — PySpark Data Ingestion Job
+Architecture & Implementation: Developed by Aditya Sinha
+B.Tech CSET-371 Big Data Analytics & Business Intelligence
+Reads raw APY CSV dataset, validates schema, and writes to HDFS Snappy Parquet.
 Usage: spark-submit ingest_data.py <local_csv_path> <hdfs_output_path>
+==============================================================================
 """
 import sys
 import json

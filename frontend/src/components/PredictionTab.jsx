@@ -1,3 +1,8 @@
+/**
+ * NEXGram — Real-Time Yield Inference & Scenario Simulation
+ * Architecture & Implementation: Developed by Aditya Sinha
+ * B.Tech CSET-371 Big Data Analytics & Business Intelligence
+ */
 import React, { useState, useEffect } from "react";
 import { ArrowRight, SlidersHorizontal, Sparkles, CheckCircle2 } from "lucide-react";
 import { predictYield, fetchFormOptions } from "../services/api";

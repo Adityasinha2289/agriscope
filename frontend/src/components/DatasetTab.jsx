@@ -1,3 +1,8 @@
+/**
+ * NEXGram — Dataset Exploration & Distributed Parquet Profiling
+ * Architecture & Implementation: Developed by Aditya Sinha
+ * B.Tech CSET-371 Big Data Analytics & Business Intelligence
+ */
 import React, { useState, useEffect, useMemo } from "react";
 import { Search, ChevronLeft, ChevronRight, ShieldCheck, Database, FileText } from "lucide-react";
 import { fetchDatasets, fetchDatasetPreview } from "../services/api";

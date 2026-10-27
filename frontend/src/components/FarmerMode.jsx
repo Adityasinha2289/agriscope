@@ -1,3 +1,9 @@
+/**
+ * NEXGram — Farmer-First Agricultural Intelligence Experience
+ * Architecture & Implementation: Developed by Aditya Sinha
+ * B.Tech CSET-371 Big Data Analytics & Business Intelligence
+ * All Rights Reserved (c) Aditya Sinha
+ */
 import React, { useState, useEffect } from "react";
 import {
   Sprout,
@@ -267,7 +273,7 @@ export default function FarmerMode({ onSwitchToAnalyst }) {
           </div>
           <div>
             <span style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--color-forest)", letterSpacing: "-0.01em" }}>
-              AgriScope
+              NEXGram
             </span>
             <span style={{ marginLeft: "8px", fontSize: "0.75rem", color: "var(--color-olive)", fontWeight: 600 }}>
               {t.brand_tagline}
@@ -952,7 +958,7 @@ export default function FarmerMode({ onSwitchToAnalyst }) {
       <footer className="farmer-footer">
         <div style={{ maxWidth: "1100px", margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "10px" }}>
           <div>
-            <strong>AgriScope</strong> — {t.brand_tagline} • B.Tech CSET-371
+            <strong>NEXGram</strong> — {t.brand_tagline} • Developed by Aditya Sinha • B.Tech CSET-371
           </div>
           <div style={{ color: "var(--text-tertiary)" }}>
             {lang === "hi"

@@ -1,6 +1,10 @@
 """
-AgriScope - Health & Cluster Status Endpoints
+==============================================================================
+NEXGram — Health & Cluster Status Endpoints
+Architecture & Implementation: Developed by Aditya Sinha
+B.Tech CSET-371 Big Data Analytics & Business Intelligence
 Reports live HDFS, Spark, Database, and System health
+==============================================================================
 """
 import shutil
 import subprocess
@@ -60,7 +64,9 @@ def get_system_health(db: Session = Depends(get_db)):
 
     return {
         "status": "healthy" if hdfs_info["connected"] else "degraded",
-        "service": "AgriScope Backend Intelligence Engine",
+        "service": "NEXGram Backend Intelligence Engine",
+        "developer": "Developed & Architected by Aditya Sinha",
+        "course": "B.Tech CSET-371 Big Data Analytics & Business Intelligence",
         "version": "1.0.0",
         "environment": "production-academic",
         "hdfs": {

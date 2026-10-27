@@ -1,7 +1,11 @@
 """
-AgriScope - Feature Engineering Job
-Builds feature set for ML models from cleaned data.
+==============================================================================
+NEXGram — PySpark Feature Engineering & Leakage Isolation Job
+Architecture & Implementation: Developed by Aditya Sinha
+B.Tech CSET-371 Big Data Analytics & Business Intelligence
+Builds leakage-free feature vectors from cleaned data, strictly isolating Production.
 Usage: spark-submit build_features.py <hdfs_cleaned_path> <hdfs_features_path>
+==============================================================================
 """
 import sys
 import json

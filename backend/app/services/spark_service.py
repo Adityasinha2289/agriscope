@@ -1,6 +1,10 @@
 """
-AgriScope - Spark Job Runner Service
-Manages PySpark job submission and background execution
+==============================================================================
+NEXGram — Apache Spark & PySpark Distributed Job Runner
+Architecture & Implementation: Developed by Aditya Sinha
+B.Tech CSET-371 Big Data Analytics & Business Intelligence
+Manages PySpark job submission, DAG tracking, and background process control
+==============================================================================
 """
 import subprocess
 import os

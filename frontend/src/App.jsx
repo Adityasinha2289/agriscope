@@ -1,3 +1,8 @@
+/**
+ * NEXGram — Crop Yield Intelligence & Big Data Analytics Platform
+ * Architecture & Implementation: Developed by Aditya Sinha
+ * B.Tech CSET-371 Big Data Analytics & Business Intelligence
+ */
 import React, { useState, useEffect } from "react";
 import Sidebar from "./components/Sidebar";
 import OverviewTab from "./components/OverviewTab";
@@ -16,7 +21,7 @@ import { fetchHealth, fetchOverviewAnalytics } from "./services/api";
 export default function App() {
   // App Experience Mode: 'analyst' (default) or 'farmer'
   const [appMode, setAppMode] = useState(() => {
-    return localStorage.getItem("agriscope_mode") || "analyst";
+    return localStorage.getItem("nexgram_mode") || localStorage.getItem("agriscope_mode") || "analyst";
   });
 
   const [activeTab, setActiveTab] = useState("overview");
@@ -26,7 +31,7 @@ export default function App() {
 
   function handleSetAppMode(mode) {
     setAppMode(mode);
-    localStorage.setItem("agriscope_mode", mode);
+    localStorage.setItem("nexgram_mode", mode);
   }
 
   useEffect(() => {
@@ -112,11 +117,13 @@ export default function App() {
         <footer className="apple-footer">
           <div className="footer-content">
             <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <span style={{ fontWeight: 600, color: "var(--color-forest)" }}>AgriScope</span>
+              <span style={{ fontWeight: 600, color: "var(--color-forest)" }}>NEXGram</span>
               <span>—</span>
               <span>Agricultural Intelligence Platform</span>
               <span className="dot-divider">•</span>
-              <span>B.Tech CSET-371 Big Data Analytics</span>
+              <span>Developed by Aditya Sinha</span>
+              <span className="dot-divider">•</span>
+              <span>B.Tech CSET-371</span>
             </div>
             <div style={{ color: "var(--text-tertiary)" }}>
               Apache Hadoop HDFS • Apache Spark • FastAPI • Apple HIG Principles

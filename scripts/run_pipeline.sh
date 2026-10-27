@@ -1,10 +1,14 @@
 #!/bin/bash
-# AgriScope - End-to-End Big Data Pipeline Runner
-# Runs the full distributed PySpark pipeline on Hadoop HDFS
+# ==============================================================================
+# NEXGram — End-to-End Big Data Pipeline Runner
+# Architecture & Implementation: Developed by Aditya Sinha
+# B.Tech CSET-371 Big Data Analytics & Business Intelligence
+# ==============================================================================
 set -e
 
 echo "=========================================================="
-echo "    AgriScope — Distributed Big Data Pipeline Runner      "
+echo "     NEXGram — Distributed Big Data Pipeline Runner       "
+echo "        Developed & Architected by Aditya Sinha           "
 echo "=========================================================="
 
 source venv/bin/activate

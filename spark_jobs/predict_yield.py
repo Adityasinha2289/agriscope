@@ -1,7 +1,11 @@
 """
-AgriScope - Yield Prediction Job
-Uses a trained model to predict yield for given inputs.
+==============================================================================
+NEXGram — PySpark Batch & Single Yield Inference Job
+Architecture & Implementation: Developed by Aditya Sinha
+B.Tech CSET-371 Big Data Analytics & Business Intelligence
+Uses trained MLlib pipelines to predict crop yields for given agro-economic inputs.
 Usage: spark-submit predict_yield.py <model_path> <input_json_or_csv> <output_path>
+==============================================================================
 """
 import sys
 import json

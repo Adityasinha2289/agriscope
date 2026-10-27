@@ -1,7 +1,11 @@
 """
-AgriScope - Exploratory Analytics Spark Job
-Generates pre-computed aggregates for the dashboard.
+==============================================================================
+NEXGram — PySpark Exploratory Analytics & Aggregation Engine
+Architecture & Implementation: Developed by Aditya Sinha
+B.Tech CSET-371 Big Data Analytics & Business Intelligence
+Generates pre-computed longitudinal aggregates and state/crop rankings for BI.
 Usage: spark-submit exploratory_analysis.py <hdfs_cleaned_path> <hdfs_analytics_base>
+==============================================================================
 """
 import sys
 import json

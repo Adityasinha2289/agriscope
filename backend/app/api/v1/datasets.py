@@ -1,6 +1,10 @@
 """
-AgriScope - Dataset Endpoints
+==============================================================================
+NEXGram — Dataset Exploration & Distributed Parquet Endpoints
+Architecture & Implementation: Developed by Aditya Sinha
+B.Tech CSET-371 Big Data Analytics & Business Intelligence
 Inspection, schema, profile, and preview for registered datasets
+==============================================================================
 """
 import os
 import pandas as pd

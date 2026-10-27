@@ -1,7 +1,10 @@
-# AgriScope Big Data Processing Pipeline
+# NEXGram Big Data Processing Pipeline
+
+> **Lead Architect & Developer:** **Aditya Sinha**  
+> **Course:** B.Tech CSET-371 Big Data Analytics & Business Intelligence
 
 ## 1. Overview
-The AgriScope data processing pipeline is implemented in **Apache Spark / PySpark** and orchestrated via spark-submit jobs. It processes **455,359 historical agricultural records** from HDFS into feature-engineered datasets and analytical aggregates.
+The NEXGram distributed data processing pipeline is implemented in **Apache Spark / PySpark** and orchestrated via distributed cluster jobs. It processes **455,359 historical agricultural records** from HDFS into feature-engineered datasets and analytical aggregates.
 
 ---
 

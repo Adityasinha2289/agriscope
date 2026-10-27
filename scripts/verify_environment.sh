@@ -1,9 +1,13 @@
 #!/bin/bash
-# AgriScope - Environment Verification Script
-# Checks Java, Hadoop, HDFS, Spark, Python, and Node.js
+# ==============================================================================
+# NEXGram — Environment Verification Script
+# Architecture & Implementation: Developed by Aditya Sinha
+# B.Tech CSET-371 Big Data Analytics & Business Intelligence
+# ==============================================================================
 
 echo "=========================================================="
-echo "      AgriScope — Big Data Environment Verification       "
+echo "       NEXGram — Big Data Environment Verification        "
+echo "        Developed & Architected by Aditya Sinha           "
 echo "=========================================================="
 
 # 1. Java Check

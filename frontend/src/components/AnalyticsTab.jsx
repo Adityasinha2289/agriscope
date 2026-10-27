@@ -1,3 +1,8 @@
+/**
+ * NEXGram — Longitudinal Agricultural Analytics & Crop Rankings
+ * Architecture & Implementation: Developed by Aditya Sinha
+ * B.Tech CSET-371 Big Data Analytics & Business Intelligence
+ */
 import React, { useState, useMemo } from "react";
 import {
   Chart as ChartJS,

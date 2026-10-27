@@ -1,5 +1,9 @@
 """
-AgriScope - Unit Tests for Pydantic Schemas
+==============================================================================
+NEXGram — Unit Tests for Pydantic v2 Schemas
+Architecture & Test Suite: Developed by Aditya Sinha
+B.Tech CSET-371 Big Data Analytics & Business Intelligence
+==============================================================================
 """
 import pytest
 from backend.app.schemas.prediction import PredictionRequest, PredictionResponse

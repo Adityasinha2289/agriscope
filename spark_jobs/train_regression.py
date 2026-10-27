@@ -1,7 +1,11 @@
 """
-AgriScope - Regression Model Training Job
-Trains 4 regression models on the feature dataset using Spark MLlib.
+==============================================================================
+NEXGram — Spark MLlib Regression Training & Evaluation Pipeline
+Architecture & Implementation: Developed by Aditya Sinha
+B.Tech CSET-371 Big Data Analytics & Business Intelligence
+Trains 4 regression models (GBT, Random Forest, Decision Tree, ElasticNet) on HDFS data.
 Usage: spark-submit train_regression.py <hdfs_features_path> <hdfs_models_base> <hdfs_results_base>
+==============================================================================
 """
 import sys
 import json

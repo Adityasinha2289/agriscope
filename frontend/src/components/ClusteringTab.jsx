@@ -1,3 +1,8 @@
+/**
+ * NEXGram — Unsupervised K-Means Agronomic Clustering
+ * Architecture & Implementation: Developed by Aditya Sinha
+ * B.Tech CSET-371 Big Data Analytics & Business Intelligence
+ */
 import React, { useState, useEffect } from "react";
 import { Boxes, CheckCircle2, ChevronRight, Layers } from "lucide-react";
 import { fetchClusteringResults } from "../services/api";

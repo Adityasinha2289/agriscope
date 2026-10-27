@@ -1,41 +1,92 @@
-# AgriScope — Crop Yield Intelligence & Agricultural Analytics Platform
+# NEXGram — Crop Yield Intelligence & Big Data Agricultural Analytics Platform
 
 > **B.Tech CSET-371 Big Data Analytics and Business Intelligence Project**  
+> **Lead Architect & Developer:** **Aditya Sinha**  
 > An enterprise-grade, distributed Big Data application powered by **Apache Hadoop HDFS**, **Apache Spark (PySpark 4.0.0)**, **Spark MLlib**, **FastAPI**, and **React 18**.  
-> Features a dual-audience experience: an **Apple-inspired Analyst Platform** for research/viva defense, and a **Farmer-First Mode** (bilingual English/Hindi) delivering actionable agronomic insights.
+> Features a dual-audience experience: an **Apple-inspired Analyst Platform** for academic research and viva defense, and a **Farmer-First Mode** (bilingual in English and Hindi) delivering actionable, transparent agronomic insights.
 
-[![Tests](https://img.shields.io/badge/Pytest-14%2F14%20Passing-brightgreen)](#)
-[![HDFS](https://img.shields.io/badge/Hadoop%20HDFS-hdfs%3A%2F%2Flocalhost%3A9000-blue)](#)
-[![Spark](https://img.shields.io/badge/Apache%20Spark-v4.0.0%20MLlib-orange)](#)
-[![Python](https://img.shields.io/badge/Python-3.12-blue)](#)
-[![React](https://img.shields.io/badge/Frontend-React%2018%20%2B%20Vite-61dafb)](#)
-[![UI](https://img.shields.io/badge/Design-Apple--Inspired%20Minimalism-375534)](#)
-
----
-
-## 🌾 Overview
-
-AgriScope evaluates **455,359 historical agricultural records** spanning 25 years (1997–2022) across 34 Indian states and 737 districts. Built for university defense and practical impact, it reconciles two critical needs:
-1. **Academic & Research Rigor**: Distributed HDFS medallion storage, PySpark distributed ETL, strict target leakage prevention ($Yield = Production / Area$), and multi-algorithm evaluation with MLlib.
-2. **Farmer Accessibility**: A dedicated, simplified Farmer Mode in English and Hindi (हिंदी), translating complex statistical output into familiar units (**Quintals per Acre**) without black-box agronomic claims.
+[![Developer](https://img.shields.io/badge/Developed%20By-Aditya%20Sinha-17251b?style=for-the-badge)](#)
+[![Course](https://img.shields.io/badge/Course-B.Tech%20CSET--371-375534?style=for-the-badge)](#)
+[![Tests](https://img.shields.io/badge/Pytest-14%2F14%20Passing-brightgreen?style=for-the-badge)](#)
+[![HDFS](https://img.shields.io/badge/Hadoop%20HDFS-hdfs%3A%2F%2Flocalhost%3A9000-0284c7?style=for-the-badge)](#)
+[![Spark](https://img.shields.io/badge/Apache%20Spark-v4.0.0%20MLlib-ea580c?style=for-the-badge)](#)
+[![Design](https://img.shields.io/badge/UI%2FUX-Apple--Inspired%20Minimalism-43766c?style=for-the-badge)](#)
 
 ---
 
-## ✨ Key Capabilities
+## 🌾 1. Executive Summary & Problem Motivation
 
-- **Dual-Audience Architecture**:
-  - **Analyst Mode**: Comprehensive 8-tab intelligence platform (Overview, Crop Analytics, Dataset Explorer, Pipeline Monitor, Model Laboratory, Yield Prediction, Agronomic Clusters, and Academic Report).
-  - **Farmer Mode**: Simplified 4-tab workflow (**Home**, **My Crop**, **Yield Estimate**, **Compare**) with bilingual Hindi/English translation, unit switching (Acres vs. Hectares; Quintals vs. Tonnes), and honest agronomic advisory disclaimers.
-- **Dedicated Presentation Mode**: Built-in 7-step viva voce walkthrough modal for B.Tech CSET-371 defense covering Problem Statement, Dataset Provenance, HDFS Architecture, PySpark ETL, MLlib Leaderboard, Agricultural Insights, and Farmer Mode Demonstration. Supports keyboard navigation (`ArrowLeft`, `ArrowRight`, `Esc`, `P`).
-- **Apple-Inspired Design System**: Curated 5-color natural green palette (Forest `#0F2A1D`, Olive `#375534`, Sage `#6B9071`, Soft Sage `#AEC3B0`, Pale Green `#E3EED4`), generous whitespace, San Francisco typography, and zero neon/cyberpunk aesthetics.
-- **Production Hardening**: Timezone-aware UTC timestamps, Pydantic v2 `ConfigDict` schemas, path traversal security barriers on dataset preview and job log endpoints, case-insensitive query sanitization, and robust API error envelopes.
-- **Verified Local Agricultural Photography**: Authentic, respectful agricultural imagery locally hosted (`indian_farm_landscape.jpg` and `healthy_crop_harvest.jpg`), documented with fallbacks.
+India is the world's second-largest agricultural producer, supporting over 1.4 billion people and employing 45% of the national workforce. However, crop yields exhibit massive spatial-temporal variance due to fragmented microclimates, monsoon volatility, and disparate regional farming techniques.
+
+Traditional monolithic relational databases fail when executing multi-decade analytical aggregations and machine-learning feature extraction over hundreds of thousands of longitudinal state and district records. 
+
+**NEXGram** bridges this fundamental gap by combining:
+1. **Fault-Tolerant Distributed Big Data Storage**: Hadoop HDFS medallion architecture with block replication and data locality.
+2. **In-Memory Distributed Processing**: Apache Spark / PySpark 4.0.0 leveraging Catalyst query optimization and DAG execution.
+3. **Leakage-Free Predictive Machine Learning**: Comparative evaluation of four MLlib regression pipelines plus unsupervised K-Means clustering.
+4. **Dual-Audience Human-Centered Design**:
+   - **Academic Analyst Mode**: 8-tab intelligence portal with live cluster metrics, residual plots, feature importances, and interactive viva defense.
+   - **Farmer-First Mode**: Bilingual (English / हिंदी) interface translating abstract metric figures into familiar Indian agricultural units (**Quintals per Acre**) with clear, honest agronomic advisory caveats.
 
 ---
 
-## ⚡ Quickstart
+## 🏗️ 2. Distributed System Architecture & Working
 
-### 1. Launch All Services
+```
+                                  +---------------------------------------+
+                                  |   Official APY Ministry Dataset       |
+                                  |   (455,359 records, 25 years, CSV)    |
+                                  +---------------------------------------+
+                                                      |
+                                                      v  [ingest_data.py]
+  ===================================== HADOOP HDFS MEDALLION STORAGE =====================================
+  |                                                                                                       |
+  |   [BRONZE LAYER]          -->          [SILVER LAYER]          -->          [GOLD LAYER]              |
+  |   hdfs://localhost:9000/               hdfs://localhost:9000/               hdfs://localhost:9000/    |
+  |   raw/apy/*.csv                        staging/validated/*.parquet          processed/features/       |
+  |   • Immutable Landed Data              • Schema Validated                   • Feature Vectors (443k)  |
+  |   • Cryptographic Checksum             • Non-destructive Quality Flags      • Isolated Production     |
+  |                                                                                                       |
+  =========================================================================================================
+                                                      |
+                                                      v  [PySpark MLlib Pipelines]
+  ====================================== DISTRIBUTED COMPUTE & MODELING ===================================
+  |                                                                                                       |
+  |   • Gradient-Boosted Trees (Champion, R² = 0.8550, RMSE = 5.34 T/Ha)                                  |
+  |   • Random Forest Regressor (R² = 0.8532, RMSE = 5.37 T/Ha)                                           |
+  |   • Decision Tree Regressor (R² = 0.8508, RMSE = 5.41 T/Ha)                                           |
+  |   • Linear Regression with ElasticNet (R² = 0.7720, RMSE = 6.69 T/Ha)                                 |
+  |   • K-Means Clustering (k=4, Silhouette Score = 0.4749)                                               |
+  |                                                                                                       |
+  =========================================================================================================
+                                                      |
+                                                      v
+  ========================================= FASTAPI BACKEND GATEWAY =======================================
+  |                                                                                                       |
+  |   • Sub-50ms REST API with Uvicorn & Timezone-Aware UTC SQLAlchemy                                    |
+  |   • Custom Response Headers: X-Engine: NEXGram, X-Developer: Aditya Sinha                             |
+  |   • Path-Traversal Security Barriers on Dataset Previews & Job Logs                                   |
+  |   • Farmer Conversion Engine: Tonnes/Ha -> Quintals/Acre + Total Harvest Estimates                    |
+  |                                                                                                       |
+  =========================================================================================================
+                                                      |
+                                      +---------------+---------------+
+                                      |                               |
+                                      v                               v
+                       +-----------------------------+ +-----------------------------+
+                       |    ANALYST PLATFORM (UI)    | |      FARMER MODE (UI)       |
+                       |  • 8 Deep Technical Tabs    | |  • 4 Simplified Tabs        |
+                       |  • Live HDFS Cluster Health | |  • Bilingual: English/हिंदी |
+                       |  • Spark DAG & Job Monitor  | |  • Quintals / Acre Units    |
+                       |  • Viva Presentation Mode   | |  • Realistic Disclaimers    |
+                       +-----------------------------+ +-----------------------------+
+```
+
+---
+
+## ⚡ 3. Quickstart & Launch Commands
+
+### 1. Launch All Services (HDFS, Backend, Frontend)
 ```bash
 ./scripts/start_all.sh
 ```
@@ -44,17 +95,17 @@ AgriScope evaluates **455,359 historical agricultural records** spanning 25 year
 - **Interactive Swagger Docs**: [http://localhost:8000/docs](http://localhost:8000/docs)
 - **HDFS NameNode Web UI**: [http://localhost:9870](http://localhost:9870)
 
-### 2. Stop All Services
+### 2. Stop All Services Cleanly
 ```bash
 ./scripts/stop_all.sh
 ```
 
-### 3. Run Distributed Pipeline Manually
+### 3. Run Distributed PySpark Pipeline Manually
 ```bash
 ./scripts/run_pipeline.sh
 ```
 
-### 4. Run Verification Test Suite
+### 4. Run Pytest Verification Test Suite
 ```bash
 PYTHONPATH=. venv/bin/pytest tests/ -v
 ```
@@ -66,7 +117,7 @@ cd frontend && npm run build
 
 ---
 
-## 🏆 ML Model Leaderboard
+## 🏆 4. Spark MLlib Model Leaderboard
 
 Evaluated on an 80/20 holdout test set (**$N = 88,574$ records**):
 
@@ -75,25 +126,84 @@ Evaluated on an 80/20 holdout test set (**$N = 88,574$ records**):
 | 🥇 | **Gradient-Boosted Trees (GBT)** | **0.8550** | **5.3413** | **1.1332** | 11.96s | **Champion** |
 | 🥈 | **Random Forest Regressor** | 0.8532 | 5.3743 | 1.1769 | 3.46s | Evaluated |
 | 🥉 | **Decision Tree Regressor** | 0.8508 | 5.4169 | 1.1505 | 1.73s | Evaluated |
-| 4 | **Linear Regression (ElasticNet)** | 0.7720 | 6.6974 | 1.2779 | 3.14s | Baseline |
+| 4 | **Linear Regression (ElasticNet)** | 0.7720 | 6.6974 | 1.2779 | 3.14s | Linear Baseline |
 | 5 | **K-Means Clustering ($k=4$)** | **Silhouette: 0.4749** | — | — | 5.78s | 4 Agronomic Clusters |
 
-> **Critical Methodological Note**: In agricultural data, $\text{Yield} = \frac{\text{Production}}{\text{Area}}$. Including `production` as an independent feature creates trivial mathematical identity leakage ($R^2 \approx 0.999$), making the model useless for pre-harvest forecasting. AgriScope strictly isolates `production` from feature assembly.
+### Critical Methodological Integrity: Strict Target Leakage Isolation
+In agricultural statistics:
+$$\text{Yield} = \frac{\text{Production}}{\text{Area}}$$
+If `production` is included as an independent feature to predict `yield`, machine learning models trivially learn the algebraic division formula, reaching an artificial $R^2 \approx 0.999$. In real-world pre-harvest forecasting, `production` is completely unknown. 
+
+**NEXGram strictly isolates `production` from feature vectors**, training exclusively on pre-planting and mid-season exogenous variables:
+- `log_area = log1p(area)` (handles extreme land skew from 0.01 Ha to 8.5M Ha)
+- `state_idx`, `crop_idx`, `season_idx`
+- `crop_avg_yield` (historical crop benchmark using Window functions without lookahead bias)
+- `state_crop_avg_yield` (state-level historical benchmark)
+- `crop_year` (longitudinal technological progress trend)
 
 ---
 
-## 📁 Repository Structure
+## 🌾 5. Farmer-First Experience & Local Storytelling
+
+Farmer Mode was designed from grassroots agricultural principles rather than technical dashboard paradigms:
+
+1. **Bilingual Hindi / English Localization**:
+   - Complete dictionary translation toggled with a single click (`English` / `हिंदी`).
+   - Translates all crop names, seasons, state names, units, and advisory statements.
+2. **Indian Agricultural Units**:
+   - Instant toggle between **Acres** and **Hectares**, and **Quintals** and **Tonnes** ($1\text{ Quintal} = 100\text{ kg}$; $1\text{ T/Ha} \approx 4.047\text{ Quintals/Acre}$).
+3. **4 Simplified Workflows**:
+   - **Home (मुखपृष्ठ)**: Welcoming overview, local farm landscape photography, and quick farm detail selector.
+   - **My Crop (मेरी फसल)**: Historical multi-year state and national productivity benchmarks.
+   - **Yield Estimate (उपज अनुमान)**: Inputs state, district, crop, season, and acreage; returns verified MLlib predictions with 95% confidence intervals and total expected quintals.
+   - **Compare (तुलना)**: State-by-state productivity comparison charts for crop planning.
+4. **Transparent Agronomic Disclaimers**:
+   - Explicitly informs farmers: *"Estimates are based on historical district trends and do not guarantee future harvest. Local weather, soil health, irrigation, and field management strongly influence actual results."*
+
+---
+
+## 🎓 6. Dedicated Viva Voce Presentation Mode
+
+Built directly into the platform for university evaluations and presentations:
+- Press **`P`** on your keyboard (or click **"Presentation Mode"** in the header) to launch.
+- Navigate using **`ArrowRight`** and **`ArrowLeft`** (or Next/Prev buttons).
+- Press **`Esc`** to return to the interactive dashboard.
+- **7-Slide Walkthrough**:
+  1. *Slide 1*: Problem Statement & Agricultural Motivation (455k records, 737 districts)
+  2. *Slide 2*: Dataset Provenance & Cryptographic Integrity Verification
+  3. *Slide 3*: Hadoop HDFS Storage Architecture (`/agriscope` Medallion structure)
+  4. *Slide 4*: Distributed PySpark ETL & Target Leakage Prevention
+  5. *Slide 5*: Spark MLlib Model Leaderboard ($R^2 = 0.8550$ GBT Champion)
+  6. *Slide 6*: Longitudinal Agricultural Business Intelligence & Crop Clusters
+  7. *Slide 7*: Farmer-First Mode & Socioeconomic Grounding
+
+---
+
+## 🔒 7. Production Hardening & Code Watermarking
+
+- **Code Watermarking**: Deeply embedded internal author watermark comments, headers, and docstrings across backend modules, spark jobs, frontend components, and test suites:
+  - Custom HTTP Response Headers: `X-Developer: Aditya Sinha`, `X-Engine: NEXGram-BigData-Intelligence`, `X-Platform-Architect: Developed by Aditya Sinha | NEXGram`
+  - Meta tags in `index.html` and header in `index.css`
+  - Attribution in `Sidebar.jsx`, `FarmerMode.jsx`, and `App.jsx`
+- **Pydantic v2 Migration**: Converted all schemas to `model_config = ConfigDict(from_attributes=True)`.
+- **Timezone-Aware Datetimes**: Replaced deprecated `utcnow()` with `datetime.datetime.now(datetime.timezone.utc)`.
+- **Path Traversal Security**: Strict directory prefix resolution checks on dataset previews (`settings.base_dir`) and job logs (`settings.logs_dir`).
+- **Input Sanitization**: Case-insensitive crop and state dictionary resolution.
+
+---
+
+## 📁 8. Repository Structure
 
 ```
 agriscope/
-├── backend/                  # FastAPI Application (Python 3.12)
+├── backend/                  # FastAPI Microservice Application (Python 3.12)
 │   ├── app/
 │   │   ├── api/v1/           # REST endpoints (health, datasets, models, predictions, analytics, jobs)
-│   │   ├── core/             # Settings, database seeder, config
+│   │   ├── core/             # Config, database seeder, security settings
 │   │   ├── models/           # SQLAlchemy database schemas (timezone-aware UTC)
 │   │   ├── repositories/     # Database CRUD repositories
-│   │   ├── schemas/          # Pydantic v2 data contracts (from_attributes=True)
-│   │   ├── services/         # HDFS and Spark submission services
+│   │   ├── schemas/          # Pydantic v2 data contracts
+│   │   ├── services/         # HDFS and Spark job submission services
 │   │   └── cached_data/      # Aggregated JSON caches (overview, crops, states, clusters)
 │   └── requirements.txt
 ├── frontend/                 # React 18 + Vite Web Application
@@ -134,9 +244,9 @@ agriscope/
 
 ---
 
-## 🎓 Academic Credit & Integrity
+## ⚖️ 9. Academic Integrity & Author Attribution
 
-- **Target Leakage Strict Protection**: Enforces pre-harvest predictive validity by strictly excluding `production`.
-- **Honest Agronomic Disclaimers**: Clarifies that machine learning estimates are historical approximations subject to unobserved seasonal weather and soil variations, avoiding irresponsible automated advice.
-- **Course**: B.Tech CSET-371 Big Data Analytics & Business Intelligence.
-
+- **Architect & Lead Developer**: **Aditya Sinha**
+- **Academic Course**: **B.Tech CSET-371 Big Data Analytics & Business Intelligence**
+- **Original Source Data**: Ministry of Agriculture & Farmers Welfare, Government of India (APY Corpus, 1997–2022).
+- **All Rights Reserved**: (c) 2026 Aditya Sinha. This software is developed for academic evaluation, reproducible research, and decision-support exploration.

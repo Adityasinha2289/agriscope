@@ -1,5 +1,9 @@
 """
-AgriScope - End-to-End Prediction and Analytics Workflow Test
+==============================================================================
+NEXGram — End-to-End Prediction and Analytics Workflow Test
+Architecture & Test Suite: Developed by Aditya Sinha
+B.Tech CSET-371 Big Data Analytics & Business Intelligence
+==============================================================================
 """
 import pytest
 from starlette.testclient import TestClient

@@ -1,3 +1,8 @@
+/**
+ * NEXGram — Executive Overview & Big Data Analytics Dashboard
+ * Architecture & Implementation: Developed by Aditya Sinha
+ * B.Tech CSET-371 Big Data Analytics & Business Intelligence
+ */
 import React, { useMemo } from "react";
 import {
   Chart as ChartJS,

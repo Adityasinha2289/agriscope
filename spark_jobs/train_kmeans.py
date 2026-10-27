@@ -1,7 +1,11 @@
 """
-AgriScope - K-Means Clustering Job
-Clusters agricultural records by yield, area, and production patterns.
+==============================================================================
+NEXGram — Spark MLlib K-Means Clustering Pipeline
+Architecture & Implementation: Developed by Aditya Sinha
+B.Tech CSET-371 Big Data Analytics & Business Intelligence
+Clusters agricultural records by yield, area, and agro-economic typologies.
 Usage: spark-submit train_kmeans.py <hdfs_features_path> <hdfs_model_path> <hdfs_results_path> [n_clusters]
+==============================================================================
 """
 import sys
 import json

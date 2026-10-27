@@ -1,5 +1,8 @@
 /**
- * AgriScope API Client Service
+ * NEXGram API Client Service
+ * Architecture & Implementation: Developed by Aditya Sinha
+ * B.Tech CSET-371 Big Data Analytics & Business Intelligence
+ * All Rights Reserved (c) Aditya Sinha
  */
 const API_BASE = "http://localhost:8000/api/v1";
 

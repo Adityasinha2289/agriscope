@@ -1,6 +1,10 @@
 """
-AgriScope - Database models and SQLite setup
-Tracks jobs, datasets, models, and experiments
+==============================================================================
+NEXGram — SQLAlchemy Metadata Catalog & Database Models
+Architecture & Implementation: Developed by Aditya Sinha
+B.Tech CSET-371 Big Data Analytics & Business Intelligence
+Tracks jobs, datasets, models, experiments, and prediction audit logs
+==============================================================================
 """
 import datetime
 import uuid

@@ -1,3 +1,8 @@
+/**
+ * NEXGram — Presentation Mode & Viva Voce Guided Walkthrough
+ * Architecture & Implementation: Developed by Aditya Sinha
+ * B.Tech CSET-371 Big Data Analytics & Business Intelligence
+ */
 import React, { useState, useEffect } from "react";
 import {
   X,
@@ -50,7 +55,7 @@ export default function PresentationModal({ isOpen, onClose, onSwitchToFarmerMod
           <div style={{ padding: "16px", borderRadius: "10px", border: "1px solid var(--color-olive)", backgroundColor: "var(--color-pale-green)" }}>
             <div style={{ fontWeight: 600, color: "var(--color-forest)", fontSize: "0.9375rem", marginBottom: "4px" }}>Core Problem Formulation:</div>
             <div style={{ fontSize: "0.875rem", color: "var(--color-forest)", lineHeight: 1.5 }}>
-              Standard relational databases fail at high-throughput longitudinal aggregations and ML feature pipelines over multi-decade state records. AgriScope combines <strong>Hadoop HDFS</strong> and <strong>Apache Spark MLlib</strong> to deliver scalable storage, leakage-free modeling, and a farmer-first translation layer.
+              Standard relational databases fail at high-throughput longitudinal aggregations and ML feature pipelines over multi-decade state records. NEXGram combines <strong>Hadoop HDFS</strong> and <strong>Apache Spark MLlib</strong> to deliver scalable storage, leakage-free modeling, and a farmer-first translation layer.
             </div>
           </div>
         </div>
@@ -100,7 +105,7 @@ export default function PresentationModal({ isOpen, onClose, onSwitchToFarmerMod
       content: (
         <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
           <p style={{ fontSize: "0.9375rem", color: "var(--text-secondary)", lineHeight: 1.5, margin: 0 }}>
-            AgriScope stages immutable landing files and distributed Parquet tables within a multi-tiered HDFS namespace:
+            NEXGram stages immutable landing files and distributed Parquet tables within a multi-tiered HDFS namespace:
           </p>
           <div style={{
             backgroundColor: "var(--bg-surface-subtle)",
@@ -140,7 +145,7 @@ export default function PresentationModal({ isOpen, onClose, onSwitchToFarmerMod
               Examiner Defense: Why Production CANNOT be an Input Feature
             </div>
             <div style={{ fontSize: "0.875rem", color: "var(--color-forest)", lineHeight: 1.5 }}>
-              Since Yield is defined mathematically as <code>Yield = Production / Area</code>, including Production as a feature causes immediate <strong>target leakage</strong>, yielding an artificial R² = 0.999. In real-world pre-harvest forecasting, Production is completely unknown. AgriScope trains solely on exogenous factors: Cultivated Area, Agricultural Season, Geographical Region, and Crop Taxonomy.
+              Since Yield is defined mathematically as <code>Yield = Production / Area</code>, including Production as a feature causes immediate <strong>target leakage</strong>, yielding an artificial R² = 0.999. In real-world pre-harvest forecasting, Production is completely unknown. NEXGram trains solely on exogenous factors: Cultivated Area, Agricultural Season, Geographical Region, and Crop Taxonomy.
             </div>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "12px" }}>
@@ -317,10 +322,10 @@ export default function PresentationModal({ isOpen, onClose, onSwitchToFarmerMod
             </div>
             <div>
               <div style={{ fontSize: "0.875rem", fontWeight: 600, color: "var(--color-forest)" }}>
-                AgriScope Presentation Mode — B.Tech CSET-371
+                NEXGram Presentation Mode — Developed by Aditya Sinha
               </div>
               <div style={{ fontSize: "0.6875rem", color: "var(--text-tertiary)" }}>
-                Examiner Viva Voce Guided Walkthrough (10–15 Minutes)
+                Examiner Viva Voce Guided Walkthrough (10–15 Minutes) • B.Tech CSET-371
               </div>
             </div>
           </div>

@@ -1,6 +1,10 @@
 """
-AgriScope - Model Management & Evaluation Comparison Endpoints
+==============================================================================
+NEXGram — MLlib Model Management & Academic Evaluation Leaderboard
+Architecture & Implementation: Developed by Aditya Sinha
+B.Tech CSET-371 Big Data Analytics & Business Intelligence
 Leaderboard and metrics for trained PySpark ML models
+==============================================================================
 """
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session

@@ -1,11 +1,15 @@
 """
-AgriScope - Enterprise Big Data Crop Yield Intelligence Platform
-FastAPI Application Entry Point
+==============================================================================
+NEXGram — Enterprise Big Data Crop Yield Intelligence Platform
+Architecture & Implementation: Developed by Aditya Sinha
+B.Tech CSET-371 Big Data Analytics & Business Intelligence
+FastAPI Application Entry Point & Microservice Gateway
+==============================================================================
 """
 import os
 import logging
 from contextlib import asynccontextmanager
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from .core.config import get_settings
@@ -18,14 +22,14 @@ logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
 )
-logger = logging.getLogger("agriscope")
+logger = logging.getLogger("nexgram")
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Application lifespan: initialize database and seed on startup."""
     settings = get_settings()
-    logger.info("Initializing AgriScope Intelligence Engine...")
+    logger.info("Initializing NEXGram Intelligence Engine (Developed by Aditya Sinha)...")
     
     # Init SQLite DB and create tables
     init_db(settings.database_url)
@@ -43,17 +47,27 @@ async def lifespan(app: FastAPI):
         db.close()
 
     yield
-    logger.info("AgriScope Backend shutting down.")
+    logger.info("NEXGram Backend shutting down.")
 
 
 app = FastAPI(
-    title="AgriScope — Crop Yield Intelligence & Agricultural Analytics",
-    description="Big Data analytics and machine learning platform powered by Apache Hadoop HDFS and Apache Spark (PySpark).",
+    title="NEXGram — Crop Yield Intelligence & Agricultural Analytics",
+    description="Enterprise Big Data analytics and machine learning platform powered by Apache Hadoop HDFS and Apache Spark (PySpark). Developed & Architected by Aditya Sinha.",
     version="1.0.0",
     lifespan=lifespan,
     docs_url="/docs",
     redoc_url="/redoc",
 )
+
+# Custom invisible watermark and metadata headers
+@app.middleware("http")
+async def add_watermark_headers(request: Request, call_next):
+    response = await call_next(request)
+    response.headers["X-Engine"] = "NEXGram-BigData-Intelligence"
+    response.headers["X-Developer"] = "Aditya Sinha"
+    response.headers["X-Platform-Architect"] = "Developed by Aditya Sinha | NEXGram"
+    response.headers["X-Academic-Course"] = "B.Tech CSET-371 Big Data Analytics"
+    return response
 
 # Enable CORS for frontend
 app.add_middleware(
@@ -71,7 +85,9 @@ app.include_router(api_router, prefix="/api")
 @app.get("/api/status")
 def api_status():
     return {
-        "platform": "AgriScope — Crop Yield Intelligence & Big Data Analytics",
+        "platform": "NEXGram — Crop Yield Intelligence & Big Data Analytics",
+        "developer": "Developed & Architected by Aditya Sinha",
+        "course": "B.Tech CSET-371 Big Data Analytics & Business Intelligence",
         "version": "1.0.0",
         "status": "online",
         "docs_url": "/docs",
@@ -80,7 +96,7 @@ def api_status():
             "storage": "Apache Hadoop HDFS (hdfs://localhost:9000)",
             "processing": "Apache Spark (PySpark 4.0.0, MLlib)",
             "api": "FastAPI + Uvicorn + SQLite",
-            "frontend": "Modern Glassmorphism UI",
+            "frontend": "Apple-Inspired Minimalist UI",
         },
     }
 
@@ -93,3 +109,4 @@ else:
     @app.get("/")
     def root():
         return api_status()
+

@@ -1,4 +1,7 @@
-# AgriScope Dataset Information
+# NEXGram Dataset Provenance & Schema
+
+> **Lead Architect & Developer:** **Aditya Sinha**  
+> **Course:** B.Tech CSET-371 Big Data Analytics & Business Intelligence
 
 ## Primary Dataset
 - **Name**: Crop-Wise Area, Production and Yield (APY) India

@@ -1,6 +1,10 @@
 """
-AgriScope - K-Means Clustering Endpoints
+==============================================================================
+NEXGram — K-Means Unsupervised Agronomic Clustering Endpoints
+Architecture & Implementation: Developed by Aditya Sinha
+B.Tech CSET-371 Big Data Analytics & Business Intelligence
 Exposes agricultural cluster profiles, feature centroids, and top crops
+==============================================================================
 """
 import os
 import json

@@ -1,4 +1,7 @@
-# AgriScope HDFS Storage & Schema Design
+# NEXGram HDFS Storage & Schema Design
+
+> **Lead Architect & Developer:** **Aditya Sinha**  
+> **Course:** B.Tech CSET-371 Big Data Analytics & Business Intelligence
 
 ## 1. Hadoop HDFS Configuration
 - **HDFS URI**: `hdfs://localhost:9000`

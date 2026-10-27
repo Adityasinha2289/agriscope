@@ -1,3 +1,8 @@
+/**
+ * NEXGram — Crop Yield Intelligence & Big Data Analytics
+ * Architecture & Implementation: Developed by Aditya Sinha
+ * B.Tech CSET-371 Big Data Analytics & Business Intelligence
+ */
 import React, { useState } from "react";
 import {
   LayoutDashboard,
@@ -60,7 +65,7 @@ export default function Sidebar({
             </svg>
           </div>
           <span style={{ fontSize: "1.1rem", fontWeight: 600, color: "var(--color-forest)", letterSpacing: "-0.02em" }}>
-            AgriScope
+            NEXGram
           </span>
         </div>
 
@@ -112,7 +117,7 @@ export default function Sidebar({
           </div>
           <div>
             <div style={{ fontSize: "1.05rem", fontWeight: 600, color: "var(--color-forest)", letterSpacing: "-0.02em", lineHeight: 1.2 }}>
-              AgriScope
+              NEXGram
             </div>
             <div style={{ fontSize: "0.6875rem", color: "var(--text-tertiary)", fontWeight: 500 }}>
               Yield Intelligence
@@ -276,6 +281,9 @@ export default function Sidebar({
             <span style={{ fontSize: "0.6875rem", color: "var(--text-tertiary)" }}>
               PySpark 4.0
             </span>
+          </div>
+          <div style={{ marginTop: "6px", fontSize: "0.625rem", color: "var(--text-tertiary)", textAlign: "center" }}>
+            Developed by Aditya Sinha
           </div>
         </div>
       </aside>

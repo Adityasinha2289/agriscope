@@ -1,5 +1,9 @@
 """
-AgriScope - Integration Tests for FastAPI Endpoints
+==============================================================================
+NEXGram — Integration Tests for FastAPI Endpoints
+Architecture & Test Suite: Developed by Aditya Sinha
+B.Tech CSET-371 Big Data Analytics & Business Intelligence
+==============================================================================
 """
 import pytest
 from starlette.testclient import TestClient
@@ -17,7 +21,9 @@ def test_root_endpoint(client):
     assert res.status_code == 200
     data = res.json()
     assert data["status"] == "online"
-    assert "AgriScope" in data["platform"]
+    assert "NEXGram" in data["platform"]
+    assert "Aditya Sinha" in data["developer"]
+    assert res.headers["X-Developer"] == "Aditya Sinha"
 
     # Also verify / returns 200 (serves static UI)
     html_res = client.get("/")

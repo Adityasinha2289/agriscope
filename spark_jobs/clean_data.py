@@ -1,7 +1,11 @@
 """
-AgriScope - Spark Data Cleaning Job
-Cleans and normalizes the raw APY dataset.
+==============================================================================
+NEXGram — PySpark Data Cleaning & Audit Job
+Architecture & Implementation: Developed by Aditya Sinha
+B.Tech CSET-371 Big Data Analytics & Business Intelligence
+Cleans and normalizes the raw APY dataset using non-destructive audit principles.
 Usage: spark-submit clean_data.py <hdfs_input_parquet> <hdfs_output_path>
+==============================================================================
 """
 import sys
 import json

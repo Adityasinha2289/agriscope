@@ -1,6 +1,10 @@
 """
-AgriScope - Analytics & Business Intelligence Endpoints
+==============================================================================
+NEXGram — Analytics & Agricultural Intelligence Endpoints
+Architecture & Implementation: Developed by Aditya Sinha
+B.Tech CSET-371 Big Data Analytics & Business Intelligence
 Serves pre-computed PySpark aggregates, trends, rankings, and KPIs
+==============================================================================
 """
 import os
 import json

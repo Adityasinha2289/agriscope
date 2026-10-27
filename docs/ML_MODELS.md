@@ -1,4 +1,7 @@
-# AgriScope Machine Learning Models & Evaluation
+# NEXGram Machine Learning Models & Evaluation
+
+> **Lead Architect & Developer:** **Aditya Sinha**  
+> **Course:** B.Tech CSET-371 Big Data Analytics & Business Intelligence
 
 ## 1. Mathematical Formulations & Objective Functions
 

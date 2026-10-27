@@ -1,6 +1,10 @@
 """
-AgriScope - Database Seeder
+==============================================================================
+NEXGram — Metadata Database Seeder
+Architecture & Implementation: Developed by Aditya Sinha
+B.Tech CSET-371 Big Data Analytics & Business Intelligence
 Seeds dataset metadata, trained models, cluster results, and job logs on startup
+==============================================================================
 """
 import os
 import json

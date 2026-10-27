@@ -1,6 +1,10 @@
 """
-AgriScope - Job Execution and Monitoring Endpoints
-Trigger and monitor PySpark jobs
+==============================================================================
+NEXGram — PySpark Job Execution & Orchestration Endpoints
+Architecture & Implementation: Developed by Aditya Sinha
+B.Tech CSET-371 Big Data Analytics & Business Intelligence
+Trigger and monitor distributed PySpark pipeline jobs
+==============================================================================
 """
 import os
 import uuid

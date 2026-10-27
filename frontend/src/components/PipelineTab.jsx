@@ -1,3 +1,8 @@
+/**
+ * NEXGram — Distributed PySpark ETL & Job Orchestration
+ * Architecture & Implementation: Developed by Aditya Sinha
+ * B.Tech CSET-371 Big Data Analytics & Business Intelligence
+ */
 import React, { useState, useEffect } from "react";
 import { Play, CheckCircle2, Terminal, RefreshCw, ChevronRight } from "lucide-react";
 import { fetchJobs, fetchJobLogs, triggerJob } from "../services/api";

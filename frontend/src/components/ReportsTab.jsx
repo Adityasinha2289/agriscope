@@ -1,3 +1,8 @@
+/**
+ * NEXGram — Data Reports & Export Engine
+ * Architecture & Implementation: Developed by Aditya Sinha
+ * B.Tech CSET-371 Big Data Analytics & Business Intelligence
+ */
 import React, { useState } from "react";
 import { Download, FileText, CheckCircle2 } from "lucide-react";
 import {
@@ -31,17 +36,17 @@ export default function ReportsTab() {
         if (rows.length > 0) {
           const headers = Object.keys(rows[0]).join(",");
           const csv = [headers, ...rows.map((r) => Object.values(r).join(","))].join("\n");
-          triggerDownload(csv, "agriscope_yield_trends_1997_2022.csv", "text/csv");
+          triggerDownload(csv, "nexgram_yield_trends_1997_2022.csv", "text/csv");
         }
       } else if (reportId === "models") {
         const data = await fetchModelComparison();
-        triggerDownload(JSON.stringify(data, null, 2), "agriscope_model_evaluation_report.json", "application/json");
+        triggerDownload(JSON.stringify(data, null, 2), "nexgram_model_evaluation_report.json", "application/json");
       } else if (reportId === "clusters") {
         const data = await fetchClusteringResults();
-        triggerDownload(JSON.stringify(data, null, 2), "agriscope_kmeans_cluster_report.json", "application/json");
+        triggerDownload(JSON.stringify(data, null, 2), "nexgram_kmeans_cluster_report.json", "application/json");
       } else if (reportId === "schema") {
         const data = await fetchDatasets();
-        triggerDownload(JSON.stringify(data[0] || {}, null, 2), "agriscope_dataset_provenance_schema.json", "application/json");
+        triggerDownload(JSON.stringify(data[0] || {}, null, 2), "nexgram_dataset_provenance_schema.json", "application/json");
       }
     } catch (e) {
       console.error("Export error:", e);

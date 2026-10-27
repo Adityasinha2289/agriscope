@@ -1,8 +1,9 @@
-# B.Tech Project Report: AgriScope
+# B.Tech Project Report: NEXGram
 
 **Course**: CSET-371 Big Data Analytics & Business Intelligence  
 **Degree**: Bachelor of Technology in Computer Science & Engineering  
-**Project Title**: AgriScope — Enterprise Crop Yield Intelligence Platform using Apache Hadoop HDFS & Apache Spark  
+**Project Title**: NEXGram — Enterprise Crop Yield Intelligence Platform using Apache Hadoop HDFS & Apache Spark  
+**Lead Architect & Developer**: **Aditya Sinha**  
 **Academic Year**: 2026–2027  
 
 ---
@@ -10,7 +11,7 @@
 ## 1. Abstract
 Agricultural productivity is the cornerstone of India's socioeconomic stability, yet forecasting crop yields is fraught with high spatial-temporal variance, non-linear weather dependencies, and fragmented regional data collection. 
 
-This project develops **AgriScope**, a production-minded Big Data platform designed to ingest, clean, feature-engineer, and model **455,359 historical agricultural records** spanning 25 years (1997–2022) across 34 states and 737 districts.
+This project develops **NEXGram**, a production-minded Big Data platform designed to ingest, clean, feature-engineer, and model **455,359 historical agricultural records** spanning 25 years (1997–2022) across 34 states and 737 districts.
 
 The platform demonstrates real, functioning usage of:
 1. **Apache Hadoop HDFS** for fault-tolerant distributed raw data storage and Snappy-compressed Parquet staging.
@@ -88,7 +89,7 @@ Evaluated on an 80/20 random holdout test set ($N_{\text{train}} = 354,504$, $N_
 
 ## 6. Human-Centered Design & Farmer-First Experience
 
-A university project in Big Data Analytics must not only prove algorithmic competence but also demonstrate real-world socioeconomic utility. AgriScope resolves the disconnect between complex statistical outputs and rural agricultural decision-makers through two dedicated experiences:
+A university project in Big Data Analytics must not only prove algorithmic competence but also demonstrate real-world socioeconomic utility. NEXGram resolves the disconnect between complex statistical outputs and rural agricultural decision-makers through two dedicated experiences:
 
 1. **Analyst Platform (Viva & Research)**: Full access to PySpark cluster metrics, HDFS storage allocation, Spark DAG logs, regression residual scatter plots, feature importances, and interactive scenario simulations.
 2. **Farmer Mode (Grassroots Practice)**:
@@ -109,5 +110,5 @@ A university project in Big Data Analytics must not only prove algorithmic compe
 ---
 
 ## 8. Conclusion
-AgriScope successfully demonstrates a complete end-to-end Big Data architecture meeting all curriculum requirements for B.Tech CSET-371. By uniting Hadoop HDFS, Apache Spark, MLlib, and modern human-centered web design, the platform provides rigorous, reproducible, and explainable crop yield intelligence that serves both the data scientist and the grassroots farmer.
+NEXGram successfully demonstrates a complete end-to-end Big Data architecture meeting all curriculum requirements for B.Tech CSET-371. By uniting Hadoop HDFS, Apache Spark, MLlib, and modern human-centered web design, the platform provides rigorous, reproducible, and explainable crop yield intelligence that serves both the data scientist and the grassroots farmer.
 

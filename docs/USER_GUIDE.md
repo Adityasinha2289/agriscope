@@ -1,4 +1,7 @@
-# AgriScope User Guide & Quickstart
+# NEXGram User Guide & Operational Manual
+
+> **Developed & Architected by Aditya Sinha**  
+> **Course**: B.Tech CSET-371 Big Data Analytics & Business Intelligence
 
 ## 1. Prerequisites
 - **macOS** or **Linux**
@@ -33,7 +36,7 @@ This script automatically:
 ## 3. Platform Operating Modes
 
 ### 3.1 Dual-Audience Selection
-AgriScope accommodates both academic evaluators and grassroots agricultural producers:
+NEXGram accommodates both academic evaluators and grassroots agricultural producers:
 - **Analyst Mode**: Complete 8-tab intelligence platform with live HDFS metrics, PySpark job monitors, model comparisons, and R² leaderboards.
 - **Farmer Mode**: Simplified, high-contrast, bilingual interface focused on crop benchmarks, transparent yield estimates in familiar units (**Quintals per Acre**), and district comparisons.
 - **Mode Switching**: Use the header button at any time ("Farmer Mode" / "Analyst Mode") or click the mode switcher card on the Overview tab. Selection is persisted in `localStorage`.
